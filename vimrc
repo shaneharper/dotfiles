@@ -14,7 +14,7 @@
     Bundle 'gmarik/vundle'
     
     Bundle 'https://github.com/tpope/vim-fugitive'
-    Bundle 'Valloric/YouCompleteMe'
+"    Bundle 'Valloric/YouCompleteMe'
         " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
     " Ctrl-P - press Ctrl-P to open a file
@@ -26,6 +26,12 @@
 
     " vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
     Bundle 'https://github.com/milkypostman/vim-togglelist'
+
+    " Snipmate (and dependencies)
+    Bundle 'MarcWeber/vim-addon-mw-utils'
+    Bundle 'tomtom/tlib_vim'
+    Bundle 'garbas/vim-snipmate'
+    " XXX http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 
 "    Bundle 'Lokaltog/vim-easymotion'
 "    Bundle 'Syntastic'	" awesome syntax and errors highlighter
@@ -80,17 +86,18 @@ augroup filetype_c
     autocmd FileType cpp iabbrev #i #include
     autocmd FileType cpp iabbrev #d #define
     autocmd FileType cpp
-        \ iabbrev C  class|     iabbrev class   NO! NO! NO!|
-        \ iabbrev S  struct|    iabbrev struct  NO! NO! NO!|
-        \ iabbrev R  return|    iabbrev return  NO! NO! NO!|
-        \ iabbrev W  while|     iabbrev while   NO! NO! NO!|
-        \ iabbrev F  for|
-        \ iabbrev T  typedef|   iabbrev typedef NO! NO! NO!|
-        \ iabbrev bb bool|      iabbrev bool    NO! NO! NO!|
-        \ iabbrev cc char|      iabbrev char    NO! NO! NO!|
-        \ iabbrev vv void|      iabbrev void    NO! NO! NO!|
-        \ iabbrev uu unsigned|  iabbrev unsigned NO! NO! NO!|
-    autocmd FileType cpp iabbrev fi for (int i = 0; i < ; ++i)
+        \ iabbrev na namespace| iabbrev namespace NO! NO! NO!|
+        \ iabbrev st struct|    iabbrev struct  NO! NO! NO!|
+        \ iabbrev cl class|     iabbrev class   NO! NO! NO!|
+        \ iabbrev wh while|     iabbrev while   NO! NO! NO!|
+        \ iabbrev re return|    iabbrev return  NO! NO! NO!|
+        \ iabbrev ty typedef|   iabbrev typedef NO! NO! NO!|
+        \ iabbrev bo bool|      iabbrev bool    NO! NO! NO!|
+        \ iabbrev ch char|      iabbrev char    NO! NO! NO!|
+        \ iabbrev vo void|      iabbrev void    NO! NO! NO!|
+        \ iabbrev un unsigned|  iabbrev unsigned NO! NO! NO!|
+        \ iabbrev te template|  iabbrev template NO! NO! NO!|
+    set cindent
 augroup END
 " }}}
 
