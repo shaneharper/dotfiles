@@ -1,4 +1,6 @@
 " Set-up Vundle - the vim plugin bundler ---------------------------------- {{{
+" :BundleUpdate updates bundles
+
     let RunBundleInstall=0
     if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
         echo "Installing Vundle.."
@@ -11,10 +13,22 @@
     call vundle#rc()
     Bundle 'gmarik/vundle'
     
-"    Bundle 'Syntastic'	" awesome syntax and errors highlighter
     Bundle 'https://github.com/tpope/vim-fugitive'
     Bundle 'Valloric/YouCompleteMe'
+        " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
+
+    " Ctrl-P - press Ctrl-P to open a file
+    Bundle 'kien/ctrlp.vim'
+
+    " Unimpaired: ]q is :cnext, [q is :cprevious, etc.
+    Bundle 'https://github.com/tpope/vim-repeat'
+    Bundle 'https://github.com/tpope/vim-unimpaired'
+
+    " vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
+    Bundle 'https://github.com/milkypostman/vim-togglelist'
+
 "    Bundle 'Lokaltog/vim-easymotion'
+"    Bundle 'Syntastic'	" awesome syntax and errors highlighter
 
     if RunBundleInstall == 1
         echo "Installing Bundles, please ignore key map error messages"
@@ -26,7 +40,7 @@
 " Basic key mappings ------------------------------------------------------ {{{
 " jk mapping from http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
 inoremap jk <esc>
-" don't use <esc>. Use jk - it's easier, fingers stay on the home row. 
+" don't use <esc>. Use jk - it's easier, fingers stay on the home row.
 inoremap <esc> <nop>
 
 nnoremap <up> <nop>
@@ -40,9 +54,6 @@ nnoremap <space> :
 " From https://github.com/nvie/vimrc/blob/master/vimrc:
 noremap <C-e> 2<C-e>
 noremap <C-y> 2<C-y>
-
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
 " }}}
 
 " Search options ---------------------------------------------------------- {{{
@@ -57,7 +68,7 @@ set incsearch
 set expandtab
 set softtabstop=4               " when hitting <BS>, pretend like a tab is removed, even if spaces
 set shiftwidth=4
-set autoindent                  " always set autoindenting on
+set autoindent
 set shiftround                  " round indent to multiple of shiftwidth - applies to < and > commands.
 " }}}
 
