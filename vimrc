@@ -26,7 +26,8 @@
 " Basic key mappings ------------------------------------------------------ {{{
 " jk mapping from http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
 inoremap jk <esc>
-inoremap <esc> <nop>  " Use jk - it's easier, fingers stay on the home row.
+" don't use <esc>. Use jk - it's easier, fingers stay on the home row. 
+inoremap <esc> <nop>
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
