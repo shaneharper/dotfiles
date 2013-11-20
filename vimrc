@@ -14,7 +14,7 @@
     Bundle 'gmarik/vundle'
     
     Bundle 'https://github.com/tpope/vim-fugitive'
-"    Bundle 'Valloric/YouCompleteMe'
+    Bundle 'Valloric/YouCompleteMe'
         " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
     " Ctrl-P - press Ctrl-P to open a file
@@ -112,3 +112,5 @@ set backspace=indent,eol,start  " allow backspacing over everything in insert mo
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
 syntax on
 " }}}
+
+let g:ycm_key_list_select_completion = ['<Down>']  " was: ['<TAB>', '<Down>']. TAB is used by SnipMate, though.
