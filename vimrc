@@ -110,6 +110,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
+set background=dark
 syntax on
 " }}}
 
