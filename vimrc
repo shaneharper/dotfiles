@@ -36,6 +36,8 @@
 "    Bundle 'Lokaltog/vim-easymotion'
 "    Bundle 'Syntastic'	" awesome syntax and errors highlighter
 
+    Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
+
     if RunBundleInstall == 1
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
@@ -102,6 +104,7 @@ augroup END
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
+filetype plugin indent on
 set ruler
 "set mouse=a                     " mouse click in an xterm moves cursor
 set wildmode=list:longest
