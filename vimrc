@@ -1,4 +1,4 @@
-" Set-up Vundle - the vim plugin bundler ---------------------------------- {{{
+" Set-up Vundle to install/update plugins --------------------------------- {{{
 " :BundleUpdate updates bundles
 
     let RunBundleInstall=0
@@ -112,6 +112,7 @@ set backspace=indent,eol,start  " allow backspacing over everything in insert mo
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
 set background=dark
 syntax on
-" }}}
 
 let g:ycm_key_list_select_completion = ['<Down>']  " was: ['<TAB>', '<Down>']. TAB is used by SnipMate, though.
+
+" }}}
