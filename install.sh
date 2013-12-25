@@ -3,5 +3,5 @@
 cd `dirname $0`
 
 ln -s `pwd`/vimrc ~/.vimrc
-mkdir ~/.vim
+mkdir -p ~/.vim
 cp -r snippets/ ~/.vim
