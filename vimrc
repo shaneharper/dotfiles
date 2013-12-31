@@ -38,6 +38,8 @@
 
     Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
 
+    Bundle 'https://github.com/shaneharper/vim-rtags.git'
+
     if RunBundleInstall == 1
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
@@ -118,4 +120,5 @@ syntax on
 
 let g:ycm_key_list_select_completion = ['<Down>']  " was: ['<TAB>', '<Down>']. TAB is used by SnipMate, though.
 
+nnoremap <silent> <localleader>r :call RtagsReferences()<CR>
 " }}}
