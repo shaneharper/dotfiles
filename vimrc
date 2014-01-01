@@ -120,5 +120,5 @@ syntax on
 
 let g:ycm_key_list_select_completion = ['<Down>']  " was: ['<TAB>', '<Down>']. TAB is used by SnipMate, though.
 
-nnoremap <silent> <localleader>r :call Rtags_references()<CR>
+nnoremap <silent> <localleader>r :call Rtags_references_to_symbol_under_cursor()<CR>
 " }}}
