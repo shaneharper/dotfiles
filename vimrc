@@ -40,6 +40,11 @@ Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
 
 Bundle 'https://github.com/shaneharper/vim-rtags.git'
 
+Bundle 'https://github.com/embear/vim-localvimrc'
+" let g:localvimrc_whitelist='/home/shane/rtags' | let g:localvimrc_sandbox=0
+"  A useful .lvimrc, set makeprg to pass project root directory to ninja:
+"    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
+
 if RunBundleInstall == 1
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
