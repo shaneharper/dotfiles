@@ -1,50 +1,50 @@
 " Set-up Vundle to install/update plugins --------------------------------- {{{
 " :BundleUpdate updates bundles
 
-    let RunBundleInstall=0
-    if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
-        echo "Installing Vundle.."
-        echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-        let RunBundleInstall=1
-    endif
-    set runtimepath+=~/.vim/bundle/vundle/
-    call vundle#rc()
-    Bundle 'gmarik/vundle'
-    
-    Bundle 'https://github.com/tpope/vim-fugitive'
-    Bundle 'Valloric/YouCompleteMe'
-        " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
+let RunBundleInstall=0
+if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let RunBundleInstall=1
+endif
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
 
-    " Ctrl-P - press Ctrl-P to open a file
-    Bundle 'kien/ctrlp.vim'
+Bundle 'https://github.com/tpope/vim-fugitive'
+Bundle 'Valloric/YouCompleteMe'
+    " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
-    " Unimpaired: ]q is :cnext, [q is :cprevious, etc.
-    Bundle 'https://github.com/tpope/vim-repeat'
-    Bundle 'https://github.com/tpope/vim-unimpaired'
+" Ctrl-P - press Ctrl-P to open a file
+Bundle 'kien/ctrlp.vim'
 
-    " vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
-    Bundle 'https://github.com/milkypostman/vim-togglelist'
+" Unimpaired: ]q is :cnext, [q is :cprevious, etc.
+Bundle 'https://github.com/tpope/vim-repeat'
+Bundle 'https://github.com/tpope/vim-unimpaired'
 
-    " Snipmate (and dependencies)
-    Bundle 'MarcWeber/vim-addon-mw-utils'
-    Bundle 'tomtom/tlib_vim'
-    Bundle 'garbas/vim-snipmate'
-    " XXX http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+" vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
+Bundle 'https://github.com/milkypostman/vim-togglelist'
+
+" Snipmate (and dependencies)
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+" XXX http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 
 "    Bundle 'Lokaltog/vim-easymotion'
 "    Bundle 'Syntastic'	" awesome syntax and errors highlighter
 
-    Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
+Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
 
-    Bundle 'https://github.com/shaneharper/vim-rtags.git'
+Bundle 'https://github.com/shaneharper/vim-rtags.git'
 
-    if RunBundleInstall == 1
-        echo "Installing Bundles, please ignore key map error messages"
-        echo ""
-        :BundleInstall
-    endif
+if RunBundleInstall == 1
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
 " }}}
 
 " Basic key mappings ------------------------------------------------------ {{{
