@@ -14,6 +14,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'https://github.com/tpope/vim-fugitive'
+nmap G* :Ggrep <C-r><C-w><CR>:copen<CR>
 Bundle 'Valloric/YouCompleteMe'
     " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
