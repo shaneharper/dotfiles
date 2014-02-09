@@ -130,4 +130,6 @@ syntax on
 let g:ycm_key_list_select_completion = ['<Down>']  " was: ['<TAB>', '<Down>']. TAB is used by SnipMate, though.
 
 autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
+
+autocmd BufNewFile,BufRead *.h++ set filetype=cpp
 " }}}
