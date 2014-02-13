@@ -132,4 +132,9 @@ let g:ycm_key_list_select_completion = ['<Down>']  " was: ['<TAB>', '<Down>']. T
 autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
 
 autocmd BufNewFile,BufRead *.h++ set filetype=cpp
+
+" Don't automatically insert the 'comment leader' when starting a new line next to a comment. (I tend not to use // for multi-line comments in C++.)
+" set formatoptions==cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
 " }}}
