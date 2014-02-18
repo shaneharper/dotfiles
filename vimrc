@@ -60,6 +60,8 @@ endif
 inoremap jk <esc>
 " don't use <esc>. Use jk - it's easier, fingers stay on the home row.
 inoremap <esc> <nop>
+"" jj: temporarily leave insert mode for one command
+inoremap jj <C-o>
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
