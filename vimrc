@@ -98,12 +98,11 @@ iabbrev ME shane@shaneharper.net
 
 augroup filetype_c
     autocmd!
-    autocmd FileType cpp iabbrev #i #include
-    autocmd FileType cpp iabbrev #d #define
-    autocmd FileType cpp
-        \ iabbrev na namespace| iabbrev namespace NO! NO! NO!|
+    autocmd FileType c,cpp
+        \ iabbrev #i #include|
+        \ iabbrev #d #define|
+        \ iabbrev #e #endif|
         \ iabbrev st struct|    iabbrev struct  NO! NO! NO!|
-        \ iabbrev cl class|     iabbrev class   NO! NO! NO!|
         \ iabbrev wh while|     iabbrev while   NO! NO! NO!|
         \ iabbrev re return|    iabbrev return  NO! NO! NO!|
         \ iabbrev ty typedef|   iabbrev typedef NO! NO! NO!|
@@ -111,6 +110,9 @@ augroup filetype_c
         \ iabbrev ch char|      iabbrev char    NO! NO! NO!|
         \ iabbrev vo void|      iabbrev void    NO! NO! NO!|
         \ iabbrev un unsigned|  iabbrev unsigned NO! NO! NO!|
+    autocmd FileType cpp
+        \ iabbrev cl class|     iabbrev class   NO! NO! NO!|
+        \ iabbrev na namespace| iabbrev namespace NO! NO! NO!|
         \ iabbrev te template|  iabbrev template NO! NO! NO!|
     set cindent
 augroup END
