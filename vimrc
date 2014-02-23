@@ -48,6 +48,9 @@ Bundle 'https://github.com/embear/vim-localvimrc'
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
 
+" dwm.vim - Tiled Window Management for Vim
+Bundle 'https://github.com/spolu/dwm.vim.git'
+
 if RunBundleInstall == 1
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
