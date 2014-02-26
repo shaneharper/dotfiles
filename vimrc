@@ -72,6 +72,7 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 
 nnoremap <space> :
+vnoremap <space> :
 " XXX remap Caps Lock?
 
 " From https://github.com/nvie/vimrc/blob/master/vimrc:
@@ -102,7 +103,7 @@ iabbrev ME shane@shaneharper.net
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp
-        \ iabbrev #i #include|
+        \ iabbrev #i #include |
         \ iabbrev #d #define|
         \ iabbrev #e #endif|
         \ iabbrev st struct|    iabbrev struct  NO! NO! NO!|
