@@ -145,4 +145,7 @@ autocmd BufNewFile,BufRead *.h++ set filetype=cpp
 " set formatoptions==cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
+set cpoptions+=n " wrapped text can appear in the line number column
+highlight LineNr ctermfg=DarkGrey
+" set relativenumber numberwidth=2
 " }}}
