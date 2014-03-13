@@ -1,0 +1,11 @@
+[ui]
+username = Shane Harper <shane@shaneharper.net>
+ignore = ~/dotfiles/hgignore
+
+[pager]
+pager = LESS='FRX' less
+
+[extensions]
+pager =
+color =
+graphlog =
