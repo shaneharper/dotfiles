@@ -17,6 +17,9 @@ Bundle 'https://github.com/tpope/vim-fugitive'
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
 
+" Lawrencium is 'vim-fugitive' for Mercurial
+Bundle 'https://github.com/ludovicchabant/vim-lawrencium'
+
 Bundle 'Valloric/YouCompleteMe'
     " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
