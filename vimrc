@@ -112,15 +112,16 @@ augroup filetype_c
         \ iabbrev st struct|    iabbrev struct  NO! NO! NO!|
         \ iabbrev wh while|     iabbrev while   NO! NO! NO!|
         \ iabbrev re return|    iabbrev return  NO! NO! NO!|
-        \ iabbrev ty typedef|   iabbrev typedef NO! NO! NO!|
         \ iabbrev bo bool|      iabbrev bool    NO! NO! NO!|
         \ iabbrev ch char|      iabbrev char    NO! NO! NO!|
+        \ iabbrev co const|     iabbrev const   NO! NO! NO!|
         \ iabbrev vo void|      iabbrev void    NO! NO! NO!|
         \ iabbrev un unsigned|  iabbrev unsigned NO! NO! NO!|
     autocmd FileType cpp
         \ iabbrev cl class|     iabbrev class   NO! NO! NO!|
         \ iabbrev na namespace| iabbrev namespace NO! NO! NO!|
         \ iabbrev te template|  iabbrev template NO! NO! NO!|
+        \ iabbrev ty typename|  iabbrev typename NO! NO! NO!|
     set cindent
 augroup END
 " }}}
