@@ -55,6 +55,12 @@ Bundle 'https://github.com/embear/vim-localvimrc'
 " dwm.vim - Tiled Window Management for Vim
 Bundle 'https://github.com/spolu/dwm.vim.git'
 
+Bundle 'https://github.com/kien/rainbow_parentheses.vim'
+"au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
+
 if RunBundleInstall == 1
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
