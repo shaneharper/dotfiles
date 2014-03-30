@@ -158,5 +158,7 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 set cpoptions+=n " wrapped text can appear in the line number column
 highlight LineNr ctermfg=DarkGrey
-" set relativenumber numberwidth=2
+set numberwidth=2
+autocmd BufWinEnter,WinEnter,FocusGained * setlocal relativenumber
+autocmd WinLeave,FocusLost * setlocal norelativenumber
 " }}}
