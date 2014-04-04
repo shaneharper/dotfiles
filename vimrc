@@ -24,6 +24,11 @@ command Hdiff Hgvdiff
 Bundle 'Valloric/YouCompleteMe'
     " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
+" numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
+"  \sn or <F2> jumps to next line with a 'sign'.
+Bundle 'https://github.com/vim-scripts/numsign.vim'
+autocmd BufWinEnter,WinEnter,FocusGained * let b:sign_work_mode=0
+
 " Ctrl-P - press Ctrl-P to open a file
 Bundle 'kien/ctrlp.vim'
 
