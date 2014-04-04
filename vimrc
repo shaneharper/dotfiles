@@ -129,7 +129,6 @@ augroup filetype_c
         \ iabbrev na namespace| iabbrev namespace NO! NO! NO!|
         \ iabbrev te template|  iabbrev template NO! NO! NO!|
         \ iabbrev ty typename|  iabbrev typename NO! NO! NO!|
-    set cindent
 augroup END
 " }}}
 
