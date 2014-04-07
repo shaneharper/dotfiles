@@ -130,6 +130,7 @@ augroup filetype_c
         \ iabbrev vo void|      iabbrev void    NO! NO! NO!|
         \ iabbrev un unsigned|  iabbrev unsigned NO! NO! NO!|
     autocmd FileType cpp
+        \ iabbrev au auto|
         \ iabbrev cl class|     iabbrev class   NO! NO! NO!|
         \ iabbrev na namespace| iabbrev namespace NO! NO! NO!|
         \ iabbrev te template|  iabbrev template NO! NO! NO!|
