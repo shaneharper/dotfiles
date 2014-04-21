@@ -18,7 +18,7 @@ nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
 
 " Lawrencium is 'vim-fugitive' for Mercurial
-Bundle 'https://github.com/shaneharper/vim-lawrencium'
+Bundle 'https://github.com/ludovicchabant/vim-lawrencium'
 command Hdiff Hgvdiff
 
 Bundle 'Valloric/YouCompleteMe'
