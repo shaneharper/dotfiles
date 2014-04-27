@@ -39,13 +39,6 @@ Bundle 'https://github.com/tpope/vim-unimpaired'
 " vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
 Bundle 'https://github.com/milkypostman/vim-togglelist'
 
-" Snipmate (and dependencies)
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-" XXX http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
-
-"    Bundle 'Lokaltog/vim-easymotion'
 "    Bundle 'Syntastic'	" awesome syntax and errors highlighter
 
 Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
@@ -78,8 +71,8 @@ endif
 inoremap jk <esc>
 " don't use <esc>. Use jk - it's easier, fingers stay on the home row.
 inoremap <esc> <nop>
-"" jj: temporarily leave insert mode for one command
-inoremap jj <C-o>
+"" kk: temporarily leave insert mode for one command
+inoremap kk <C-o>
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -138,6 +131,27 @@ augroup filetype_c
 augroup END
 " }}}
 
+" Mappings for working with code enclosed in {}s -------------------------- {{{
+function s:AddCurlyBrackets()
+    let is_record_definition = (getline('.') =~# '\(\<class\>\|\<enum\>\|\<struct\>\|\<union\>\)'
+                                              \ .'[^)]*$') " [small HACK] Filter out lines contains a ')', e.g. 'struct S* fn()' and 'if (struct S* v = fn())'
+    execute "normal! o{\<CR>}"
+    if is_record_definition
+        normal! a;
+    endif
+endfunction
+
+"  Ctrl-k : insert {}s (Mnemonic: 'k'urly)
+"  (I wanted to use Shift-<CR> but unfortunately it's not possible to map Shift-<CR> to be different to <CR> when running Vim in a terminal window.)
+autocmd FileType c,cpp inoremap <c-k> <Esc>:call <SID>AddCurlyBrackets()<CR>O
+autocmd FileType c,cpp nnoremap <c-k> :call <SID>AddCurlyBrackets()<CR>O
+autocmd FileType c,cpp vnoremap <c-k> ><Esc>`<O{<Esc>`>o}
+" XXX ^ nice to add a ';' after the '}' if line before first line of visual selection is the start of a struct/class/enum/union.
+
+"  jj : continue insertion past end of current block (Mnemonic: 'j' moves down in normal mode.)
+autocmd FileType c,cpp inoremap jj <Esc>]}A<CR>
+" }}}
+
 " Misc. ------------------------------------------------------------------- {{{
 filetype plugin indent on
 set ruler
@@ -150,8 +164,6 @@ set backspace=indent,eol,start  " allow backspacing over everything in insert mo
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
 set background=dark
 syntax on
-
-let g:ycm_key_list_select_completion = ['<Down>']  " was: ['<TAB>', '<Down>']. TAB is used by SnipMate, though.
 
 autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
 
