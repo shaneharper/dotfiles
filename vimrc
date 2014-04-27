@@ -43,8 +43,6 @@ Bundle 'https://github.com/milkypostman/vim-togglelist'
 
 Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
 
-Bundle 'https://github.com/shaneharper/vim-rtags.git'
-
 Bundle 'https://github.com/embear/vim-localvimrc'
 " let g:localvimrc_whitelist='/home/shane/rtags' | let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
@@ -54,7 +52,7 @@ Bundle 'https://github.com/embear/vim-localvimrc'
 Bundle 'https://github.com/spolu/dwm.vim.git'
 
 Bundle 'https://github.com/kien/rainbow_parentheses.vim'
-"au VimEnter * RainbowParenthesesToggle
+"au VimEnter * RainbowParenthesesToggle " XXX Uncommenting this messes up highlighting of multi-line C++11 raw strings
 au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
