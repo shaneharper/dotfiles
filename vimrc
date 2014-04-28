@@ -1,69 +1,76 @@
-" Set-up Vundle to install/update plugins --------------------------------- {{{
-" :BundleUpdate updates bundles
+" Set-up NeoBundle to install/update plugins ------------------------------ {{{
+" :NeoBundleUpdate updates plugins
 
 let RunBundleInstall=0
-if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
-    echo "Installing Vundle.."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+if ! isdirectory(expand('~/.vim/bundle/neobundle.vim'))
+    echon "Installing neobundle.vim..."
+    if ! isdirectory(expand('~/.vim/bundle'))
+        silent call mkdir(expand('~/.vim/bundle'), 'p')
+    endif
+    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    echo "done."
+    if v:shell_error
+        echoerr "neobundle.vim installation failed!"
+        finish
+    endif
     let RunBundleInstall=1
+ endif
+if has('vim_starting')
+    set rtp+=~/.vim/bundle/neobundle.vim/
 endif
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
 
-Bundle 'https://github.com/tpope/vim-fugitive'
+call neobundle#rc(expand('~/.vim/bundle'))
+
+
+NeoBundle 'https://github.com/tpope/vim-fugitive'
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
 
 " Lawrencium is 'vim-fugitive' for Mercurial
-Bundle 'https://github.com/ludovicchabant/vim-lawrencium'
+NeoBundle 'https://github.com/ludovicchabant/vim-lawrencium'
 command Hdiff Hgvdiff
 
-Bundle 'Valloric/YouCompleteMe'
+NeoBundle 'Valloric/YouCompleteMe'
     " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
-Bundle 'https://github.com/vim-scripts/numsign.vim'
+NeoBundle 'https://github.com/vim-scripts/numsign.vim'
 autocmd BufWinEnter,WinEnter,FocusGained * let b:sign_work_mode=0
 
 " Ctrl-P - press Ctrl-P to open a file
-Bundle 'kien/ctrlp.vim'
+NeoBundle 'kien/ctrlp.vim'
 
 " Unimpaired: ]q is :cnext, [q is :cprevious, etc.
-Bundle 'https://github.com/tpope/vim-repeat'
-Bundle 'https://github.com/tpope/vim-unimpaired'
+NeoBundle 'https://github.com/tpope/vim-repeat'
+NeoBundle 'https://github.com/tpope/vim-unimpaired'
 
 " vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
-Bundle 'https://github.com/milkypostman/vim-togglelist'
+NeoBundle 'https://github.com/milkypostman/vim-togglelist'
 
-"    Bundle 'Syntastic'	" awesome syntax and errors highlighter
+"    NeoBundle 'Syntastic'	" awesome syntax and errors highlighter
 
-Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
+NeoBundle 'https://github.com/hynek/vim-python-pep8-indent.git'
 
-Bundle 'https://github.com/t9md/vim-choosewin'
+NeoBundle 'https://github.com/t9md/vim-choosewin'
 nmap - <Plug>(choosewin)
 
-Bundle 'https://github.com/embear/vim-localvimrc'
+NeoBundle 'https://github.com/embear/vim-localvimrc'
 " let g:localvimrc_whitelist='/home/shane/rtags' | let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
 
 " dwm.vim - Tiled Window Management for Vim
-Bundle 'https://github.com/spolu/dwm.vim.git'
+NeoBundle 'https://github.com/spolu/dwm.vim.git'
 
-Bundle 'https://github.com/kien/rainbow_parentheses.vim'
+NeoBundle 'https://github.com/kien/rainbow_parentheses.vim'
 "au VimEnter * RainbowParenthesesToggle " XXX Uncommenting this messes up highlighting of multi-line C++11 raw strings
 au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
 
-if RunBundleInstall == 1
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
+if RunBundleInstall
+    :NeoBundleInstall
 endif
 " }}}
 
