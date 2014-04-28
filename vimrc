@@ -146,7 +146,7 @@ endfunction
 "  (I wanted to use Shift-<CR> but unfortunately it's not possible to map Shift-<CR> to be different to <CR> when running Vim in a terminal window.)
 autocmd FileType c,cpp inoremap <c-k> <Esc>:call <SID>AddCurlyBrackets()<CR>O
 autocmd FileType c,cpp nnoremap <c-k> :call <SID>AddCurlyBrackets()<CR>O
-autocmd FileType c,cpp vnoremap <c-k> ><Esc>`<O{<Esc>`>o}
+autocmd FileType c,cpp vnoremap <c-k> ><Esc>`<O{<Esc>`>o}<Esc>
 " XXX ^ nice to add a ';' after the '}' if line before first line of visual selection is the start of a struct/class/enum/union.
 
 "  jj : continue insertion past end of current block (Mnemonic: 'j' moves down in normal mode.)
