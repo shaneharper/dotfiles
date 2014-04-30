@@ -129,6 +129,14 @@ augroup filetype_c
         \ iabbrev <buffer> na namespace| iabbrev <buffer> namespace NO! NO! NO!|
         \ iabbrev <buffer> te template|  iabbrev <buffer> template NO! NO! NO!|
         \ iabbrev <buffer> ty typename|  iabbrev <buffer> typename NO! NO! NO!|
+    " Mappings for things in std namespace. The next two letters are the first and last letters of the abbreviated word.
+    autocmd FileType cpp
+        \ iabbrev <buffer> sct std::cout|
+        \ iabbrev <buffer> scr std::cerr|
+        \ iabbrev <buffer> sel std::endl|
+        \ iabbrev <buffer> smp std::map|
+        \ iabbrev <buffer> ssg std::string|
+        \ iabbrev <buffer> svr std::vector|
 augroup END
 " }}}
 
