@@ -112,23 +112,23 @@ iabbrev ME shane@shaneharper.net
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp
-        \ iabbrev #i #include |
-        \ iabbrev #d #define|
-        \ iabbrev #e #endif|
-        \ iabbrev st struct|    iabbrev struct  NO! NO! NO!|
-        \ iabbrev wh while|     iabbrev while   NO! NO! NO!|
-        \ iabbrev re return|    iabbrev return  NO! NO! NO!|
-        \ iabbrev bo bool|      iabbrev bool    NO! NO! NO!|
-        \ iabbrev ch char|      iabbrev char    NO! NO! NO!|
-        \ iabbrev co const|     iabbrev const   NO! NO! NO!|
-        \ iabbrev vo void|      iabbrev void    NO! NO! NO!|
-        \ iabbrev un unsigned|  iabbrev unsigned NO! NO! NO!|
+        \ iabbrev <buffer> #i #include |
+        \ iabbrev <buffer> #d #define|
+        \ iabbrev <buffer> #e #endif|
+        \ iabbrev <buffer> st struct|    iabbrev <buffer> struct  NO! NO! NO!|
+        \ iabbrev <buffer> wh while|     iabbrev <buffer> while   NO! NO! NO!|
+        \ iabbrev <buffer> re return|    iabbrev <buffer> return  NO! NO! NO!|
+        \ iabbrev <buffer> bo bool|      iabbrev <buffer> bool    NO! NO! NO!|
+        \ iabbrev <buffer> ch char|      iabbrev <buffer> char    NO! NO! NO!|
+        \ iabbrev <buffer> co const|     iabbrev <buffer> const   NO! NO! NO!|
+        \ iabbrev <buffer> vo void|      iabbrev <buffer> void    NO! NO! NO!|
+        \ iabbrev <buffer> un unsigned|  iabbrev <buffer> unsigned NO! NO! NO!|
     autocmd FileType cpp
-        \ iabbrev au auto|
-        \ iabbrev cl class|     iabbrev class   NO! NO! NO!|
-        \ iabbrev na namespace| iabbrev namespace NO! NO! NO!|
-        \ iabbrev te template|  iabbrev template NO! NO! NO!|
-        \ iabbrev ty typename|  iabbrev typename NO! NO! NO!|
+        \ iabbrev <buffer> au auto|
+        \ iabbrev <buffer> cl class|     iabbrev <buffer> class   NO! NO! NO!|
+        \ iabbrev <buffer> na namespace| iabbrev <buffer> namespace NO! NO! NO!|
+        \ iabbrev <buffer> te template|  iabbrev <buffer> template NO! NO! NO!|
+        \ iabbrev <buffer> ty typename|  iabbrev <buffer> typename NO! NO! NO!|
 augroup END
 " }}}
 
@@ -144,13 +144,13 @@ endfunction
 
 "  Ctrl-k : insert {}s (Mnemonic: 'k'urly)
 "  (I wanted to use Shift-<CR> but unfortunately it's not possible to map Shift-<CR> to be different to <CR> when running Vim in a terminal window.)
-autocmd FileType c,cpp inoremap <c-k> <Esc>:call <SID>AddCurlyBrackets()<CR>O
-autocmd FileType c,cpp nnoremap <c-k> :call <SID>AddCurlyBrackets()<CR>O
-autocmd FileType c,cpp vnoremap <c-k> ><Esc>`<O{<Esc>`>o}<Esc>
+autocmd FileType c,cpp inoremap <buffer> <c-k> <Esc>:call <SID>AddCurlyBrackets()<CR>O
+autocmd FileType c,cpp nnoremap <buffer> <c-k> :call <SID>AddCurlyBrackets()<CR>O
+autocmd FileType c,cpp vnoremap <buffer> <c-k> ><Esc>`<O{<Esc>`>o}<Esc>
 " XXX ^ nice to add a ';' after the '}' if line before first line of visual selection is the start of a struct/class/enum/union.
 
 "  jj : continue insertion past end of current block (Mnemonic: 'j' moves down in normal mode.)
-autocmd FileType c,cpp inoremap jj <Esc>]}A<CR>
+autocmd FileType c,cpp inoremap <buffer> jj <Esc>]}A<CR>
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
