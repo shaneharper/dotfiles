@@ -47,7 +47,7 @@ Bundle 'https://github.com/t9md/vim-choosewin'
 nmap - <Plug>(choosewin)
 
 Bundle 'https://github.com/embear/vim-localvimrc'
-" let g:localvimrc_whitelist='/home/shane/rtags' | let g:localvimrc_sandbox=0
+" let g:localvimrc_whitelist='/home/shane/src/llvm' | let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
 
@@ -131,8 +131,8 @@ augroup filetype_c
         \ iabbrev <buffer> ty typename|  iabbrev <buffer> typename NO! NO! NO!|
     " Mappings for things in std namespace. The next two letters are the first and last letters of the abbreviated word.
     autocmd FileType cpp
-        \ iabbrev <buffer> sct std::cout|
-        \ iabbrev <buffer> scr std::cerr|
+        \ iabbrev <buffer> sct std::cout <<|
+        \ iabbrev <buffer> scr std::cerr <<|
         \ iabbrev <buffer> sel std::endl|
         \ iabbrev <buffer> smp std::map|
         \ iabbrev <buffer> ssg std::string|
