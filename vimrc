@@ -164,6 +164,7 @@ autocmd FileType c,cpp inoremap <buffer> jj <Esc>]}A<CR>
 " Misc. ------------------------------------------------------------------- {{{
 filetype plugin indent on
 set ruler
+set tags=./tags;                " ';' causes search to occur in current directory, then the parent, then its parent, etc.
 "set mouse=a                     " mouse click in an xterm moves cursor
 set wildmode=list:longest
 set gdefault                    " search/replace "globally" (on a line) by default
