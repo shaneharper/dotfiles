@@ -23,6 +23,7 @@ command Hdiff Hgvdiff
 
 Bundle 'Valloric/YouCompleteMe'
     " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
+autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
 
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
@@ -81,6 +82,7 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 
 nnoremap <space> :
+nnoremap q<space> q:
 vnoremap <space> :
 " XXX remap Caps Lock?
 
@@ -109,7 +111,7 @@ set shiftround                  " round indent to multiple of shiftwidth - appli
 " Abbreviations ----------------------------------------------------------- {{{
 iabbrev ME shane@shaneharper.net
 
-augroup filetype_c
+augroup filetype_c_abbreviations
     autocmd!
     autocmd FileType c,cpp
         \ iabbrev <buffer> #i #include |
