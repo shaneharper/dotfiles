@@ -143,7 +143,7 @@ augroup END
 " }}}
 
 " Mappings for working with code enclosed in {}s -------------------------- {{{
-function s:AddCurlyBrackets()
+function s:add_curly_brackets()
     let is_record_definition = (getline('.') =~# '\(\<class\>\|\<enum\>\|\<struct\>\|\<union\>\)'
                                               \ .'[^)]*$') " [small HACK] Filter out lines contains a ')', e.g. 'struct S* fn()' and 'if (struct S* v = fn())'
     execute "normal! o{\<CR>}"
@@ -154,8 +154,8 @@ endfunction
 
 "  Ctrl-k : insert {}s (Mnemonic: 'k'urly)
 "  (I wanted to use Shift-<CR> but unfortunately it's not possible to map Shift-<CR> to be different to <CR> when running Vim in a terminal window.)
-autocmd FileType c,cpp inoremap <buffer> <c-k> <Esc>:call <SID>AddCurlyBrackets()<CR>O
-autocmd FileType c,cpp nnoremap <buffer> <c-k> :call <SID>AddCurlyBrackets()<CR>O
+autocmd FileType c,cpp inoremap <buffer> <c-k> <Esc>:call <SID>add_curly_brackets()<CR>O
+autocmd FileType c,cpp nnoremap <buffer> <c-k> :call <SID>add_curly_brackets()<CR>O
 autocmd FileType c,cpp vnoremap <buffer> <c-k> ><Esc>`<O{<Esc>`>o}<Esc>
 " XXX ^ nice to add a ';' after the '}' if line before first line of visual selection is the start of a struct/class/enum/union.
 
