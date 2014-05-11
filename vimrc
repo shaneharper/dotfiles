@@ -160,6 +160,10 @@ autocmd FileType c,cpp nnoremap <buffer> <c-k> :call <SID>add_curly_brackets()<C
 autocmd FileType c,cpp vnoremap <buffer> <c-k> ><Esc>`<O{<Esc>`>o}<Esc>
 " XXX ^ nice to add a ';' after the '}' if line before first line of visual selection is the start of a struct/class/enum/union.
 
+"   Ctrl-i : insert () and {}s after function name for a function that takes no arguments. (Mnemonic: 'i' is above 'k' on a Qwerty keyboard, and this is similar to Ctrl-k)
+autocmd FileType c,cpp inoremap <buffer> <c-i> <Esc>A()<CR>{<CR>}<Esc>O
+autocmd FileType c,cpp nnoremap <buffer> <c-i> A()<CR>{<CR>}<Esc>O
+
 "  jj : continue insertion past end of current block (Mnemonic: 'j' moves down in normal mode.)
 autocmd FileType c,cpp inoremap <buffer> jj <Esc>]}A<CR>
 " }}}
