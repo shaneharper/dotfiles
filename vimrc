@@ -146,8 +146,9 @@ augroup END
 function s:add_curly_brackets()
     let is_record_definition = (getline('.') =~# '\(\<class\>\|\<enum\>\|\<struct\>\|\<union\>\)'
                                               \ .'[^)]*$') " [small HACK] Filter out lines contains a ')', e.g. 'struct S* fn()' and 'if (struct S* v = fn())'
+    let is_an_assignment = (getline('.') =~# '=$') " Assume "struct initialization", e.g. MyStruct m = { 1,3,3 };
     execute "normal! o{\<CR>}"
-    if is_record_definition
+    if is_record_definition || is_an_assignment
         normal! a;
     endif
 endfunction
