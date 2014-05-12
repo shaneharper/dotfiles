@@ -61,6 +61,9 @@ au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
 
+" Argtextobj.vim: daa = delete argument in C function signature, cia = change "inner" argument (exclude comma), ...
+Bundle 'https://github.com/vim-scripts/argtextobj.vim'
+
 if RunBundleInstall == 1
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
