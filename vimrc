@@ -177,6 +177,9 @@ autocmd FileType c,cpp inoremap <buffer> jj <Esc>]}A<CR>
 " Mappings for working with vimscript ------------------------------------- {{{
 function s:add_vim_end_of_block_statement()
     let block_type = substitute(substitute(getline('.'), " *", "", ""), "[ !].*", "", "")
+    if block_type ==# 'catch'
+        let block_type = 'try'
+    endif
     execute "normal! oend".block_type
 endfunction
 autocmd FileType vim inoremap <buffer> <c-k> <Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
