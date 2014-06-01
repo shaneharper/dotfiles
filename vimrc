@@ -184,6 +184,8 @@ function s:add_vim_end_of_block_statement()
 endfunction
 autocmd FileType vim inoremap <buffer> <c-k> <Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
 autocmd FileType vim nnoremap <buffer> <c-k> :call <SID>add_vim_end_of_block_statement()<CR>O
+autocmd FileType vim inoremap <buffer> <c-j> ()<Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
+autocmd FileType vim nnoremap <buffer> <c-j> A()<Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
@@ -198,6 +200,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
 set background=dark
+set nowrap
 syntax on
 
 autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
