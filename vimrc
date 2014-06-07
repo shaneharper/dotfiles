@@ -165,6 +165,7 @@ autocmd FileType c,cpp inoremap <buffer> <c-k> <Esc>:call <SID>add_curly_bracket
 autocmd FileType c,cpp nnoremap <buffer> <c-k> :call <SID>add_curly_brackets()<CR>O
 autocmd FileType c,cpp vnoremap <buffer> <c-k> ><Esc>`<O{<Esc>`>o}<Esc>
 " XXX ^ nice to add a ';' after the '}' if line before first line of visual selection is the start of a struct/class/enum/union.
+" XXX ^ nice to check if selected text is already indented, if so don't indent with '>'
 
 "   Ctrl-j : insert () and {}s after function name for a function that takes no arguments. (Mnemonic: 'j' is beside 'k' on a Qwerty keyboard, and this is similar to Ctrl-k)
 autocmd FileType c,cpp inoremap <buffer> <c-j> <Esc>A()<CR>{<CR>}<Esc>O
@@ -177,7 +178,7 @@ autocmd FileType c,cpp inoremap <buffer> jj <Esc>]}A<CR>
 " Mappings for working with vimscript ------------------------------------- {{{
 function s:add_vim_end_of_block_statement()
     let block_type = substitute(substitute(getline('.'), " *", "", ""), "[ !].*", "", "")
-    if block_type ==# 'catch'
+    if block_type =~# 'catch\|finally'
         let block_type = 'try'
     endif
     execute "normal! oend".block_type
