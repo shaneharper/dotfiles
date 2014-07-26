@@ -203,6 +203,9 @@ set scrolloff=4                 " minimal number of screen lines to keep above a
 set background=dark
 set nowrap
 syntax on
+if has("gui_win32")
+    set guifont=Courier_New:h8:cANSI
+endif
 
 autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
 
