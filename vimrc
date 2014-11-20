@@ -203,6 +203,14 @@ set scrolloff=4                 " minimal number of screen lines to keep above a
 set background=dark
 set nowrap
 syntax on
+if has("gui_win32")
+    set guifont=Courier_New:h8:cANSI
+endif
+
+if has("win32") || has("win64")
+    " Fix for "E303: Unable to open swap file for "[No Name]", recovery impossible" on Windows 8.1:
+    set directory=.,$TEMP
+endif
 
 autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
 
