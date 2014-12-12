@@ -33,7 +33,7 @@ autocmd BufWinEnter,WinEnter,FocusGained * let b:sign_work_mode=0
 " Ctrl-P - press Ctrl-P to open a file
 Bundle 'kien/ctrlp.vim'
 
-" Unimpaired: ]q is :cnext, [q is :cprevious, etc.
+" Unimpaired: ]q is :cnext, [q is :cprevious, ]l is :lnext, ]l is :lprevious, etc.
 Bundle 'https://github.com/tpope/vim-repeat'
 Bundle 'https://github.com/tpope/vim-unimpaired'
 
@@ -53,7 +53,7 @@ Bundle 'https://github.com/embear/vim-localvimrc'
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
 
 " dwm.vim - Tiled Window Management for Vim
-Bundle 'https://github.com/spolu/dwm.vim.git'
+" XXX disabled 'cause it moves location list windows around.  Bundle 'https://github.com/spolu/dwm.vim.git'
 
 Bundle 'https://github.com/kien/rainbow_parentheses.vim'
 "au VimEnter * RainbowParenthesesToggle " XXX Uncommenting this messes up highlighting of multi-line C++11 raw strings
@@ -163,7 +163,7 @@ endfunction
 "  (I wanted to use Shift-<CR> but unfortunately it's not possible to map Shift-<CR> to be different to <CR> when running Vim in a terminal window.)
 autocmd FileType c,cpp inoremap <buffer> <c-k> <Esc>:call <SID>add_curly_brackets()<CR>O
 autocmd FileType c,cpp nnoremap <buffer> <c-k> :call <SID>add_curly_brackets()<CR>O
-autocmd FileType c,cpp vnoremap <buffer> <c-k> ><Esc>`<O{<Esc>`>o}<Esc>
+autocmd FileType c,cpp vnoremap <buffer> <c-k> >`<O{<Esc>`>o}<Esc>
 " XXX ^ nice to add a ';' after the '}' if line before first line of visual selection is the start of a struct/class/enum/union.
 " XXX ^ nice to check if selected text is already indented, if so don't indent with '>'
 
@@ -187,6 +187,7 @@ autocmd FileType vim inoremap <buffer> <c-k> <Esc>:call <SID>add_vim_end_of_bloc
 autocmd FileType vim nnoremap <buffer> <c-k> :call <SID>add_vim_end_of_block_statement()<CR>O
 autocmd FileType vim inoremap <buffer> <c-j> ()<Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
 autocmd FileType vim nnoremap <buffer> <c-j> A()<Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
+autocmd FileType vim inoremap <buffer> jj <Esc>:call search('\<end')<CR>o
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
