@@ -67,6 +67,8 @@ Bundle 'https://github.com/vim-scripts/argtextobj.vim'
 Bundle 'https://github.com/tpope/vim-commentary.git'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
+Bundle 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
+
 if RunBundleInstall == 1
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
