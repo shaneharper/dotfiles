@@ -119,7 +119,7 @@ set shiftround                  " round indent to multiple of shiftwidth - appli
 " Abbreviations ----------------------------------------------------------- {{{
 iabbrev ME shane@shaneharper.net
 
-augroup filetype_c_abbreviations
+augroup c_filetype_abbreviations
     autocmd!
     autocmd FileType c,cpp
         \ iabbrev <buffer> #i #include |
@@ -139,7 +139,7 @@ augroup filetype_c_abbreviations
         \ iabbrev <buffer> na namespace| iabbrev <buffer> namespace NO! NO! NO!|
         \ iabbrev <buffer> te template|  iabbrev <buffer> template NO! NO! NO!|
         \ iabbrev <buffer> ty typename|  iabbrev <buffer> typename NO! NO! NO!|
-    " Mappings for things in std namespace. The next two letters are the first and last letters of the abbreviated word.
+    " Mappings for things in std namespace. The last two letters are the first and last letters of the abbreviated word.
     autocmd FileType cpp
         \ iabbrev <buffer> sct std::cout <<|
         \ iabbrev <buffer> scr std::cerr <<|
@@ -147,6 +147,14 @@ augroup filetype_c_abbreviations
         \ iabbrev <buffer> smp std::map|
         \ iabbrev <buffer> ssg std::string|
         \ iabbrev <buffer> svr std::vector|
+augroup END
+
+augroup vim_filetype_abbreviations
+    autocmd!
+    autocmd FileType vim
+        \ iabbrev <buffer> fu function|
+        \ iabbrev <buffer> re return|
+        \ iabbrev <buffer> wh while|
 augroup END
 " }}}
 
@@ -177,7 +185,7 @@ autocmd FileType c,cpp nnoremap <buffer> <c-j> A()<CR>{<CR>}<Esc>O
 autocmd FileType c,cpp inoremap <buffer> jj <Esc>]}A<CR>
 " }}}
 
-" Mappings for working with vimscript ------------------------------------- {{{
+" Mappings for working with Vimscript blocks ------------------------------ {{{
 function s:add_vim_end_of_block_statement()
     let block_type = substitute(substitute(getline('.'), " *", "", ""), "[ !].*", "", "")
     if block_type =~# 'catch\|finally'
