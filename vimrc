@@ -69,6 +69,8 @@ autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
 Bundle 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
 
+Bundle 'https://github.com/shaneharper/vim-code_block_markers.git'
+
 if RunBundleInstall == 1
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
@@ -156,48 +158,6 @@ augroup vim_filetype_abbreviations
         \ iabbrev <buffer> re return|
         \ iabbrev <buffer> wh while|
 augroup END
-" }}}
-
-" Mappings for working with code enclosed in {}s -------------------------- {{{
-function s:add_curly_brackets()
-    let is_record_definition = (getline('.') =~# '\(\<class\>\|\<enum\>\|\<struct\>\|\<union\>\)'
-                                              \ .'[^)]*$') " [small HACK] Filter out lines contains a ')', e.g. 'struct S* fn()' and 'if (struct S* v = fn())'
-    let is_an_assignment = (getline('.') =~# '=$') " Assume "struct initialization", e.g. MyStruct m = { 1,3,3 };
-    execute "normal! o{\<CR>}"
-    if is_record_definition || is_an_assignment
-        normal! a;
-    endif
-endfunction
-
-"  Ctrl-k : insert {}s (Mnemonic: 'k'urly)
-"  (I wanted to use Shift-<CR> but unfortunately it's not possible to map Shift-<CR> to be different to <CR> when running Vim in a terminal window.)
-autocmd FileType c,cpp inoremap <buffer> <c-k> <Esc>:call <SID>add_curly_brackets()<CR>O
-autocmd FileType c,cpp nnoremap <buffer> <c-k> :call <SID>add_curly_brackets()<CR>O
-autocmd FileType c,cpp vnoremap <buffer> <c-k> >`<O{<Esc>`>o}<Esc>
-" XXX ^ nice to add a ';' after the '}' if line before first line of visual selection is the start of a struct/class/enum/union.
-" XXX ^ nice to check if selected text is already indented, if so don't indent with '>'
-
-"   Ctrl-j : insert () and {}s after function name for a function that takes no arguments. (Mnemonic: 'j' is beside 'k' on a Qwerty keyboard, and this is similar to Ctrl-k)
-autocmd FileType c,cpp inoremap <buffer> <c-j> <Esc>A()<CR>{<CR>}<Esc>O
-autocmd FileType c,cpp nnoremap <buffer> <c-j> A()<CR>{<CR>}<Esc>O
-
-"  jj : continue insertion past end of current block (Mnemonic: 'j' moves down in normal mode.)
-autocmd FileType c,cpp inoremap <buffer> jj <Esc>]}A<CR>
-" }}}
-
-" Mappings for working with Vimscript blocks ------------------------------ {{{
-function s:add_vim_end_of_block_statement()
-    let block_type = substitute(substitute(getline('.'), " *", "", ""), "[ !].*", "", "")
-    if block_type =~# 'catch\|finally'
-        let block_type = 'try'
-    endif
-    execute "normal! oend".block_type
-endfunction
-autocmd FileType vim inoremap <buffer> <c-k> <Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
-autocmd FileType vim nnoremap <buffer> <c-k> :call <SID>add_vim_end_of_block_statement()<CR>O
-autocmd FileType vim inoremap <buffer> <c-j> ()<Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
-autocmd FileType vim nnoremap <buffer> <c-j> A()<Esc>:call <SID>add_vim_end_of_block_statement()<CR>O
-autocmd FileType vim inoremap <buffer> jj <Esc>:call search('\<end')<CR>o
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
