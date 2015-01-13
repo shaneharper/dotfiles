@@ -181,6 +181,7 @@ syntax on
 if has("gui_win32")
     set guifont=Courier_New:h8:cANSI
 endif
+hi CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
 
 if has("win32") || has("win64")
     " Fix for "E303: Unable to open swap file for "[No Name]", recovery impossible" on Windows 8.1:
