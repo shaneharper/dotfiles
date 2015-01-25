@@ -171,10 +171,10 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
-set background=dark
-if &term == "xterm-256color"
-    " if on my Macbook...
-    set background=light
+set background=light
+if $COLORTERM == "gnome-terminal"
+    set t_Co=256
+    " (Running "export TERM=gnome-256color" from .bashrc can also be used to get 256 color support.)
 endif
 set nowrap
 syntax on
