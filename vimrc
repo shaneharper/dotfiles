@@ -160,6 +160,24 @@ augroup vim_filetype_abbreviations
 augroup END
 " }}}
 
+" Colors ------------------------------------------------------------------ {{{
+set background=light
+if $COLORTERM == "gnome-terminal"
+    set t_Co=256
+    " (Running "export TERM=gnome-256color" from .bashrc can also be used to get 256 color support.)
+endif
+syntax on
+highlight CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
+highlight LineNr ctermfg=DarkGrey
+
+" Turn off most of the default syntax highlighting. Too many colors can be distracting. Some syntax highlighting is useful though, e.g. coloring comments.
+" XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following highlight statements?
+highlight Statement ctermfg=black
+highlight Number ctermfg=black
+highlight Type ctermfg=black
+highlight Identifier ctermfg=black
+" }}}
+
 " Misc. ------------------------------------------------------------------- {{{
 filetype plugin indent on
 set ruler
@@ -171,17 +189,10 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
-set background=light
-if $COLORTERM == "gnome-terminal"
-    set t_Co=256
-    " (Running "export TERM=gnome-256color" from .bashrc can also be used to get 256 color support.)
-endif
 set nowrap
-syntax on
 if has("gui_win32")
     set guifont=Courier_New:h8:cANSI
 endif
-hi CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
 
 if has("win32") || has("win64")
     " Fix for "E303: Unable to open swap file for "[No Name]", recovery impossible" on Windows 8.1:
@@ -197,7 +208,6 @@ autocmd BufNewFile,BufRead,BufWrite *.h++ set filetype=cpp
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 set cpoptions+=n " wrapped text can appear in the line number column
-highlight LineNr ctermfg=DarkGrey
 set numberwidth=2
 autocmd BufWinEnter,WinEnter,FocusGained * setlocal relativenumber
 autocmd WinLeave,FocusLost * setlocal norelativenumber
