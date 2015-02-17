@@ -158,6 +158,12 @@ augroup vim_filetype_abbreviations
         \ iabbrev <buffer> re return|
         \ iabbrev <buffer> wh while|
 augroup END
+
+function! SetupCommandAlias(from, to)
+    exec 'cnoreabbrev <expr> '.a:from
+            \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+            \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
 " }}}
 
 " Colors ------------------------------------------------------------------ {{{
