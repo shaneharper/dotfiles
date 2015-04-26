@@ -99,6 +99,10 @@ vnoremap <space> :
 " From https://github.com/nvie/vimrc/blob/master/vimrc:
 noremap <C-e> 2<C-e>
 noremap <C-y> 2<C-y>
+
+" dO/dP: copy changes between diffs and jump to next change. (Uses vim-unimpaired.)
+nmap dO do]c
+nmap dP dp]c
 " }}}
 
 " Search options ---------------------------------------------------------- {{{
