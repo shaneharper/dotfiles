@@ -25,6 +25,9 @@ Bundle 'Valloric/YouCompleteMe'
     " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
 
+let g:ycm_confirm_extra_conf = 0
+nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
+
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
 Bundle 'https://github.com/vim-scripts/numsign.vim'
@@ -152,6 +155,7 @@ augroup c_filetype_abbreviations
         \ iabbrev <buffer> sel std::endl|
         \ iabbrev <buffer> smp std::map|
         \ iabbrev <buffer> ssg std::string|
+        \ iabbrev <buffer> sst std::set|
         \ iabbrev <buffer> svr std::vector|
 augroup END
 
