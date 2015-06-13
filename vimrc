@@ -148,6 +148,9 @@ augroup c_filetype_abbreviations
         \ iabbrev <buffer> na namespace| iabbrev <buffer> namespace NO! NO! NO!|
         \ iabbrev <buffer> te template|  iabbrev <buffer> template NO! NO! NO!|
         \ iabbrev <buffer> ty typename|  iabbrev <buffer> typename NO! NO! NO!|
+        \ iabbrev <buffer> pu: public:|
+        \ iabbrev <buffer> pro: protected:|
+        \ iabbrev <buffer> pri: private:|
     " Mappings for things in std namespace. The last two letters are the first and last letters of the abbreviated word.
     autocmd FileType cpp
         \ iabbrev <buffer> sct std::cout <<|
