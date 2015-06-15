@@ -51,6 +51,7 @@ Bundle 'https://github.com/t9md/vim-choosewin'
 nmap - <Plug>(choosewin)
 
 Bundle 'https://github.com/embear/vim-localvimrc'
+let g:localvimrc_persistent=2
 " let g:localvimrc_whitelist='/home/shane/src/llvm' | let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
