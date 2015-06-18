@@ -5,13 +5,6 @@ cd `dirname $0`
 
 ln -s `pwd`/vimrc ~/.vimrc
 
-mkdir -p ~/.vim/after/ftplugin
-cat <<EOF > ~/.vim/after/ftplugin/c.vim
-" Don't automatically insert the 'comment leader' when starting a new line next to a comment. (I tend not to use // for multi-line comments in C++.)
-" See: http://stackoverflow.com/questions/16030639/vim-formatoptions-or/23326474#23326474
-setlocal formatoptions-=cro
-EOF
-
 
 git config --global core.excludesfile ~/dotfiles/gitignore
 
