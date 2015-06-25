@@ -135,6 +135,7 @@ augroup c_filetype_abbreviations
         \ iabbrev <buffer> #i #include |
         \ iabbrev <buffer> #d #define|
         \ iabbrev <buffer> #e #endif|
+        \ inoremap <buffer> #E #endif|
         \ iabbrev <buffer> st struct|    iabbrev <buffer> struct  NO! NO! NO!|
         \ iabbrev <buffer> wh while|     iabbrev <buffer> while   NO! NO! NO!|
         \ iabbrev <buffer> re return|    iabbrev <buffer> return  NO! NO! NO!|
@@ -159,6 +160,7 @@ augroup c_filetype_abbreviations
         \ iabbrev <buffer> sel std::endl|
         \ iabbrev <buffer> smp std::map|
         \ iabbrev <buffer> ssg std::string|
+        \ iabbrev <buffer> ssk std::stack|
         \ iabbrev <buffer> sst std::set|
         \ iabbrev <buffer> svr std::vector|
 augroup END
