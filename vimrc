@@ -13,6 +13,9 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
+" zoomwin-vim: <C-W>o toggles fullscreen/windowed.
+Bundle 'https://github.com/drn/zoomwin-vim.git'
+
 Bundle 'https://github.com/tpope/vim-fugitive'
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
@@ -231,4 +234,9 @@ set cpoptions+=n " wrapped text can appear in the line number column
 set numberwidth=2
 autocmd BufWinEnter,WinEnter,FocusGained * setlocal relativenumber
 autocmd WinLeave,FocusLost * setlocal norelativenumber
+
+" Ctrl-L: fix last spelling mistake (http://stackoverflow.com/questions/5312235/how-to-correct-vim-spelling-mistakes-quicker)
+inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+nnoremap <c-l> [s1z=<c-o>
+
 " }}}
