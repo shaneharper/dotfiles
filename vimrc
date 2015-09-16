@@ -140,13 +140,16 @@ augroup c_filetype_abbreviations
         \ iabbrev <buffer> #e #endif|
         \ inoremap <buffer> #E #endif|
         \ iabbrev <buffer> st struct|    iabbrev <buffer> struct  NO! NO! NO!|
-        \ iabbrev <buffer> wh while|     iabbrev <buffer> while   NO! NO! NO!|
         \ iabbrev <buffer> re return|    iabbrev <buffer> return  NO! NO! NO!|
         \ iabbrev <buffer> bo bool|      iabbrev <buffer> bool    NO! NO! NO!|
         \ iabbrev <buffer> ch char|      iabbrev <buffer> char    NO! NO! NO!|
         \ iabbrev <buffer> co const|     iabbrev <buffer> const   NO! NO! NO!|
         \ iabbrev <buffer> vo void|      iabbrev <buffer> void    NO! NO! NO!|
         \ iabbrev <buffer> un unsigned|  iabbrev <buffer> unsigned NO! NO! NO!|
+    " Typing "fo(" expands to "for (", "wh(" expands to "while ("
+    autocmd FileType c,cpp
+        \ iabbrev <buffer> fo for |
+        \ iabbrev <buffer> wh while |     iabbrev <buffer> while   NO! NO! NO!|
     autocmd FileType cpp
         \ iabbrev <buffer> au auto|
         \ iabbrev <buffer> cl class|     iabbrev <buffer> class   NO! NO! NO!|
