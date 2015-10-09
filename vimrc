@@ -25,7 +25,7 @@ Bundle 'https://github.com/ludovicchabant/vim-lawrencium'
 command Hdiff Hgvdiff
 
 Bundle 'Valloric/YouCompleteMe'
-    " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
+    " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
 
 let g:ycm_confirm_extra_conf = 0
