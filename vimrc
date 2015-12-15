@@ -1,5 +1,26 @@
+" vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Lawrencium is 'vim-fugitive' for Mercurial
+Plug 'https://github.com/ludovicchabant/vim-lawrencium'
+command Hdiff Hgvdiff
+
+" Ctrl-P - press Ctrl-P to open a file
+Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_custom_ignore = {'file': '\v\.(o|o\.d)$'}
+
+call plug#end()
+
+
+
 " Set-up Vundle to install/update plugins --------------------------------- {{{
-" :BundleUpdate updates bundles
+" :VundleUpdate updates bundles
 
 let RunBundleInstall=0
 if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
@@ -17,12 +38,10 @@ Bundle 'gmarik/vundle'
 Bundle 'https://github.com/drn/zoomwin-vim.git'
 
 Bundle 'https://github.com/tpope/vim-fugitive'
+"XXX It'd be nice to automatically jump to first change when showing a diff. (Do the same for all diffs - it'd be nice if vim-lawrencium also did it.)
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
 
-" Lawrencium is 'vim-fugitive' for Mercurial
-Bundle 'https://github.com/ludovicchabant/vim-lawrencium'
-command Hdiff Hgvdiff
 
 Bundle 'Valloric/YouCompleteMe'
     " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
@@ -35,9 +54,6 @@ nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 "  \sn or <F2> jumps to next line with a 'sign'.
 Bundle 'https://github.com/vim-scripts/numsign.vim'
 autocmd BufWinEnter,WinEnter,FocusGained * let b:sign_work_mode=0
-
-" Ctrl-P - press Ctrl-P to open a file
-Bundle 'kien/ctrlp.vim'
 
 " Unimpaired: ]q is :cnext, [q is :cprevious, ]l is :lnext, ]l is :lprevious, etc.
 Bundle 'https://github.com/tpope/vim-repeat'
@@ -148,6 +164,7 @@ augroup c_filetype_abbreviations
         \ iabbrev <buffer> un unsigned|  iabbrev <buffer> unsigned NO! NO! NO!|
     " Typing "fo(" expands to "for (", "wh(" expands to "while ("
     autocmd FileType c,cpp
+        \ iabbrev <buffer> eif else if |
         \ iabbrev <buffer> fo for |
         \ iabbrev <buffer> wh while |     iabbrev <buffer> while   NO! NO! NO!|
     autocmd FileType cpp
