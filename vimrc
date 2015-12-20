@@ -15,6 +15,8 @@ command Hdiff Hgvdiff
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = {'file': '\v\.(o|o\.d)$'}
 
+Plug 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
+
 call plug#end()
 
 
@@ -89,8 +91,6 @@ Bundle 'https://github.com/vim-scripts/argtextobj.vim'
 
 Bundle 'https://github.com/tpope/vim-commentary.git'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
-
-Bundle 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
 
 Bundle 'https://github.com/shaneharper/vim-code_block_markers.git'
 
