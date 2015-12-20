@@ -214,11 +214,10 @@ highlight CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue gu
 highlight LineNr ctermfg=DarkGrey
 
 " Turn off most of the default syntax highlighting. Too many colors can be distracting. Some syntax highlighting is useful though, e.g. coloring comments.
-" XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following highlight statements?
-highlight Statement ctermfg=black
-highlight Number ctermfg=black
-highlight Type ctermfg=black
-highlight Identifier ctermfg=black
+" XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following?
+for highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
+    execute "highlight! link" highlight_group "Normal"
+endfor
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
