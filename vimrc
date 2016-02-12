@@ -253,6 +253,7 @@ set cpoptions+=n " wrapped text can appear in the line number column
 set numberwidth=2
 autocmd BufWinEnter,WinEnter,FocusGained * setlocal relativenumber
 autocmd WinLeave,FocusLost * setlocal norelativenumber
+set lazyredraw  " If a cursor movement key is held down (why would someone do that?) having relativenumber set can make things very slow - Vim can end up with a backlog of commands. Setting lazyredraw seems to be a work around. (The problem seems to be most noticeable with "syntax on", folds and with a "tall" (~100 line) window.)
 
 " Ctrl-L: fix last spelling mistake (http://stackoverflow.com/questions/5312235/how-to-correct-vim-spelling-mistakes-quicker)
 inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
