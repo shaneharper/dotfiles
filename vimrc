@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/ludovicchabant/vim-lawrencium'
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
 
-function s:go_to_first_change_in_diff_mode()
+function! s:go_to_first_change_in_diff_mode()
     normal gg]c[c
     " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
 endfunction
