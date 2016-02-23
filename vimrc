@@ -9,7 +9,12 @@ call plug#begin('~/.vim/plugged')
 
 " Lawrencium is 'vim-fugitive' for Mercurial
 Plug 'https://github.com/ludovicchabant/vim-lawrencium'
-command Hdiff Hgvdiff
+command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
+
+function s:go_to_first_change_in_diff_mode()
+    normal gg]c[c
+    " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
+endfunction
 
 " Ctrl-P - press Ctrl-P to open a file
 Plug 'ctrlpvim/ctrlp.vim'
@@ -40,9 +45,9 @@ Bundle 'gmarik/vundle'
 Bundle 'https://github.com/drn/zoomwin-vim.git'
 
 Bundle 'https://github.com/tpope/vim-fugitive'
-"XXX It'd be nice to automatically jump to first change when showing a diff. (Do the same for all diffs - it'd be nice if vim-lawrencium also did it.)
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
+command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
 
 
 Bundle 'Valloric/YouCompleteMe'
