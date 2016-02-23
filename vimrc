@@ -264,4 +264,10 @@ set lazyredraw  " If a cursor movement key is held down (why would someone do th
 inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 nnoremap <c-l> [s1z=<c-o>
 
+if executable('ag')
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
+
 " }}}
