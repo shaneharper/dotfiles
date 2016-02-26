@@ -246,9 +246,16 @@ if has("win32") || has("win64")
     set directory=.,$TEMP
 endif
 
-autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
+augroup vimrc_miscellaneous
+    autocmd!
+    autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
 
-autocmd BufNewFile,BufRead,BufWrite *.h++ set filetype=cpp
+    autocmd BufNewFile,BufRead,BufWrite *.h++ set filetype=cpp
+
+    " Don't automatically insert the 'comment leader' when starting a new line next to a comment. (I tend not to use // for multi-line comments in C++.)
+    " set formatoptions==cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+    autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
+augroup END
 
 " Don't automatically insert the 'comment leader' when starting a new line next to a comment. (I tend not to use // for multi-line comments in C++.)
 " set formatoptions==cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
