@@ -9,3 +9,6 @@ pager = LESS='FRX' less
 pager =
 color =
 graphlog =
+
+[hooks]
+changegroup = hg update
