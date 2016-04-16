@@ -6,7 +6,7 @@ cd `dirname $0`
 ln -s `pwd`/vimrc ~/.vimrc
 
 
-git config --global core.excludesfile ~/dotfiles/gitignore
+git config --global core.excludesfile `pwd`/gitignore
 
 ln -s `pwd`/hgrc ~/.hgrc
 
