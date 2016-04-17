@@ -1,8 +1,19 @@
+" vim-plug and vundle require git.
+
+
 " vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+if empty(glob('~/.vim/autoload/plug.vim')) && empty(glob('~/vimfiles/autoload/plug.vim'))
+    if has("win32")
+        echo "Install vim-plug manually"
+            " From Powershell:
+            " md ~\vimfiles\autoload
+            " $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+            " (New-Object Net.WebClient).DownloadFile($uri, $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("~\vimfiles\autoload\plug.vim"))
+    else
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall | source $MYVIMRC
+    endif
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -22,6 +33,8 @@ let g:ctrlp_custom_ignore = {'file': '\v\.(o|o\.d)$'}
 
 Plug 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
 
+Plug 'https://github.com/shaneharper/vim-code_block_markers.git'
+
 call plug#end()
 
 
@@ -33,8 +46,13 @@ let RunBundleInstall=0
 if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
     echo "Installing Vundle.."
     echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    if has("win32")
+        execute "!mkdir" $HOME."\\.vim\\bundle"
+        execute "!git clone https://github.com/gmarik/vundle" $HOME."\\.vim\\bundle\\vundle"
+    else
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    endif
     let RunBundleInstall=1
 endif
 set runtimepath+=~/.vim/bundle/vundle/
@@ -96,8 +114,6 @@ Bundle 'https://github.com/vim-scripts/argtextobj.vim'
 
 Bundle 'https://github.com/tpope/vim-commentary.git'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
-
-Bundle 'https://github.com/shaneharper/vim-code_block_markers.git'
 
 if RunBundleInstall == 1
     echo "Installing Bundles, please ignore key map error messages"
