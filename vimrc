@@ -253,6 +253,8 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
 set nowrap
+set breakindent
+set nowrapscan
 if has("gui_win32")
     set guifont=Courier_New:h8:cANSI
 endif
