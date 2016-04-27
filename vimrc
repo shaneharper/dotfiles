@@ -23,7 +23,7 @@ Plug 'https://github.com/ludovicchabant/vim-lawrencium'
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
 
 function! s:go_to_first_change_in_diff_mode()
-    normal gg]c[c
+    silent! normal gg]c[c
     " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
 endfunction
 
@@ -254,7 +254,7 @@ set backspace=indent,eol,start  " allow backspacing over everything in insert mo
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
 set nowrap
 set breakindent
-set nowrapscan
+set wrapscan
 if has("gui_win32")
     set guifont=Courier_New:h8:cANSI
 endif
