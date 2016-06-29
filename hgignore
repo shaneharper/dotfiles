@@ -4,3 +4,4 @@ syntax: glob
 tags
 *.pyc
 *.pch
+.DS_Store
