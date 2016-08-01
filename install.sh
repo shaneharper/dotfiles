@@ -19,4 +19,4 @@ function append_if_not_already_in_file
 }
 
 append_if_not_already_in_file ~/.bashrc "export EDITOR=vim"
-append_if_not_already_in_file ~/.bashrc 'export MAKEFLAGS="$MAKEFLAGS -j8"'  # XXX don't hard code number of jobs (e.g. run nproc on Linux).
+append_if_not_already_in_file ~/.bashrc 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
