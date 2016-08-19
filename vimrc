@@ -241,6 +241,9 @@ highlight LineNr ctermfg=DarkGrey
 for highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
     execute "highlight! link" highlight_group "Normal"
 endfor
+
+highlight diffAdded ctermfg=green guifg=green
+highlight diffRemoved ctermfg=red guifg=red
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
@@ -257,6 +260,8 @@ set scrolloff=4                 " minimal number of screen lines to keep above a
 set nowrap
 set breakindent
 set wrapscan
+"set linebreak
+
 if has("gui_win32")
     set guifont=Courier_New:h8:cANSI
 endif
