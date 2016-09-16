@@ -192,6 +192,7 @@ augroup c_filetype_abbreviations
         \ iabbrev <buffer> wh while |     iabbrev <buffer> while   NO! NO! NO!|
     autocmd FileType cpp
         \ iabbrev <buffer> au auto|
+        \ iabbrev <buffer> ca const auto|
         \ iabbrev <buffer> cl class|     iabbrev <buffer> class   NO! NO! NO!|
         \ iabbrev <buffer> na namespace| iabbrev <buffer> namespace NO! NO! NO!|
         \ iabbrev <buffer> te template|  iabbrev <buffer> template NO! NO! NO!|
