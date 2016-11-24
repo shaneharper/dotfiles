@@ -190,6 +190,8 @@ augroup c_filetype_abbreviations
         \ iabbrev <buffer> eif else if |
         \ iabbrev <buffer> fo for |
         \ iabbrev <buffer> wh while |     iabbrev <buffer> while   NO! NO! NO!|
+    " 'b' for brackets. Add <CR>? Another mapping with <CR>?
+    autocmd FileType c,cpp inoremap <buffer> <c-b> ();
     autocmd FileType cpp
         \ iabbrev <buffer> au auto|
         \ iabbrev <buffer> ca const auto|
@@ -283,7 +285,7 @@ augroup vimrc_miscellaneous
     autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
 
     autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"
-    autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"
+    autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"|normal j
 augroup END
 
 " Don't automatically insert the 'comment leader' when starting a new line next to a comment. (I tend not to use // for multi-line comments in C++.)
