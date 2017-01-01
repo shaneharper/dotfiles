@@ -22,6 +22,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/ludovicchabant/vim-lawrencium'
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
 
+" Jedi-Vim: tools for Python dev
+"  <leader>n = show usages  <leader>g = go to an assignment  <leader>r = rename
+Plug 'https://github.com/davidhalter/jedi-vim'
+
+        " XXX Could Vim automatically do s:go_to_first_change_in_diff_mode() when opening a diff view?
 function! s:go_to_first_change_in_diff_mode()
     silent! normal gg]c[c
     " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
@@ -30,6 +35,8 @@ endfunction
 " Ctrl-P - press Ctrl-P to open a file
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = {'file': '\v\.(o|o\.d)$'}
+let g:ctrlp_match_window = 'max:20'
+let g:ctrlp_extensions = ['tag', 'line']
 
 Plug 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
 
@@ -176,6 +183,7 @@ augroup c_filetype_abbreviations
     autocmd FileType c,cpp
         \ iabbrev <buffer> #i #include |
         \ iabbrev <buffer> #d #define|
+        \ inoremap <buffer> #i0 #if 0|
         \ iabbrev <buffer> #e #endif|
         \ inoremap <buffer> #E #endif|
         \ iabbrev <buffer> st struct|    iabbrev <buffer> struct  NO! NO! NO!|
