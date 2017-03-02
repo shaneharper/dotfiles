@@ -246,6 +246,7 @@ endif
 syntax on
 highlight CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
 highlight LineNr ctermfg=DarkGrey
+highlight Special ctermfg=magenta
 
 " Turn off most of the default syntax highlighting. Too many colors can be distracting. Some syntax highlighting is useful though, e.g. coloring comments.
 " XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following?
