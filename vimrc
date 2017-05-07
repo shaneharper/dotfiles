@@ -43,6 +43,8 @@ Plug 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
 Plug 'https://github.com/shaneharper/vim-code_block_markers.git'
 
 Plug 'https://github.com/alfredodeza/pytest.vim'
+autocmd VimEnter,BufNewFile,BufRead,BufWrite test*.py nnoremap <buffer> <LocalLeader>t :Pytest file<CR>
+autocmd VimEnter,BufNewFile,BufRead,BufWrite test*.py nnoremap <buffer> <LocalLeader>T :Pytest function<CR>
 
 Plug 'https://github.com/powerman/vim-plugin-AnsiEsc.git'
 
@@ -295,7 +297,7 @@ augroup vimrc_miscellaneous
     " set formatoptions==cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
     autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
 
-    autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"
+    autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"
     autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"|normal j
 augroup END
 
