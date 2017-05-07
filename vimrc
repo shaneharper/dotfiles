@@ -42,6 +42,8 @@ Plug 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
 
 Plug 'https://github.com/shaneharper/vim-code_block_markers.git'
 
+Plug 'https://github.com/alfredodeza/pytest.vim'
+
 Plug 'https://github.com/powerman/vim-plugin-AnsiEsc.git'
 
 call plug#end()
