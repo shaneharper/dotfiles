@@ -48,6 +48,13 @@ autocmd VimEnter,BufNewFile,BufRead,BufWrite test*.py nnoremap <buffer> <LocalLe
 
 Plug 'https://github.com/powerman/vim-plugin-AnsiEsc.git'
 
+" vital-power-assert (and dependencies).
+"  Power assert allows assertions to be written using a "natural" syntax (e.g. "Assert a==b" rather than "call assert_equal('a', 'b')"). (It provides just one command/function.) It generates assertion failure messages that show the name and value of variables used in the assertion as well as values computed by functions.
+Plug 'vim-jp/vital.vim'
+Plug 'haya14busa/vital-vimlcompiler'
+Plug 'haya14busa/vital-power-assert'
+Plug 'haya14busa/vital-safe-string'
+
 call plug#end()
 
 
