@@ -62,7 +62,7 @@ call plug#end()
 " Set-up Vundle to install/update plugins --------------------------------- {{{
 " :VundleUpdate updates bundles
 
-let RunBundleInstall=0
+let s:run_BundleInstall=0
 if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
     echo "Installing Vundle.."
     echo ""
@@ -73,7 +73,7 @@ if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
         silent !mkdir -p ~/.vim/bundle
         silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
     endif
-    let RunBundleInstall=1
+    let s:run_BundleInstall=1
 endif
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -135,8 +135,8 @@ Bundle 'https://github.com/vim-scripts/argtextobj.vim'
 Bundle 'https://github.com/tpope/vim-commentary.git'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
-if RunBundleInstall == 1
-    echo "Installing Bundles, please ignore key map error messages"
+if s:run_BundleInstall == 1
+    echo "Installing Bundles, please ignore key map error messages."
     echo ""
     :BundleInstall
 endif
@@ -261,8 +261,8 @@ highlight Special ctermfg=magenta
 
 " Turn off most of the default syntax highlighting. Too many colors can be distracting. Some syntax highlighting is useful though, e.g. coloring comments.
 " XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following?
-for highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
-    execute "highlight!" highlight_group "NONE"
+for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
+    execute "highlight!" s:highlight_group "NONE"
 endfor
 
 highlight diffAdded ctermfg=green guifg=green
