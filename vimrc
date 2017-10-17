@@ -285,6 +285,8 @@ set breakindent
 set wrapscan
 "set linebreak
 
+set guioptions-=T   " hide toolbar
+
 if has("gui_win32")
     set guifont=Courier_New:h8:cANSI
 endif
@@ -314,6 +316,7 @@ autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
 
 set cpoptions+=n " wrapped text can appear in the line number column
 set numberwidth=2
+" XXX only set relativenumber while in normal mode?
 autocmd BufWinEnter,WinEnter,FocusGained * setlocal relativenumber
 autocmd WinLeave,FocusLost * setlocal norelativenumber
 set lazyredraw  " If a cursor movement key is held down (why would someone do that?) having relativenumber set can make things very slow - Vim can end up with a backlog of commands. Setting lazyredraw seems to be a work around. (The problem seems to be most noticeable with "syntax on", folds and with a "tall" (~100 line) window.)
