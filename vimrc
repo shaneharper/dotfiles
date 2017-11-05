@@ -89,9 +89,11 @@ command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_dif
 
 
 Bundle 'Valloric/YouCompleteMe'
-    " To build YCM binary: cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
+set encoding=utf-8  " YCM requires this.
+    " To build YCM binary:
+    "  MS Windows: set PATH=%PATH%;"c:\Program Files\CMake\bin";"c:\Program Files\7-Zip"
+    "  cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
-
 let g:ycm_confirm_extra_conf = 0
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 
