@@ -310,6 +310,8 @@ augroup vimrc_miscellaneous
 
     autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"
     autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"|normal j
+
+    autocmd FileType text set linebreak wrap
 augroup END
 
 " Don't automatically insert the 'comment leader' when starting a new line next to a comment. (I tend not to use // for multi-line comments in C++.)
