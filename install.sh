@@ -7,6 +7,7 @@ ln -s `pwd`/vimrc ~/.vimrc
 
 
 git config --global core.excludesfile `pwd`/gitignore
+git config --global push.default simple
 
 ln -s `pwd`/hgrc ~/.hgrc
 
