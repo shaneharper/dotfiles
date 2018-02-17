@@ -308,8 +308,9 @@ augroup vimrc_miscellaneous
     " set formatoptions==cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
     autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
 
-    autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"
-    autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"|normal j
+    autocmd BufNewFile *.h++ 0put =\"#pragma once\"|normal G
+    autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\"|normal G
+    autocmd BufNewFile *.sh 0put =\"#!/bin/bash\"|normal G
 
     autocmd FileType text set linebreak wrap
 augroup END
