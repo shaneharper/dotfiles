@@ -111,7 +111,7 @@ Bundle 'https://github.com/milkypostman/vim-togglelist'
 
 "    Bundle 'Syntastic'	" awesome syntax and errors highlighter
 
-Bundle 'https://github.com/hynek/vim-python-pep8-indent.git'
+Bundle 'https://github.com/Vimjas/vim-python-pep8-indent.git'
 
 Bundle 'https://github.com/t9md/vim-choosewin'
 nmap - <Plug>(choosewin)
