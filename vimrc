@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
 " Lawrencium is 'vim-fugitive' for Mercurial
 Plug 'https://github.com/ludovicchabant/vim-lawrencium'
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
+autocmd FileType hgcommit set linebreak wrap
 
 " Jedi-Vim: tools for Python dev
 "  <leader>n = show usages  <leader>g = go to an assignment  <leader>r = rename
