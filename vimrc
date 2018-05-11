@@ -1,7 +1,7 @@
 " vim-plug and vundle require git.
 
 
-" vim-plug
+" vim-plug plugins -------------------------------------------------------- {{{
 if empty(glob('~/.vim/autoload/plug.vim')) && empty(glob('~/vimfiles/autoload/plug.vim'))
     if has("win32")
         echo "Install vim-plug manually"
@@ -63,8 +63,7 @@ let g:localvimrc_whitelist='/home/shane/\(src-new\|src/cpppa-*\)' | let g:localv
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
 
 call plug#end()
-
-
+" }}}
 
 " Set-up Vundle to install/update plugins --------------------------------- {{{
 " :VundleUpdate updates bundles
@@ -338,3 +337,5 @@ if executable('ag')
 endif
 
 " }}}
+
+" vim:set foldmethod=marker:
