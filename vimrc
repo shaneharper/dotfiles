@@ -288,6 +288,7 @@ set wrapscan
 "set linebreak
 
 set guioptions-=T   " hide toolbar
+set guioptions+=k   " keep window size when adding/removing a scrollbar, toolbar, etc.
 
 if has("gui_win32")
     set guifont=Courier_New:h8:cANSI
