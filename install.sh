@@ -21,3 +21,4 @@ function append_if_not_already_in_file
 
 append_if_not_already_in_file ~/.bashrc "export EDITOR=vim"
 append_if_not_already_in_file ~/.bashrc 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
+append_if_not_already_in_file ~/.bashrc 'stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction).'
