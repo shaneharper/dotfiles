@@ -106,7 +106,7 @@ nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
 Bundle 'https://github.com/vim-scripts/numsign.vim'
-autocmd BufWinEnter,WinEnter,FocusGained * let b:sign_work_mode=0
+autocmd BufWinEnter,WinEnter * let b:sign_work_mode=0
 
 " Unimpaired: ]q is :cnext, [q is :cprevious, ]l is :lnext, ]l is :lprevious, etc.
 Bundle 'https://github.com/tpope/vim-repeat'
@@ -323,8 +323,8 @@ autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
 set cpoptions+=n " wrapped text can appear in the line number column
 set numberwidth=2
 " XXX only set relativenumber while in normal mode?
-autocmd BufWinEnter,WinEnter,FocusGained * setlocal relativenumber
-autocmd WinLeave,FocusLost * setlocal norelativenumber
+autocmd BufWinEnter,WinEnter * setlocal relativenumber
+autocmd WinLeave * setlocal norelativenumber
 set lazyredraw
 
 " Ctrl-L: fix last spelling mistake (http://stackoverflow.com/questions/5312235/how-to-correct-vim-spelling-mistakes-quicker)
