@@ -276,6 +276,7 @@ filetype plugin indent on
 set ruler
 set tags=./tags;                " ';' causes search to occur in current directory, then the parent, then its parent, etc.
 "set mouse=a                     " mouse click in an xterm moves cursor
+set mousemodel=popup_setpos
 set wildmode=list:longest
 set gdefault                    " search/replace "globally" (on a line) by default
 set wildignore=*.swp,*.bak,*.pyc,*.class
