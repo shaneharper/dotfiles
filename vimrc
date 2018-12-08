@@ -147,7 +147,7 @@ endif
 " Basic key mappings ------------------------------------------------------ {{{
 " jk mapping from http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
 inoremap jk <esc>
-" don't use <esc>. Use jk - it's easier, fingers stay on the home row.
+" don't use <esc>. Use jk - it's easier, fingers stay on the home row. (And I prefer it to Esc on a thumb key on my Ergodox EZ keyboard.)
 inoremap <esc> <nop>
 "" kk: temporarily leave insert mode for one command
 inoremap kk <C-o>
@@ -275,7 +275,7 @@ highlight diffRemoved ctermfg=red guifg=red
 filetype plugin indent on
 set ruler
 set tags=./tags;                " ';' causes search to occur in current directory, then the parent, then its parent, etc.
-"set mouse=a                     " mouse click in an xterm moves cursor
+"set mouse=a                     " mouse click in an xterm moves cursor. Note: with mouse=a, the middle mouse button doesn't paste (Use shift-middle mouse button instead.)
 set mousemodel=popup_setpos
 set wildmode=list:longest
 set gdefault                    " search/replace "globally" (on a line) by default
