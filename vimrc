@@ -252,10 +252,6 @@ endfunction
 
 " Colors ------------------------------------------------------------------ {{{
 set background=light
-if $COLORTERM == "gnome-terminal"
-    set t_Co=256
-    " (Running "export TERM=gnome-256color" from .bashrc can also be used to get 256 color support.)
-endif
 syntax on
 highlight CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
 highlight LineNr ctermfg=DarkGrey
