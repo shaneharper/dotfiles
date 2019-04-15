@@ -5,3 +5,4 @@ tags
 *.pyc
 *.pch
 .DS_Store
+._.DS_Store
