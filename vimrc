@@ -312,7 +312,6 @@ augroup vimrc_miscellaneous
 
     autocmd BufNewFile *.h++ 0put =\"#pragma once\"|normal G
     autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\"|normal G
-    autocmd BufNewFile *.sh 0put =\"#!/bin/bash\"|normal G
 
     autocmd FileType text set linebreak wrap
 augroup END
