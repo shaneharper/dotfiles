@@ -62,6 +62,8 @@ let g:localvimrc_whitelist='/home/shane/\(src-new\|src/cpppa-*\)' | let g:localv
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
 
+Plug 'https://github.com/PProvost/vim-ps1'  " Syntax highlighting, auto indenting, etc. for Powershell scripts
+
 call plug#end()
 " }}}
 
