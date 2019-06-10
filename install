@@ -20,7 +20,16 @@ append_if_not_already_in_file()
 }
 
 bashrc() { append_if_not_already_in_file ~/.bashrc "$1"; }
+zshrc()  { append_if_not_already_in_file ~/.zshrc "$1"; }
+bashrc_and_zshrc() { bashrc "$1"; zshrc "$1"; }
 
-bashrc "export EDITOR=vim"
-bashrc 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
+bashrc_and_zshrc "export EDITOR=vim"
+bashrc_and_zshrc 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
+
 bashrc "stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction)."
+
+zshrc "set_output_carriage_return_with_new_line() { stty onlcr }"
+zshrc "autoload -Uz add-zsh-hook"
+zshrc "add-zsh-hook precmd set_output_carriage_return_with_new_line  # zsh on Ubuntu 18.04.1 using WSL: Something (I don't know what) was often mucking up the terminal settings (new-lines output without carriage returns) - This is a workaround."
+
+zshrc "disable -r time && alias time='time -f \"%E real, %U user, %S system\" ' # I like the wall-clock time to be output first. (zsh's in-built time command outputs it last.) zsh's in-built time command outputs to stdout. (This will output to stderr?)"
