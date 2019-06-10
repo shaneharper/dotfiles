@@ -16,7 +16,7 @@ function append_if_not_already_in_file
 {
     FILENAME=$1
     TEXT=$2
-    grep -q --line-regexp "$TEXT" "$FILENAME" || echo "$TEXT" >> "$FILENAME"
+    grep --quiet --no-messages -x --fixed-strings "$TEXT" "$FILENAME" || echo "$TEXT" >> "$FILENAME"
 }
 
 append_if_not_already_in_file ~/.bashrc "export EDITOR=vim"
