@@ -64,6 +64,9 @@ let g:localvimrc_whitelist='/home/shane/\(src-new\|src/cpppa-*\)' | let g:localv
 
 Plug 'https://github.com/PProvost/vim-ps1'  " Syntax highlighting, auto indenting, etc. for Powershell scripts
 
+Plug 'https://github.com/editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim)
+
 call plug#end()
 " }}}
 
