@@ -174,6 +174,9 @@ noremap <C-y> 2<C-y>
 " dO/dP: copy changes between diffs and jump to next change. (Uses vim-unimpaired.)
 nmap dO do]c
 nmap dP dp]c
+
+" Y: copy till end of line, which is consistent with D which deletes till the end of line. (By default Y copies a whole line.)
+map Y y$
 " }}}
 
 " Search options ---------------------------------------------------------- {{{
