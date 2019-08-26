@@ -199,21 +199,22 @@ set shiftround                  " round indent to multiple of shiftwidth - appli
 " Abbreviations ----------------------------------------------------------- {{{
 iabbrev ME shane@shaneharper.net
 
-augroup c_filetype_abbreviations
+augroup c_cpp_cs_filetype_abbreviations
     autocmd!
     autocmd FileType c,cpp
         \ iabbrev <buffer> #i #include |
         \ iabbrev <buffer> #d #define|
         \ inoremap <buffer> #i0 #if 0|
-        \ iabbrev <buffer> #e #endif|
-        \ inoremap <buffer> #E #endif|
         \ iabbrev <buffer> st struct|    iabbrev <buffer> struct  NO! NO! NO!|
         \ iabbrev <buffer> re return|    iabbrev <buffer> return  NO! NO! NO!|
         \ iabbrev <buffer> bo bool|      iabbrev <buffer> bool    NO! NO! NO!|
         \ iabbrev <buffer> ch char|      iabbrev <buffer> char    NO! NO! NO!|
         \ iabbrev <buffer> co const|     iabbrev <buffer> const   NO! NO! NO!|
-        \ iabbrev <buffer> vo void|      iabbrev <buffer> void    NO! NO! NO!|
         \ iabbrev <buffer> un unsigned|  iabbrev <buffer> unsigned NO! NO! NO!|
+    autocmd FileType c,cpp,cs
+        \ inoremap <buffer> #iF #if false|
+        \ inoremap <buffer> #E #endif|
+        \ iabbrev <buffer> vo void
     " Typing "fo(" expands to "for (", "wh(" expands to "while ("
     autocmd FileType c,cpp
         \ iabbrev <buffer> eif else if |
