@@ -35,3 +35,11 @@ zshrc "add-zsh-hook precmd set_output_carriage_return_with_new_line  # zsh on Ub
 zshrc "disable -r time && alias time='time -f \"%E real, %U user, %S system\" ' # I like the wall-clock time to be output first. (zsh's in-built time command outputs it last.) zsh's in-built time command outputs to stdout. (This will output to stderr?)"
 
 # xxx cp ctags.cnf ~/.ctags
+
+
+# Install z command for use from bash command line. z changes directory - pass it part of the pathname of a previously visited directory.
+mkdir -p ~/bin
+if [ ! -f ~/bin/z/z.sh ]; then
+    git clone https://github.com/rupa/z.git ~/bin/z
+fi
+bashrc ". ~/bin/z/z.sh"
