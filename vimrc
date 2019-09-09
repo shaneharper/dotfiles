@@ -71,9 +71,9 @@ call plug#end()
 " }}}
 
 " Vundle plugins ---------------------------------------------------------- {{{
-" :VundleUpdate updates bundles
+" :PluginUpdate updates plugins
 
-let s:run_BundleInstall=0
+let s:run_PluginInstall=0
 if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
     echo "Installing Vundle."
     echo ""
@@ -84,22 +84,22 @@ if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
         silent !mkdir -p ~/.vim/bundle
         silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
     endif
-    let s:run_BundleInstall=1
+    let s:run_PluginInstall=1
 endif
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " zoomwin-vim: <C-W>o toggles fullscreen/windowed.
-Bundle 'https://github.com/drn/zoomwin-vim.git'
+Plugin 'https://github.com/drn/zoomwin-vim.git'
 
-Bundle 'https://github.com/tpope/vim-fugitive'
+Plugin 'https://github.com/tpope/vim-fugitive'
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
 command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
 
 
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 set encoding=utf-8  " YCM requires this.
     " To build YCM binary:
     "  MS Windows only: set PATH=%PATH%;"c:\Program Files\CMake\bin";"c:\Program Files\7-Zip"
@@ -110,42 +110,42 @@ nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
-Bundle 'https://github.com/vim-scripts/numsign.vim'
+Plugin 'https://github.com/vim-scripts/numsign.vim'
 autocmd BufWinEnter,WinEnter * let b:sign_work_mode=0
 
 " Unimpaired: ]q is :cnext, [q is :cprevious, ]l is :lnext, ]l is :lprevious, etc.
-Bundle 'https://github.com/tpope/vim-repeat'
-Bundle 'https://github.com/tpope/vim-unimpaired'
+Plugin 'https://github.com/tpope/vim-repeat'
+Plugin 'https://github.com/tpope/vim-unimpaired'
 
 " vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
-Bundle 'https://github.com/milkypostman/vim-togglelist'
+Plugin 'https://github.com/milkypostman/vim-togglelist'
 
-"    Bundle 'Syntastic'	" awesome syntax and errors highlighter
+"    Plugin 'Syntastic'	" awesome syntax and errors highlighter
 
-Bundle 'https://github.com/Vimjas/vim-python-pep8-indent.git'
+Plugin 'https://github.com/Vimjas/vim-python-pep8-indent.git'
 
-Bundle 'https://github.com/t9md/vim-choosewin'
+Plugin 'https://github.com/t9md/vim-choosewin'
 nmap - <Plug>(choosewin)
 
 " dwm.vim - Tiled Window Management for Vim
-" XXX disabled 'cause it moves location list windows around.  Bundle 'https://github.com/spolu/dwm.vim.git'
+" XXX disabled 'cause it moves location list windows around.  Plugin 'https://github.com/spolu/dwm.vim.git'
 
-Bundle 'https://github.com/kien/rainbow_parentheses.vim'
+Plugin 'https://github.com/kien/rainbow_parentheses.vim'
 "au VimEnter * RainbowParenthesesToggle " XXX Uncommenting this messes up highlighting of multi-line C++11 raw strings
 au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
 
 " Argtextobj.vim: daa = delete argument in C function signature, cia = change "inner" argument (exclude comma), ...
-Bundle 'https://github.com/vim-scripts/argtextobj.vim'
+Plugin 'https://github.com/vim-scripts/argtextobj.vim'
 
-Bundle 'https://github.com/tpope/vim-commentary.git'
+Plugin 'https://github.com/tpope/vim-commentary.git'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
-if s:run_BundleInstall == 1
-    echo "Installing Bundles, please ignore key map error messages."
+if s:run_PluginInstall == 1
+    echo "Installing Vundle plugins, please ignore key map error messages."
     echo ""
-    :BundleInstall
+    :PluginInstall
 endif
 " }}}
 
