@@ -106,6 +106,7 @@ set encoding=utf-8  " YCM requires this.
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
 let g:ycm_confirm_extra_conf = 0
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>dt :YcmCompleter GetType<CR>
 
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
