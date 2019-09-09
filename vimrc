@@ -70,12 +70,12 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by http
 call plug#end()
 " }}}
 
-" Set-up Vundle to install/update plugins --------------------------------- {{{
+" Vundle plugins ---------------------------------------------------------- {{{
 " :VundleUpdate updates bundles
 
 let s:run_BundleInstall=0
 if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
-    echo "Installing Vundle.."
+    echo "Installing Vundle."
     echo ""
     if has("win32")
         execute "!mkdir" $HOME."\\.vim\\bundle"
@@ -102,7 +102,7 @@ command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_dif
 Bundle 'Valloric/YouCompleteMe'
 set encoding=utf-8  " YCM requires this.
     " To build YCM binary:
-    "  MS Windows: set PATH=%PATH%;"c:\Program Files\CMake\bin";"c:\Program Files\7-Zip"
+    "  MS Windows only: set PATH=%PATH%;"c:\Program Files\CMake\bin";"c:\Program Files\7-Zip"
     "  cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
 let g:ycm_confirm_extra_conf = 0
