@@ -98,7 +98,6 @@ nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
 command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
 
-
 Plugin 'Valloric/YouCompleteMe'
 set encoding=utf-8  " YCM requires this.
     " To build YCM binary:
@@ -165,7 +164,6 @@ nnoremap <right> <nop>
 nnoremap <space> :
 nnoremap q<space> q:
 vnoremap <space> :
-" XXX remap Caps Lock?
 
 " From https://github.com/nvie/vimrc/blob/master/vimrc:
 noremap <C-e> 2<C-e>
