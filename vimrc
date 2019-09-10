@@ -18,20 +18,25 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Lawrencium is 'vim-fugitive' for Mercurial
-Plug 'https://github.com/ludovicchabant/vim-lawrencium'
+" Version control---------------------------------------------------------- {{{
+function! s:go_to_first_change_in_diff_mode()  " XXX Could Vim automatically do s:go_to_first_change_in_diff_mode() when opening a diff view?
+    silent! normal gg]c[c
+    " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
+endfunction
+
+Plug 'https://github.com/ludovicchabant/vim-lawrencium'  " Use Mercurial from vim.
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
 autocmd FileType hgcommit set linebreak wrap
+
+Plug 'https://github.com/tpope/vim-fugitive'  " Use git from vim.
+nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
+nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
+command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
+" }}}
 
 " Jedi-Vim: tools for Python dev
 "  <leader>n = show usages  <leader>g = go to an assignment  <leader>r = rename
 Plug 'https://github.com/davidhalter/jedi-vim'
-
-        " XXX Could Vim automatically do s:go_to_first_change_in_diff_mode() when opening a diff view?
-function! s:go_to_first_change_in_diff_mode()
-    silent! normal gg]c[c
-    " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
-endfunction
 
 " Ctrl-P - press Ctrl-P to open a file
 Plug 'ctrlpvim/ctrlp.vim'
@@ -64,7 +69,7 @@ let g:localvimrc_whitelist='/home/shane/\(src-new\|src/cpppa-*\)' | let g:localv
 
 Plug 'https://github.com/PProvost/vim-ps1'  " Syntax highlighting, auto indenting, etc. for Powershell scripts
 
-Plug 'https://github.com/editorconfig/editorconfig-vim'
+Plug 'https://github.com/editorconfig/editorconfig-vim'  " .editorconfig files allow for consistent settings in various different editors. Plugins like this one exist for other editors.
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim)
 
 call plug#end()
@@ -92,11 +97,6 @@ Plugin 'gmarik/vundle'
 
 " zoomwin-vim: <C-W>o toggles fullscreen/windowed.
 Plugin 'https://github.com/drn/zoomwin-vim.git'
-
-Plugin 'https://github.com/tpope/vim-fugitive'
-nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
-nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
-command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
 
 Plugin 'Valloric/YouCompleteMe'
 set encoding=utf-8  " YCM requires this.
