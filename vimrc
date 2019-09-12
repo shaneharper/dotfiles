@@ -24,6 +24,9 @@ function! s:go_to_first_change_in_diff_mode()  " XXX Could Vim automatically do 
     " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
 endfunction
 
+Plug 'https://github.com/juneedahamed/vc.vim'  " works with svn, git, hg and bzr. Many commands, e.g. :VCDiff, work regardless of the type of repository. It'd be nice to use just one plugin with all version control systems but presently there are some plugins that support some version control systems better than vc.vim, e.g. vim-fugitive's :Gdiff allows individual changes to be staged to be committed to a git repository. (Another plugin that supports more version control systems is vcscommand.vim.)
+command -nargs=? VCd execute "VCDiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
+
 Plug 'https://github.com/ludovicchabant/vim-lawrencium'  " Use Mercurial from vim.
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
 autocmd FileType hgcommit set linebreak wrap
