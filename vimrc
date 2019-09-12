@@ -75,6 +75,8 @@ Plug 'https://github.com/PProvost/vim-ps1'  " Syntax highlighting, auto indentin
 Plug 'https://github.com/editorconfig/editorconfig-vim'  " .editorconfig files allow for consistent settings in various different editors. Plugins like this one exist for other editors.
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim)
 
+Plug 'https://github.com/chrisbra/vim-diff-enhanced'  " :PatienceDiff selects the "patience" diff algorithm - this may make some diffs easier to follow.
+
 call plug#end()
 " }}}
 
