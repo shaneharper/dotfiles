@@ -328,10 +328,6 @@ augroup vimrc_miscellaneous
     autocmd FileType text set linebreak wrap
 augroup END
 
-" Don't automatically insert the 'comment leader' when starting a new line next to a comment. (I tend not to use // for multi-line comments in C++.)
-" set formatoptions==cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
-
 set cpoptions+=n " wrapped text can appear in the line number column
 set numberwidth=2
 " XXX only set relativenumber while in normal mode?
