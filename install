@@ -31,7 +31,7 @@ bashrc "alias hgc='hg commit'"
 bashrc "alias hge='hg expo -g'"
 bashrc "alias hgd='hg diff -g'"
 bashrc "alias hgr='hg revert'"
-bashrc "alias hgs='hg status'"
+bashrc "alias hgs='hg status --copies'"
 bashrc "alias gst='git status'"
 
 bashrc "stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction)."
