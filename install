@@ -28,8 +28,8 @@ bashrc_and_zshrc 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
 
 bashrc "alias hga='hg add'"
 bashrc "alias hgc='hg commit'"
-bashrc "alias hge='hg expo'"
-bashrc "alias hgd='hg diff'"
+bashrc "alias hge='hg expo -g'"
+bashrc "alias hgd='hg diff -g'"
 bashrc "alias hgr='hg revert'"
 bashrc "alias hgs='hg status'"
 bashrc "alias gst='git status'"
