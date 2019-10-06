@@ -26,13 +26,14 @@ bashrc_and_zshrc() { bashrc "$1"; zshrc "$1"; }
 bashrc_and_zshrc "export EDITOR=vim"
 bashrc_and_zshrc 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
 
+bashrc "alias gst='git status'"
 bashrc "alias hga='hg add'"
 bashrc "alias hgc='hg commit'"
-bashrc "alias hge='hg expo -g'"
 bashrc "alias hgd='hg diff -g'"
+bashrc "alias hge='hg expo -g'"
+bashrc "alias hgl='hg log -v'"
 bashrc "alias hgr='hg revert'"
 bashrc "alias hgs='hg status --copies'"
-bashrc "alias gst='git status'"
 
 bashrc "stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction)."
 
