@@ -7,12 +7,7 @@ merge = vimdiff
 vimdiff.executable = vim
 vimdiff.args = -d $base $local $output $other +close +close
 
-[pager]
-pager = LESS='FRX' less
-
 [extensions]
-pager =
-color =
 graphlog =
 
 [hooks]
