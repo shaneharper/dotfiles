@@ -1,6 +1,5 @@
 [ui]
 username = Shane Harper <shane@shaneharper.net>
-ignore = ~/dotfiles/hgignore
 merge = vimdiff
 
 [merge-tools]

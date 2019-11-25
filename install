@@ -9,7 +9,11 @@ ln -s `pwd`/vimrc ~/.vimrc
 git config --global core.excludesfile `pwd`/gitignore
 git config --global push.default simple
 
-ln -s `pwd`/hgrc ~/.hgrc
+cat >>~/.hgrc <<EOF
+[ui]
+ignore = $(pwd)/hgignore
+%include $(pwd)/hgrc
+EOF
 
 
 append_if_not_already_in_file()
