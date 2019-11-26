@@ -97,11 +97,13 @@ Plugin 'gmarik/vundle'
 " zoomwin-vim: <C-W>o toggles fullscreen/windowed.
 Plugin 'https://github.com/drn/zoomwin-vim.git'
 
+set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
 Plugin 'Valloric/YouCompleteMe'
-set encoding=utf-8  " YCM requires this.
     " To build YCM binary:
-    "  MS Windows only: set PATH=%PATH%;"c:\Program Files\CMake\bin";"c:\Program Files\7-Zip"
-    "  cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
+    "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer --cs-completer
+    "  On Windows run from a Visual Studio Native Tools Command Prompt and replace ~ with %userprofile%.
+    "  Mono is required by the C# completer.
+    "  xxx Automate building/rebuilding of the YCM binary. (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>dt :YcmCompleter GetType<CR>
