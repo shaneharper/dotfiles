@@ -103,7 +103,6 @@ set encoding=utf-8  " YCM requires this.
     "  MS Windows only: set PATH=%PATH%;"c:\Program Files\CMake\bin";"c:\Program Files\7-Zip"
     "  cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
-let g:ycm_confirm_extra_conf = 0
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>dt :YcmCompleter GetType<CR>
 
