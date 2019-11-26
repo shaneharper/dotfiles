@@ -1,11 +1,11 @@
 " vim-plug and vundle require git.
 
+set runtimepath+=~/.vim  " Use ~/.vim on all platforms (~/.vim is not included in the default runtimepath for Windows). This is required on Windows for "call plug#begin(...)" below.
 
 " vim-plug plugins -------------------------------------------------------- {{{
-if empty(glob('~/.vim/autoload/plug.vim')) && empty(glob('~/vimfiles/autoload/plug.vim'))
-    execute "silent !curl -fLo"
-            \ (has("win32") ? '\%userprofile\%/vimfiles/' : '~/.vim/').'autoload/plug.vim'
-            \ "--create-dirs"
+let vim_plug_absolute_pathname=expand('~/.vim/autoload/plug.vim')
+if !filereadable(vim_plug_absolute_pathname)
+    execute "silent !curl -fLo" vim_plug_absolute_pathname "--create-dirs"
             \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
