@@ -103,7 +103,7 @@ Plugin 'Valloric/YouCompleteMe'
     "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer --cs-completer
     "  On Windows run from a Visual Studio Native Tools Command Prompt and replace ~ with %userprofile%.
     "  Mono is required by the C# completer.
-    "  xxx Automate building/rebuilding of the YCM binary. (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
+    "  xxx Automate building/rebuilding of the YCM binary. Use a vim-plug post-install/update hook? (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>dt :YcmCompleter GetType<CR>
