@@ -6,3 +6,4 @@ tags
 *.pch
 .DS_Store
 ._.DS_Store
+.clangd
