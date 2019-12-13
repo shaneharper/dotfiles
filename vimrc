@@ -277,6 +277,7 @@ function Clear_unwanted_syntax_highlighting()
 endfunction
 
 call Clear_unwanted_syntax_highlighting()
+autocmd GUIEnter * call Clear_unwanted_syntax_highlighting()  | " xxx Just calling Clear_unwanted_syntax_highlighting() from this script is ineffective when running gvim, but works fine when called from this GUIEnter autocmd. (Vim 8.2 on Ubuntu 16.04) (Calling Clear_unwanted_syntax_highlighting() from this script is effective when running vim in a terminal window.)
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
