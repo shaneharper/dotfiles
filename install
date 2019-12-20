@@ -38,7 +38,7 @@ bashrc "alias hgc='hg commit'"
 bashrc "alias hgd='hg diff'"
 bashrc "alias hge='hg expo'"
 bashrc "alias hgh='hg heads -v'"
-bashrc "alias hgl='hg log -v'"
+bashrc "alias hgl='hg log -v --follow'"
 bashrc "alias hgr='hg revert'"
 bashrc "alias hgs='hg status --copies'"
 
