@@ -2,6 +2,10 @@
 username = Shane Harper <shane@shaneharper.net>
 merge = vimdiff
 
+[diff]
+# git format gives copy and rename info. (The default format doesn't.) For more info: hg help diffs.
+git = True
+
 [merge-tools]
 vimdiff.executable = vim
 vimdiff.args = -d $base $local $output $other +close +close
