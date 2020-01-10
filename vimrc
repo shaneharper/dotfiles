@@ -312,16 +312,14 @@ endif
 augroup vimrc_miscellaneous
     autocmd!
     autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
-
     autocmd BufNewFile,BufRead,BufWrite *.h++ set filetype=cpp
 
-    " Don't automatically insert the 'comment leader' when starting a new line next to a comment. (I tend not to use // for multi-line comments in C++.)
-    " set formatoptions==cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+    " Don't automatically insert the 'comment leader' when starting a new line next to a comment.
+    " set formatoptions-=cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
     autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
 
     autocmd BufNewFile *.h++ 0put =\"#pragma once\"|normal G
     autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\"|normal G
-
     autocmd BufNewFile,BufRead *.xaml setfiletype xml
     autocmd FileType text set linebreak wrap
 augroup END
