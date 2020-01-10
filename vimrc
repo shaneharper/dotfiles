@@ -23,7 +23,7 @@ command -nargs=? VCd execute "VCDiff <args>" | call s:go_to_first_change_in_diff
 
 Plug 'https://github.com/ludovicchabant/vim-lawrencium'  " Use Mercurial from vim.
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
-autocmd FileType hgcommit set linebreak wrap
+autocmd FileType hgcommit setlocal linebreak wrap
 
 Plug 'https://github.com/tpope/vim-fugitive'  " Use git from vim.
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
@@ -313,16 +313,21 @@ augroup vimrc_miscellaneous
     autocmd!
     autocmd FileType c,cpp nnoremap <buffer> <localleader>m :make<CR>:cwindow<CR>
     autocmd BufNewFile,BufRead,BufWrite *.h++ set filetype=cpp
-
-    " Don't automatically insert the 'comment leader' when starting a new line next to a comment.
-    " set formatoptions-=cro  " didn't work as expected - see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-    autocmd BufWinEnter,BufRead * setlocal formatoptions-=cro
-
     autocmd BufNewFile *.h++ 0put =\"#pragma once\"|normal G
     autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\"|normal G
     autocmd BufNewFile,BufRead *.xaml setfiletype xml
     autocmd FileType text set linebreak wrap
+    autocmd BufWinEnter * call <SID>set_formatoptions_for_buffer()  " This autocmd is executed after ftplugin scripts have run. (This way we can override unwanted formatoptions settings that may have been made by an ftplugin script.)
 augroup END
+
+function s:set_formatoptions_for_buffer()
+    setlocal formatoptions-=c formatoptions-=t   | " No automatic insertion of new-line characters to avoid "long" lines. (Long lines can be formatted when a file is viewed, e.g. by setting Vim's linebreak and wrap options.)
+    setlocal formatoptions-=r formatoptions-=o   | " No automatic insertion of the "comment leader" when starting a new line following a comment line.
+
+    " Notes:
+    " 1/. Trying to remove several flags at once (e.g. setlocal formatoptions-=cro) will only change formatoptions if all of the specified flags were set. (See :help :set-=)
+    " 2/. &textwidth will be ignored after clearing the flags above, except when formatting with 'gq'.
+endfunction
 
 set cpoptions+=n " wrapped text can appear in the line number column
 set numberwidth=2
