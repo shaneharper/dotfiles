@@ -10,5 +10,3 @@ echo.>> %USERPROFILE%\.hgrc
 echo [ui]>> %USERPROFILE%\.hgrc
 echo ignore = %script_directory%hgignore>> %USERPROFILE%\.hgrc
 echo %%include %script_directory%hgrc>> %USERPROFILE%\.hgrc
-
-REM copy ctags.cnf %userprofile%
