@@ -315,7 +315,7 @@ augroup vimrc_miscellaneous
     autocmd BufNewFile,BufRead,BufWrite *.h++ set filetype=cpp
     autocmd BufNewFile *.h++ 0put =\"#pragma once\"|normal G
     autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\"|normal G
-    autocmd BufNewFile,BufRead *.xaml setfiletype xml
+    autocmd BufNewFile,BufRead,BufWrite *.xaml setfiletype xml
     autocmd FileType text set linebreak wrap
     autocmd BufWinEnter * call <SID>set_formatoptions_for_buffer()  " This autocmd is executed after ftplugin scripts have run. (This way we can override unwanted formatoptions settings that may have been made by an ftplugin script.)
 augroup END
