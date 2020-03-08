@@ -102,7 +102,7 @@ Plugin 'https://github.com/drn/zoomwin-vim.git'
 set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
 Plugin 'Valloric/YouCompleteMe'
     " To build YCM binary:
-    "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer --cs-completer
+    "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer
     "  On Windows run from a Visual Studio Native Tools Command Prompt and replace ~ with %userprofile%.
     "  Mono is required by the C# completer.
     "  xxx Automate building/rebuilding of the YCM binary. Use a vim-plug post-install/update hook? (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
