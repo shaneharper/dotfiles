@@ -10,3 +10,5 @@ echo.>> %USERPROFILE%\.hgrc
 echo [ui]>> %USERPROFILE%\.hgrc
 echo ignore = %script_directory%hgignore>> %USERPROFILE%\.hgrc
 echo %%include %script_directory%hgrc>> %USERPROFILE%\.hgrc
+
+REM copy windows_terminal_settings.json %USERPROFILE%\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
