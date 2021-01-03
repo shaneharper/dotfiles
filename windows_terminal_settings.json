@@ -9,8 +9,10 @@
 
     // To learn more about global settings visit https://aka.ms/terminal-global-settings
 
-    "copyOnSelect": false,
+    "copyOnSelect": true,
     "copyFormatting": false,
+    "multiLinePasteWarning": false,
+    "tabWidthMode": "titleLength",
 
     // A profile specifies a command to execute paired with information about how it should look and feel.
     // Each one of them will appear in the 'New Tab' dropdown,
@@ -21,6 +23,14 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
+            //"colorScheme":  "Campbell"
+            "background": "#000000", // (Default is #0C0C0C)
+            //"foreground": "#FFFFFF"
+            "fontFace": "Consolas",
+            "fontSize": 10,
+            "antialiasingMode": "cleartype",
+            "padding": "0,0,0,0",
+            "cursorShape": "vintage"
         },
         "list":
         [
@@ -33,20 +43,19 @@
             {
                 "name": "Command Prompt",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "commandline": "cmd.exe",
-                "hidden": false
+                "commandline": "cmd.exe"
             },
             {
                 "name": "Ubuntu-20.04",
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "source": "Windows.Terminal.Wsl",
-                "hidden": false
+                "startingDirectory": "//wsl$/Ubuntu-20.04/home/shane"
             },
             {
                 "name": "Azure Cloud Shell",
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
                 "source": "Windows.Terminal.Azure",
-                "hidden": false
+                "hidden": true
             }
         ]
     },
@@ -61,10 +70,9 @@
     "actions":
     [
         // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
-        // These two lines additionally bind them to Ctrl+C and Ctrl+V.
         // To learn more about selection, visit https://aka.ms/terminal-selection
-        { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
-        { "command": "paste", "keys": "ctrl+v" },
+        //{ "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+        //{ "command": "paste", "keys": "ctrl+v" },
 
         // Press Ctrl+Shift+F to open the search box
         { "command": "find", "keys": "ctrl+shift+f" },
