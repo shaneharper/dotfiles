@@ -35,7 +35,7 @@
         "list":
         [
             {
-                "name": "Windows PowerShell",
+                "name": "PowerShell",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "commandline": "powershell.exe",
                 "hidden": false
