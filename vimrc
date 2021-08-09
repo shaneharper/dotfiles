@@ -241,6 +241,7 @@ augroup c_cpp_cs_filetype_abbreviations
         \ iabbrev <buffer> sel std::endl|
         \ iabbrev <buffer> smp std::map|
         \ iabbrev <buffer> ssg std::string|
+        \ iabbrev <buffer> ssv std::string_view|
         \ iabbrev <buffer> ssk std::stack|
         \ iabbrev <buffer> sst std::set|
         \ iabbrev <buffer> svr std::vector|
