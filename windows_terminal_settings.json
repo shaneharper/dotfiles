@@ -27,7 +27,7 @@
             "background": "#000000", // (Default is #0C0C0C)
             //"foreground": "#FFFFFF"
             "fontFace": "Consolas",
-            "fontSize": 10,
+            "fontSize": 9,
             "antialiasingMode": "cleartype",
             "padding": "0,0,0,0",
             "cursorShape": "vintage"
