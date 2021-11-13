@@ -41,6 +41,7 @@ bashrc "alias hgh='hg heads -v'"
 bashrc "alias hgl='hg log -v --follow'"
 bashrc "alias hgr='hg revert'"
 bashrc "alias hgs='hg status --copies'"
+bashrc "alias vim='vim -X'  # -X stops Vim connecting to the X server at startup. This can avoid a noticeable delay when starting Vim, e.g. when starting Vim from the WSL preview from the Microsoft Store and it's necessary to wait for WSLg to start if it wasn't running already."
 
 bashrc "stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction)."
 
