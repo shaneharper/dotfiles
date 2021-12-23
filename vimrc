@@ -102,9 +102,9 @@ Plugin 'https://github.com/drn/zoomwin-vim.git'
 set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
 Plugin 'ycm-core/YouCompleteMe'
     " To build YCM binary:
+    "  sudo apt install python3-dev mono-devel
     "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer
     "  On Windows run from a Visual Studio Native Tools Command Prompt and replace ~ with %userprofile%.
-    "  Mono is required by the C# completer.
     "  xxx Automate building/rebuilding of the YCM binary. Use a vim-plug post-install/update hook? (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
 let g:ycm_auto_hover=''  " Disable automatically showing documentation in a popup at the cursor location after a delay. Popups usually get in the way of reading what is near the cursor location. YCM 9309f777 unnecessarily shows a popup when the cursor is on the name of an entity where it's defined. <plug>(YCMHover) shows the popup.
