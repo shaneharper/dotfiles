@@ -33,6 +33,7 @@ profile "export EDITOR='vim -X'"
 bashrc "alias vim='vim -X'  # -X stops Vim connecting to the X server at startup. This can avoid a noticeable delay when starting Vim, e.g. when starting Vim from the WSL preview from the Microsoft Store and it's necessary to wait for WSLg to start if it wasn't running already."
 
 profile 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
+profile 'export XZ_DEFAULTS="-T0"'
 
 bashrc "alias gst='git status'"
 bashrc "alias hga='hg add'"
