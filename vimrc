@@ -23,7 +23,6 @@ command -nargs=? VCd execute "VCDiff <args>" | call s:go_to_first_change_in_diff
 
 Plug 'https://github.com/ludovicchabant/vim-lawrencium'  " Use Mercurial from vim.
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
-autocmd FileType hgcommit setlocal linebreak wrap
 
 Plug 'https://github.com/tpope/vim-fugitive'  " Use git from vim.
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
@@ -321,7 +320,7 @@ augroup vimrc_miscellaneous
     autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\"|normal G
     autocmd BufNewFile,BufRead,BufWrite *.vim+ if !exists('b:current_syntax') | setfiletype vim | endif   " See: https://github.com/shaneharper/add_vim_script_end_statements
     autocmd BufNewFile,BufRead,BufWrite *.xaml setfiletype xml
-    autocmd FileType text set linebreak wrap
+    autocmd FileType text,hgcommit,gitcommit set linebreak wrap
     autocmd BufWinEnter * call <SID>set_formatoptions_for_buffer()  " This autocmd is executed after ftplugin scripts have run. (This way we can override unwanted formatoptions settings that may have been made by an ftplugin script.)
 augroup END
 
