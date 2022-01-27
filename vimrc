@@ -14,6 +14,8 @@ call plug#begin('~/.vim/plugged')
 
 " Syntax highlighting------------------------------------------------------ {{{
 Plug 'pboettch/vim-cmake-syntax'  " pboettch/vim-cmake-syntax seems to fix problems with the runtime/syntax/cmake.vim that currently (on 27 Jan 2022) comes with Vim (https://github.com/vim/vim/blob/37c64c78fd87e086b5a945ad7032787c274e2dcb/runtime/syntax/cmake.vim). pboettch/vim-cmake-syntax highlights inline bracket comments ('#[[ ... ]]') correctly; Without it text beyond the end of a bracket comment would be highlighted as a comment if on the same line as the bracket comment.
+
+Plug 'https://github.com/vim-scripts/SWIG-syntax.git'
 " }}}
 
 " Version control---------------------------------------------------------- {{{
@@ -206,7 +208,7 @@ iabbrev ME shane@shaneharper.net
 
 augroup c_cpp_cs_filetype_abbreviations
     autocmd!
-    autocmd FileType c,cpp
+    autocmd FileType c,cpp,swig
         \ iabbrev <buffer> #i #include |
         \ iabbrev <buffer> #d #define|
         \ inoremap <buffer> #i0 #if 0|
@@ -216,18 +218,18 @@ augroup c_cpp_cs_filetype_abbreviations
         \ iabbrev <buffer> ch char|      iabbrev <buffer> char    NO! NO! NO!|
         \ iabbrev <buffer> co const|     iabbrev <buffer> const   NO! NO! NO!|
         \ iabbrev <buffer> un unsigned|  iabbrev <buffer> unsigned NO! NO! NO!|
-    autocmd FileType c,cpp,cs
+    autocmd FileType c,cpp,cs,swig
         \ inoremap <buffer> #iF #if false|
         \ inoremap <buffer> #E #endif|
         \ iabbrev <buffer> vo void
     " Typing "fo(" expands to "for (", "wh(" expands to "while ("
-    autocmd FileType c,cpp
+    autocmd FileType c,cpp,swig
         \ iabbrev <buffer> eif else if |
         \ iabbrev <buffer> fo for |
         \ iabbrev <buffer> wh while |     iabbrev <buffer> while   NO! NO! NO!|
     " 'b' for brackets. Add <CR>? Another mapping with <CR>?
     autocmd FileType c,cpp inoremap <buffer> <c-b> ();
-    autocmd FileType cpp
+    autocmd FileType cpp,swig
         \ iabbrev <buffer> au auto|
         \ iabbrev <buffer> ca const auto|
         \ iabbrev <buffer> cl class|     iabbrev <buffer> class   NO! NO! NO!|
@@ -238,7 +240,7 @@ augroup c_cpp_cs_filetype_abbreviations
         \ iabbrev <buffer> pro: protected:|
         \ iabbrev <buffer> pri: private:|
     " Mappings for things in std namespace. The last two letters are the first and last letters of the abbreviated word.
-    autocmd FileType cpp
+    autocmd FileType cpp,swig
         \ iabbrev <buffer> sct std::cout <<|
         \ iabbrev <buffer> scr std::cerr <<|
         \ iabbrev <buffer> sel std::endl|
