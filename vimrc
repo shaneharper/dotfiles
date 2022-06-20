@@ -65,7 +65,7 @@ Plug 'haya14busa/vital-safe-string'
 
 Plug 'https://github.com/embear/vim-localvimrc'
 let g:localvimrc_persistent=2
-let g:localvimrc_whitelist=!has('win32') ? '/home/shane/\(src-new\|src/cpppa*\)'
+let g:localvimrc_whitelist=!has('win32') ? ['/home/shane/src/cpppa*', '/mnt/c/Users/shane/source/cpppa']
                                        \ : 'C:\Users\shane\source\cpppa'
 let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
