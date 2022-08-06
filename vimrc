@@ -107,7 +107,7 @@ Plugin 'https://github.com/drn/zoomwin-vim.git'
 set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
 Plugin 'ycm-core/YouCompleteMe'
     " To build the YCM binary on Linux:
-    "  sudo apt install python3-dev mono-devel
+    "  sudo apt install python3-dev mono-complete   # The YCM docs state mono-complete is required for YCM to support C#. (The mono-devel package without mono-complete might be ok?)
     "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer
     " To build the YCM binary on Windows with Visual Studio 2022 installed:
     "  python %userprofile%/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer --msvc 17
