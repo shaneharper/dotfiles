@@ -16,6 +16,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'pboettch/vim-cmake-syntax'  " pboettch/vim-cmake-syntax seems to fix problems with the runtime/syntax/cmake.vim that currently (on 27 Jan 2022) comes with Vim (https://github.com/vim/vim/blob/37c64c78fd87e086b5a945ad7032787c274e2dcb/runtime/syntax/cmake.vim). pboettch/vim-cmake-syntax highlights inline bracket comments ('#[[ ... ]]') correctly; Without it text beyond the end of a bracket comment would be highlighted as a comment if on the same line as the bracket comment.
 
 Plug 'https://github.com/vim-scripts/SWIG-syntax.git'
+
+Plug 'shaneharper/vim-dosbatch_syntax'
 " }}}
 
 " Version control---------------------------------------------------------- {{{
