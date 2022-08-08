@@ -21,7 +21,7 @@ Plug 'shaneharper/vim-dosbatch_syntax'
 " }}}
 
 " Version control---------------------------------------------------------- {{{
-function! s:go_to_first_change_in_diff_mode()  " XXX Could Vim automatically do s:go_to_first_change_in_diff_mode() when opening a diff view?
+function s:go_to_first_change_in_diff_mode()  " XXX Could Vim automatically do s:go_to_first_change_in_diff_mode() when opening a diff view?
     silent! normal gg]c[c
     " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
 endfunction
@@ -263,7 +263,7 @@ augroup vim_filetype_abbreviations
         \ iabbrev <buffer> wh while|
 augroup END
 
-function! SetupCommandAlias(from, to)
+function SetupCommandAlias(from, to)
     exec 'cnoreabbrev <expr> '.a:from
             \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
             \ .'? ("'.a:to.'") : ("'.a:from.'"))'
@@ -365,7 +365,7 @@ endif
 if &term =~ "xterm.*"
     let &t_ti = &t_ti . "\e[?2004h"
     let &t_te = "\e[?2004l" . &t_te
-    function! XTermPasteBegin(ret)
+    function XTermPasteBegin(ret)
         set pastetoggle=<Esc>[201~
         set paste
         return a:ret
