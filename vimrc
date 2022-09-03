@@ -280,6 +280,8 @@ highlight Special ctermfg=magenta
 highlight diffAdded ctermfg=green guifg=green
 highlight diffRemoved ctermfg=red guifg=red
 
+highlight! def link vimCommentString vimComment  " (By default vimCommentString was linked to vimString.)
+
 function Clear_unwanted_syntax_highlighting()
     " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting unnecessary and distracting.
     " XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following? Is this a good start (for vimscript files)?...  syn clear vimLet vimCommand vimFuncName vimFunckey vimOper
