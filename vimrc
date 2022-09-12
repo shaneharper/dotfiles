@@ -307,7 +307,7 @@ autocmd GUIEnter * call Clear_unwanted_syntax_highlighting()  | " xxx Just calli
 filetype plugin indent on
 set ruler
 set tags=./tags;                " ';' causes search to occur in current directory, then the parent, then its parent, etc.
-if !has('gui_running') | set mouse= | endif  " Disable Vim's mouse handling when not running gvim; I like for the terminal window to be left to provide copy and paste functionality using the OS/window manager clipboard. (Vim will enable its mouse support by setting the mouse option to 'a' if the GUI is started and the mouse option wasn't already set - see :help gui-mouse. With mouse=a a selection made while holding down the left mouse button will cause Vim to enter 'visual mode'.)
+if !has('gui_running') | set mouse= | endif  " Disable Vim's mouse handling when not running gvim; Note by default Vim sets the mouse option for the Win32 terminal (see "default" at top of :help mouse). I like for the terminal window to be left to provide copy and paste functionality using the OS/window manager clipboard. (With mouse=a as set by Vim by default when the GUI is started a selection made while holding down the left mouse button will cause Vim to enter 'visual mode'.)
 set mousemodel=popup_setpos
 set wildmode=list:longest
 set gdefault                    " search/replace "globally" (on a line) by default
