@@ -282,12 +282,21 @@ highlight diffRemoved ctermfg=red guifg=red
 
 highlight! def link vimCommentString vimComment  " (By default vimCommentString was linked to vimString.)
 
+for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
+    let s:original_{s:highlight_group}_highlight_args =
+        \ execute("highlight ".s:highlight_group)->matchstr('\v\s*xxx\s+\zs.*')
+endfor
+
 function Clear_unwanted_syntax_highlighting()
     " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting unnecessary and distracting.
     " XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following? Is this a good start (for vimscript files)?...  syn clear vimLet vimCommand vimFuncName vimFunckey vimOper
     for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
         execute "highlight!" s:highlight_group "NONE"
     endfor
+
+    exec "highlight helpHyperTextJump ".s:original_Identifier_highlight_args
+    " exec "highlight helpOption ".s:original_Type_highlight_args
+    " exec "highlight helpHeadLine ".s:original_Statement_highlight_args
 endfunction
 
 call Clear_unwanted_syntax_highlighting()
