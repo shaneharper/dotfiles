@@ -112,6 +112,7 @@ Plugin 'ycm-core/YouCompleteMe'
     "  sudo apt install python3-dev mono-complete   # The YCM docs state mono-complete is required for YCM to support C#. (The mono-devel package without mono-complete might be ok?)
     "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer
     " To build the YCM binary on Windows with Visual Studio 2022 installed:
+    "  REM Note the following may not work with 32-bit Python installed. It didn't work for me with YCM d4343e8384... from 29/8/'22. Building the regex library failed, e.g. "unresolved external symbol __imp_PyTupleNew". I suspect the regex library was being built as 64-bit.
     "  python %userprofile%/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer --msvc 17
     " xxx Automate building/rebuilding of the YCM binary. Use a vim-plug post-install/update hook? (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
 autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
