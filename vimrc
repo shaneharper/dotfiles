@@ -106,19 +106,21 @@ Plugin 'gmarik/vundle'
 " zoomwin-vim: <C-W>o toggles fullscreen/windowed.
 Plugin 'https://github.com/drn/zoomwin-vim.git'
 
-set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
-Plugin 'ycm-core/YouCompleteMe'
-    " To build the YCM binary on Linux:
-    "  sudo apt install python3-dev mono-complete   # The YCM docs state mono-complete is required for YCM to support C#. (The mono-devel package without mono-complete might be ok?)
-    "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer
-    " To build the YCM binary on Windows with Visual Studio 2022 installed:
-    "  REM Note the following may not work with 32-bit Python installed. It didn't work for me with YCM d4343e8384... from 29/8/'22. Building the regex library failed, e.g. "unresolved external symbol __imp_PyTupleNew". I suspect the regex library was being built as 64-bit.
-    "  python %userprofile%/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer --msvc 17
-    " xxx Automate building/rebuilding of the YCM binary. Use a vim-plug post-install/update hook? (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
-autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
-let g:ycm_auto_hover=''  " Disable automatically showing documentation in a popup at the cursor location after a delay. Popups usually get in the way of reading what is near the cursor location. YCM 9309f777 unnecessarily shows a popup when the cursor is on the name of an entity where it's defined. <plug>(YCMHover) shows the popup.
-nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>dt :YcmCompleter GetType<CR>
+if !has("win32") || has("win64")  " Don't use YCM if running on Windows with 32-bit Python - see below re. problem building regex library.
+    set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
+    Plugin 'ycm-core/YouCompleteMe'
+        " To build the YCM binary on Linux:
+        "  sudo apt install python3-dev mono-complete   # The YCM docs state mono-complete is required for YCM to support C#. (The mono-devel package without mono-complete might be ok?)
+        "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer
+        " To build the YCM binary on Windows with Visual Studio 2022 installed:
+        "  REM Note the following may not work with 32-bit Python installed. It didn't work for me with YCM d4343e8384... from 29/8/'22. Building the regex library failed, e.g. "unresolved external symbol __imp_PyTupleNew". I suspect the regex library was being built as 64-bit.
+        "  python %userprofile%/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer --msvc 17
+        " xxx Automate building/rebuilding of the YCM binary. Use a vim-plug post-install/update hook? (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
+    autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
+    let g:ycm_auto_hover=''  " Disable automatically showing documentation in a popup at the cursor location after a delay. Popups usually get in the way of reading what is near the cursor location. YCM 9309f777 unnecessarily shows a popup when the cursor is on the name of an entity where it's defined. <plug>(YCMHover) shows the popup.
+    nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
+    nnoremap <leader>dt :YcmCompleter GetType<CR>
+endif
 
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
