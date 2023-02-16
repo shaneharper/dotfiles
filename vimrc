@@ -219,7 +219,6 @@ augroup c_cpp_cs_filetype_abbreviations
         \ iabbrev <buffer> #d #define|
         \ inoremap <buffer> #i0 #if 0|
         \ iabbrev <buffer> st struct|    iabbrev <buffer> struct  NO! NO! NO!|
-        \ iabbrev <buffer> re return|    iabbrev <buffer> return  NO! NO! NO!|
         \ iabbrev <buffer> bo bool|      iabbrev <buffer> bool    NO! NO! NO!|
         \ iabbrev <buffer> ch char|      iabbrev <buffer> char    NO! NO! NO!|
         \ iabbrev <buffer> co const|     iabbrev <buffer> const   NO! NO! NO!|
@@ -227,6 +226,7 @@ augroup c_cpp_cs_filetype_abbreviations
     autocmd FileType c,cpp,cs,swig
         \ inoremap <buffer> #iF #if false|
         \ inoremap <buffer> #E #endif|
+        \ iabbrev <buffer> re return|
         \ iabbrev <buffer> vo void
     " Typing "fo(" expands to "for (", "wh(" expands to "while ("
     autocmd FileType c,cpp,swig
