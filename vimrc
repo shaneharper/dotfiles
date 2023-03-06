@@ -18,6 +18,8 @@ Plug 'pboettch/vim-cmake-syntax'  " pboettch/vim-cmake-syntax seems to fix probl
 Plug 'https://github.com/vim-scripts/SWIG-syntax.git'
 
 Plug 'shaneharper/vim-dosbatch_syntax'
+
+Plug 'https://github.com/PProvost/vim-ps1'  " Syntax highlighting, auto indenting, etc. for Powershell scripts
 " }}}
 
 " Version control---------------------------------------------------------- {{{
@@ -72,8 +74,6 @@ let g:localvimrc_whitelist=!has('win32') ? ['/home/shane/src/cpppa*', '/mnt/c/Us
 let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
-
-Plug 'https://github.com/PProvost/vim-ps1'  " Syntax highlighting, auto indenting, etc. for Powershell scripts
 
 Plug 'https://github.com/editorconfig/editorconfig-vim'  " .editorconfig files allow for consistent settings in various different editors. Plugins like this one exist for other editors.
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim)
@@ -291,7 +291,7 @@ for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
 endfor
 
 function Clear_unwanted_syntax_highlighting()
-    " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting unnecessary and distracting.
+    " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting pointless and distracting.
     " XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following? Is this a good start (for vimscript files)?...  syn clear vimLet vimCommand vimFuncName vimFunckey vimOper
     for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
         execute "highlight!" s:highlight_group "NONE"
