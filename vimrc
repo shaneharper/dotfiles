@@ -20,6 +20,9 @@ Plug 'https://github.com/vim-scripts/SWIG-syntax.git'
 Plug 'shaneharper/vim-dosbatch_syntax'
 
 Plug 'https://github.com/PProvost/vim-ps1'  " Syntax highlighting, auto indenting, etc. for Powershell scripts
+
+Plug 'https://github.com/vim-python/python-syntax'
+let g:python_highlight_string_format=1  " (for syntax highlighting of f-strings, etc.)
 " }}}
 
 " Version control---------------------------------------------------------- {{{
