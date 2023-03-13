@@ -231,6 +231,8 @@ augroup c_cpp_cs_filetype_abbreviations
         \ inoremap <buffer> #E #endif|
         \ iabbrev <buffer> re return|
         \ iabbrev <buffer> vo void
+    autocmd FileType cpp,cs,swig
+        \ iabbrev <buffer> cl class|     iabbrev <buffer> class   NO! NO! NO!|
     " Typing "fo(" expands to "for (", "wh(" expands to "while ("
     autocmd FileType c,cpp,swig
         \ iabbrev <buffer> eif else if |
@@ -241,7 +243,6 @@ augroup c_cpp_cs_filetype_abbreviations
     autocmd FileType cpp,swig
         \ iabbrev <buffer> au auto|
         \ iabbrev <buffer> ca const auto|
-        \ iabbrev <buffer> cl class|     iabbrev <buffer> class   NO! NO! NO!|
         \ iabbrev <buffer> na namespace| iabbrev <buffer> namespace NO! NO! NO!|
         \ iabbrev <buffer> te template|  iabbrev <buffer> template NO! NO! NO!|
         \ iabbrev <buffer> ty typename|  iabbrev <buffer> typename NO! NO! NO!|
