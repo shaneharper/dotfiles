@@ -169,8 +169,6 @@ endif
 " Basic key mappings ------------------------------------------------------ {{{
 " jk mapping from http://learnvimscriptthehardway.stevelosh.com/chapters/10.html
 inoremap jk <esc>
-" don't use <esc>. Use jk - it's easier, fingers stay on the home row. (And I prefer it to Esc on a thumb key on my Ergodox EZ keyboard.)
-inoremap <esc> <nop>
 "" kk: temporarily leave insert mode for one command
 inoremap kk <C-o>
 
