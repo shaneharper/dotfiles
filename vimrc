@@ -325,6 +325,9 @@ set breakindent
 set wrapscan
 "set linebreak
 
+set nofixendofline  " Stop Vim automatically appending unwanted \r\n characters to the last line of "Windows text files". (I got tired of seeing an unintended change in a diff with the original version of a file.)
+" Disabling the fixendofline option improves Vim's handling of "Windows text files" but there are still some minor issues, viz. 1/. Vim will not display the last line if it's an empty line, 2/. a new file with fileformat=dos will be saved with a blank line added to the end (unless the endofline option was cleared). These issues could be solved if Vim's interpretation of \n characters could be configured; With fileformat set to "unix" \n could be interpreted as a line terminator (required at the end of all lines, including the last) and with fileformat set to "dos" \n could be interpreted as a line separator (so a \n at the end of a file indicates that an empty line follows the \n - the \n separates the empty line at the very end from the second from last line). The fixendofline option wouldn't be required if Vim's interpretation of \n characters could be configured as just described - the endofline option could still exist to handle the rare case of someone wanting to create a "Unix text file" without a final newline character (although I'd prefer if it was called "lastlineendswithEOL").
+
 set guioptions-=T   " hide toolbar
 set guioptions+=k   " keep window size when adding/removing a scrollbar, toolbar, etc.
 
