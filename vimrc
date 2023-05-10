@@ -277,8 +277,12 @@ syntax on
 highlight CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
 highlight LineNr ctermfg=DarkGrey
 highlight Special ctermfg=magenta
+
+" filetype=diff. {{{
+"  Note that Vim's diff mode uses different highlight groups to those set here. (Vim's diff mode uses DiffAdd DiffChange, etc.).
 highlight diffAdded ctermfg=green guifg=green
 highlight diffRemoved ctermfg=red guifg=red
+" }}}
 
 highlight! def link vimCommentString vimComment  " (By default vimCommentString was linked to vimString.)
 
@@ -317,7 +321,7 @@ set backspace=indent,eol,start  " allow backspacing over everything in insert mo
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
 set nowrap
 set breakindent
-set wrapscan
+set wrapscan  " searches wrap around the end of file.
 "set linebreak
 
 set nofixendofline  " Stop Vim automatically appending unwanted \r\n characters to the last line of "Windows text files". (I got tired of seeing an unintended change in a diff with the original version of a file.)
@@ -343,7 +347,7 @@ augroup vimrc_miscellaneous
     autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\"|normal G
     autocmd BufNewFile,BufRead,BufWrite *.vim+ if !exists('b:current_syntax') | setfiletype vim | endif   " See: https://github.com/shaneharper/add_vim_script_end_statements
     autocmd BufNewFile,BufRead,BufWrite *.xaml setfiletype xml
-    autocmd FileType text,hgcommit,gitcommit set linebreak wrap
+    autocmd FileType text,markdown,hgcommit,gitcommit set linebreak wrap
     autocmd BufNewFile,BufRead,BufWrite *.swg setfiletype swig
     autocmd BufWinEnter * call <SID>set_formatoptions_for_buffer()  " This autocmd is executed after ftplugin scripts have run. (This way we can override unwanted formatoptions settings that may have been made by an ftplugin script.)
     autocmd BufNewFile,BufRead,BufWrite .clang-tidy set filetype=yaml
