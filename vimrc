@@ -1,6 +1,7 @@
 " vim-plug and vundle require git.
 
 set runtimepath+=~/.vim  " Use ~/.vim on all platforms (~/.vim is not included in the default runtimepath for Windows). This is required on Windows for "call plug#begin(...)" below.
+set runtimepath+=~/dotfiles/vim
 
 " vim-plug plugins -------------------------------------------------------- {{{
 let vim_plug_absolute_pathname=expand('~/.vim/autoload/plug.vim')
@@ -270,44 +271,11 @@ function Setup_command_alias(from, to)
 endfunction
 " }}}
 
-" Colors ------------------------------------------------------------------ {{{
-let &background=($VIM_BACKGROUND != "" ? $VIM_BACKGROUND : 'dark')  " XXX I wish Vim would automatically set the background option based on the color of the background of the terminal. With Vim 8.1-561 and gnome-terminal on Ubuntu 18.04 I've only seen :set background& set the background option to 'light' (even when the terminal window background color was black and v:termrbgresp was ^[]11;rgb:0000/0000/0000^G ...I'd be nice to patch Vim to fix this).  https://github.com/vim/vim/issues/869  (Set default background color (:set bg&) after detecting terminal background color)  XXX I can't set Vim's background option myself here based on v:termrbgresp because Vim doesn't set v:termrbgresp until some time after Vim has finished sourcing .vimrc. It is set sometime after when a VimEnter autocmd would fire. (Could Vim set v:termrbgresp earlier?)
-
-syntax on
-highlight CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
-highlight LineNr ctermfg=DarkGrey
-highlight Special ctermfg=magenta
-
-" filetype=diff. {{{
-"  Note that Vim's diff mode uses different highlight groups to those set here. (Vim's diff mode uses DiffAdd DiffChange, etc.).
-highlight diffAdded ctermfg=green guifg=green
-highlight diffRemoved ctermfg=red guifg=red
-" }}}
-
-highlight! def link vimCommentString vimComment  " (By default vimCommentString was linked to vimString.)
-
-for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
-    let s:original_{s:highlight_group}_highlight_args =
-        \ execute("highlight ".s:highlight_group)->matchstr('\v\s*xxx\s+\zs.*')
-endfor
-
-function Clear_unwanted_syntax_highlighting()
-    " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting pointless and distracting.
-    " XXX Can the syntax highlighting rules that I don't want be removed, rather than "hiding" their effect via the following? Is this a good start (for vimscript files)?...  syn clear vimLet vimCommand vimFuncName vimFunckey vimOper
-    for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
-        execute "highlight!" s:highlight_group "NONE"
-    endfor
-
-    exec "highlight helpHyperTextJump ".s:original_Identifier_highlight_args
-    " exec "highlight helpOption ".s:original_Type_highlight_args
-    " exec "highlight helpHeadLine ".s:original_Statement_highlight_args
-endfunction
-
-call Clear_unwanted_syntax_highlighting()
-autocmd GUIEnter * call Clear_unwanted_syntax_highlighting()  | " xxx Just calling Clear_unwanted_syntax_highlighting() from this script is ineffective when running gvim, but works fine when called from this GUIEnter autocmd. (Vim 8.2 on Ubuntu 16.04) (Calling Clear_unwanted_syntax_highlighting() from this script is effective when running vim in a terminal window.)
-" }}}
-
 " Misc. ------------------------------------------------------------------- {{{
+let &background=($VIM_BACKGROUND != "" ? $VIM_BACKGROUND : 'dark')  " XXX I wish Vim would automatically set the background option based on the color of the background of the terminal. With Vim 8.1-561 and gnome-terminal on Ubuntu 18.04 I've only seen :set background& set the background option to 'light' (even when the terminal window background color was black and v:termrbgresp was ^[]11;rgb:0000/0000/0000^G ...I'd be nice to patch Vim to fix this).  https://github.com/vim/vim/issues/869  (Set default background color (:set bg&) after detecting terminal background color)  XXX I can't set Vim's background option myself here based on v:termrbgresp because Vim doesn't set v:termrbgresp until some time after Vim has finished sourcing .vimrc. It is set sometime after when a VimEnter autocmd would fire. (Could Vim set v:termrbgresp earlier?)
+syntax on
+colorscheme sgh
+
 filetype plugin indent on
 set ruler
 set tags=./tags;                " ';' causes search to occur in current directory, then the parent, then its parent, etc.
