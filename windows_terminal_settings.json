@@ -69,12 +69,12 @@
             {
                 "guid": "{45bd6f5e-cd28-5660-8afb-d5d050627cb9}",
                 "hidden": false,
-                "name": "Developer Command Prompt for VS 2022",
+                "name": "x64 Developer Command Prompt for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
                 "guid": "{a9308c2b-49ce-5a41-a04e-9e4cfa04e2ed}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
             },
