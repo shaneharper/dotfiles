@@ -40,7 +40,6 @@ profile 'export XZ_DEFAULTS="-T0"'
 bashrc "alias gst='git status'"
 bashrc "alias hga='hg add'"
 bashrc "alias hgc='hg commit'"
-bashrc "alias hgd='hg diff'"
 bashrc "alias hge='hg expo'"
 bashrc "alias hgh='hg heads -v'"
 bashrc "alias hgl='hg log -v --follow'"
@@ -62,3 +61,7 @@ if [ ! -f ~/bin/z/z.sh ]; then
     git clone https://github.com/rupa/z.git ~/bin/z
 fi
 bashrc ". ~/bin/z/z.sh"
+
+ln -sf ~/share/vim/vim90/macros/less.sh ~/bin/vimless  # xxx magic number ("vim90")
+bashrc 'function gd() { git diff "$@" | vimless; }'
+bashrc 'function hgd() { hg diff "$@" | vimless; }'

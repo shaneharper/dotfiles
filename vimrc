@@ -174,7 +174,6 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 
 nnoremap <space> :
-nnoremap q<space> q:
 vnoremap <space> :
 
 " From https://github.com/nvie/vimrc/blob/master/vimrc:
