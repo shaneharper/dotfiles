@@ -316,6 +316,7 @@ augroup vimrc_miscellaneous
     autocmd BufNewFile,BufRead,BufWrite *.vim+ if !exists('b:current_syntax') | setfiletype vim | endif   " See: https://github.com/shaneharper/add_vim_script_end_statements
     autocmd BufNewFile,BufRead,BufWrite *.xaml setfiletype xml
     autocmd FileType text,markdown,hgcommit,gitcommit set linebreak wrap
+    autocmd FileType diff set wrap
     autocmd BufNewFile,BufRead,BufWrite *.swg setfiletype swig
     autocmd BufWinEnter * call <SID>set_formatoptions_for_buffer()  " This autocmd is executed after ftplugin scripts have run. (This way we can override unwanted formatoptions settings that may have been made by an ftplugin script.)
     autocmd BufNewFile,BufRead,BufWrite .clang-tidy set filetype=yaml
