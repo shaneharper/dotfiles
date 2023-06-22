@@ -27,29 +27,16 @@ append_if_not_already_in_file()
     grep --quiet --no-messages -x --fixed-strings "$TEXT" "$FILENAME" || echo "$TEXT" >> "$FILENAME"
 }
 
-bashrc() { append_if_not_already_in_file ~/.bashrc "$1"; }
 zshrc()  { append_if_not_already_in_file ~/.zshrc "$1"; }
 profile()  { append_if_not_already_in_file ~/.profile "$1"; }
 
-profile "export EDITOR='vim -X'"
-bashrc "alias vim='vim -X'  # -X stops Vim connecting to the X server at startup. This can avoid a noticeable delay when starting Vim, e.g. when starting Vim from the WSL preview from the Microsoft Store and it's necessary to wait for WSLg to start if it wasn't running already."
+append_if_not_already_in_file ~/.bashrc ". `pwd`/bashrc"
 
+profile "export EDITOR='vim -X'"
 profile 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
 profile 'export XZ_DEFAULTS="-T0"'
 
-bashrc "alias gst='git status'"
-bashrc "alias hga='hg add'"
-bashrc "alias hgc='hg commit'"
-bashrc "alias hgh='hg heads -v'"
-bashrc "alias hgl='hg log -v --follow'"
-bashrc "alias hgr='hg revert'"
-bashrc "alias hgs='hg status --copies'"
 ln -sf ~/share/vim/vim90/macros/less.sh ~/bin/vimless  # xxx magic number ("vim90")
-bashrc 'function gd() { git diff "$@" | vimless; }'
-bashrc 'function hgd() { hg diff "$@" | vimless; }'
-bashrc 'function hge() { hg expo "$@" | vimless; }'
-
-bashrc "stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction)."
 
 zshrc "set_output_carriage_return_with_new_line() { stty onlcr }"
 zshrc "autoload -Uz add-zsh-hook"
@@ -63,4 +50,3 @@ mkdir -p ~/bin
 if [ ! -f ~/bin/z/z.sh ]; then
     git clone https://github.com/rupa/z.git ~/bin/z
 fi
-bashrc ". ~/bin/z/z.sh"
