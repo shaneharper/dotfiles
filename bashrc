@@ -8,9 +8,11 @@ alias hgl='hg log -v --follow'
 alias hgr='hg revert'
 alias hgs='hg status --copies'
 
-function gd() { git diff "$@" | vimless; }
-function hgd() { hg diff "$@" | vimless; }
-function hge() { hg expo "$@" | vimless; }
+# xxx Don't run vimless in the following functions if the first command exits with an error.
+function gd() { git diff "$@" 2>&1 | vimless; }
+function gsh() { git show "$@" 2>&1 | vimless; }
+function hgd() { hg diff "$@" 2>&1 | vimless; }
+function hge() { hg expo "$@" 2>&1 | vimless; }
 
 stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction).
 
