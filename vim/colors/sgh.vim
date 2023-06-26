@@ -25,13 +25,13 @@ endfor
 
 function Clear_unwanted_syntax_highlighting()
     " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting pointless and distracting.
-    for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
-        execute "highlight" s:highlight_group "NONE"  | " XXX Remove unwanted syntax highlighting groups as per :help syn-clear rather than trying to "hide" them. (Note that the Normal group will be used - ideally the next item down in the stack of syntax items (as returned by synstack()) should be used as that may be something other than the Normal group.)
+    for highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
+        execute "highlight" highlight_group "NONE"  | " XXX Remove unwanted syntax highlighting groups as per :help syn-clear rather than trying to "hide" them. (Note that the Normal group will be used - ideally the next item down in the stack of syntax items (as returned by synstack()) should be used as that may be something other than the Normal group.)
     endfor
 
-    exec "highlight helpHyperTextJump ".s:original_Identifier_highlight_args
-    " exec "highlight helpOption ".s:original_Type_highlight_args
-    " exec "highlight helpHeadLine ".s:original_Statement_highlight_args
+    exec "highlight helpHyperTextJump" s:original_Identifier_highlight_args
+    " exec "highlight helpOption" s:original_Type_highlight_args
+    " exec "highlight helpHeadLine" s:original_Statement_highlight_args
 endfunction
 
 call Clear_unwanted_syntax_highlighting()

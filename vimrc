@@ -264,8 +264,8 @@ augroup vim_filetype_abbreviations
 augroup END
 
 function Setup_command_alias(from, to)
-    exec 'cnoreabbrev <expr> '.a:from
-            \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+    exec 'cnoreabbrev <expr>' a:from
+            \ '((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
             \ .'? ("'.a:to.'") : ("'.a:from.'"))'
 endfunction
 " }}}
