@@ -348,24 +348,6 @@ if executable('ag')
     set grepformat=%f:%l:%c%m
 endif
 
-" Handle "Bracketed Paste". {{{
-"   From https://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x/7053522#7053522
-if &term =~ "xterm.*"
-    let &t_ti = &t_ti . "\e[?2004h"
-    let &t_te = "\e[?2004l" . &t_te
-    function XTerm_paste_begin(ret)
-        set pastetoggle=<Esc>[201~
-        set paste
-        return a:ret
-    endfunction
-    map <expr> <Esc>[200~ XTerm_paste_begin("i")
-    imap <expr> <Esc>[200~ XTerm_paste_begin("")
-    vmap <expr> <Esc>[200~ XTerm_paste_begin("c")
-    cmap <Esc>[200~ <nop>
-    cmap <Esc>[201~ <nop>
-endif
-" }}}
-
 function s:go_to_first_change_in_diff_mode()  " XXX Could Vim automatically do s:go_to_first_change_in_diff_mode() when opening a diff view?
     silent! normal gg]c[c
     " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.

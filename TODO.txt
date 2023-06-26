@@ -1,0 +1,1 @@
+Support bracketed paste with Vim when &TERM = win32 by using Vim's paste mode.
