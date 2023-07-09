@@ -23,10 +23,15 @@ for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
         \ execute("highlight ".s:highlight_group)->matchstr('\v\s*xxx\s+\zs.*')
 endfor
 
+function s:no_syntax_highlighting_for(highlight_group)
+    execute "highlight clear" a:highlight_group  | " Clear color and style attributes. Links defined with ":highlight link" are also cleared but links defined with ":highlight default link" are not.
+    execute "highlight link" a:highlight_group "NONE"  | " Remove link, if any. (":highlight clear" won't remove a link defined with ":highlight default link" but this will.)
+endfunction
+
 function Clear_unwanted_syntax_highlighting()
     " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting pointless and distracting.
     for highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
-        execute "highlight" highlight_group "NONE"  | " XXX Remove unwanted syntax highlighting groups as per :help syn-clear rather than trying to "hide" them. (Note that the Normal group will be used - ideally the next item down in the stack of syntax items (as returned by synstack()) should be used as that may be something other than the Normal group.)
+        call s:no_syntax_highlighting_for(highlight_group)  | " XXX Remove unwanted syntax highlighting groups as per :help syn-clear rather than trying to "hide" them. (Note that the Normal group will be used - ideally the next item down in the stack of syntax items (as returned by synstack()) should be used as that may be something other than the Normal group.)
     endfor
 
     exec "highlight helpHyperTextJump" s:original_Identifier_highlight_args
