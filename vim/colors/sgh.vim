@@ -30,9 +30,26 @@ endfunction
 
 function Clear_unwanted_syntax_highlighting()
     " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting pointless and distracting.
+
     for highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
-        call s:no_syntax_highlighting_for(highlight_group)  | " XXX Remove unwanted syntax highlighting groups as per :help syn-clear rather than trying to "hide" them. (Note that the Normal group will be used - ideally the next item down in the stack of syntax items (as returned by synstack()) should be used as that may be something other than the Normal group.)
+        call s:no_syntax_highlighting_for(highlight_group)
     endfor
+
+    " xxx Remove "unwanted" syntax rules. Note though that calling s:no_syntax_highlighting_for() above seems to work pretty well most of the time so there's really little reason to remove unwanted syntax rules.
+    " --- Reasons to remove unwanted syntax rules: ---
+    "   1/. trivial performance improvement (?)
+    "   2/. fixes syntax highlighting where within a syntax group a match of an unwanted syntax group can occur.
+    "       Calling s:no_syntax_highlighting_for() above "hides" the syntax highlighting of unwanted syntax groups where synstack() returns [an_unwanted_highlight_group_id], but not, for example, where synstack() returns [Comment_id, an_unwanted_highlight_group_id] (it'll appear no syntax highlighting is used where the Comment highlight group should be used.)
+    "           Vim's dosbatch syntax file defines dosBatchComment as "containing" (see :help :syn-contains) @dosbatchNumber. Vim's C syntax highlighting can optionally highlight strings and numbers within a comment but by default it does not.
+    " --- Possible implementations: ---
+    "   1/. A vim plugin.
+    "       Find all highlight groups that link to an unwanted highlight group - hlget() could be used.
+    "       :syn clear {all unwanted highlight groups including links}
+    "       Use Syntax autocmd to trigger the steps above.
+    "   2/. A utility that filters syntax files.
+    "       Determine all direct and indirect links to unwanted highlight groups using the "highlight default link" lines in the original syntax file.
+    "       Remove all "syn match" lines that use an unwanted highlight group (include links).
+    "       Place output in ~/.vim/syntax.
 
     exec "highlight helpHyperTextJump" s:original_Identifier_highlight_args
     " exec "highlight helpOption" s:original_Type_highlight_args
