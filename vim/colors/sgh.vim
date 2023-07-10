@@ -18,17 +18,12 @@ highlight diffRemoved ctermfg=red guifg=red
 
 highlight! def link vimCommentString vimComment  " (By default vimCommentString was linked to vimString.)
 
-for s:highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
-    let s:original_{s:highlight_group}_highlight_args =
-        \ execute("highlight ".s:highlight_group)->matchstr('\v\s*xxx\s+\zs.*')
-endfor
-
 function s:no_syntax_highlighting_for(highlight_group)
     execute "highlight clear" a:highlight_group  | " Clear color and style attributes. Links defined with ":highlight link" are also cleared but links defined with ":highlight default link" are not.
     execute "highlight link" a:highlight_group "NONE"  | " Remove link, if any. (":highlight clear" won't remove a link defined with ":highlight default link" but this will.)
 endfunction
 
-function Clear_unwanted_syntax_highlighting()
+function s:clear_unwanted_syntax_highlighting()
     " Some syntax highlighting is useful, e.g. to tell comments from executable statements, but I find a lot of the default syntax highlighting pointless and distracting.
 
     for highlight_group in ['Statement', 'Number', 'Type', 'Identifier']
@@ -51,13 +46,10 @@ function Clear_unwanted_syntax_highlighting()
     "       Remove all "syn match" lines that use an unwanted highlight group (include links).
     "       Place output in ~/.vim/syntax.
 
-    exec "highlight helpHyperTextJump" s:original_Identifier_highlight_args
-    " exec "highlight helpOption" s:original_Type_highlight_args
-    " exec "highlight helpHeadLine" s:original_Statement_highlight_args
+    highlight helpHyperTextJump term=underline cterm=bold ctermfg=14 guifg=#40ffff  | " Normally helpHyperTextJump links to Identifier. (We clear Identifier.)
 endfunction
 
-call Clear_unwanted_syntax_highlighting()
-autocmd GUIEnter * call Clear_unwanted_syntax_highlighting()  | " xxx Just calling Clear_unwanted_syntax_highlighting() from this script is ineffective when running gvim, but works fine when called from this GUIEnter autocmd. (Vim 8.2 on Ubuntu 16.04) (Calling Clear_unwanted_syntax_highlighting() from this script is effective when running vim in a terminal window.)
+call s:clear_unwanted_syntax_highlighting()
 
 
 " vim:set foldmethod=marker:
