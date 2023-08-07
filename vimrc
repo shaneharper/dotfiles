@@ -14,6 +14,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Syntax highlighting------------------------------------------------------ {{{
+Plug 'https://github.com/shaneharper/vim-mono_eink_color_scheme.git'
+
 Plug 'pboettch/vim-cmake-syntax'  " pboettch/vim-cmake-syntax seems to fix problems with the runtime/syntax/cmake.vim that currently (on 27 Jan 2022) comes with Vim (https://github.com/vim/vim/blob/37c64c78fd87e086b5a945ad7032787c274e2dcb/runtime/syntax/cmake.vim). pboettch/vim-cmake-syntax highlights inline bracket comments ('#[[ ... ]]') correctly; Without it text beyond the end of a bracket comment would be highlighted as a comment if on the same line as the bracket comment.
 
 Plug 'https://github.com/vim-scripts/SWIG-syntax.git'
@@ -273,7 +275,7 @@ endfunction
 " Misc. ------------------------------------------------------------------- {{{
 let &background=($VIM_BACKGROUND != "" ? $VIM_BACKGROUND : 'dark')  " XXX I wish Vim would automatically set the background option based on the color of the background of the terminal. With Vim 8.1-561 and gnome-terminal on Ubuntu 18.04 I've only seen :set background& set the background option to 'light' (even when the terminal window background color was black and v:termrbgresp was ^[]11;rgb:0000/0000/0000^G ...I'd be nice to patch Vim to fix this).  https://github.com/vim/vim/issues/869  (Set default background color (:set bg&) after detecting terminal background color)  XXX I can't set Vim's background option myself here based on v:termrbgresp because Vim doesn't set v:termrbgresp until some time after Vim has finished sourcing .vimrc. It is set sometime after when a VimEnter autocmd would fire. (Could Vim set v:termrbgresp earlier?)
 syntax on
-colorscheme sgh
+colorscheme mono_eink
 
 filetype plugin indent on
 set ruler
