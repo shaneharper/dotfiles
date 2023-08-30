@@ -21,7 +21,7 @@ clean_up_vc_diff()
       tr -d '\r'
 }
 
-# xxx Don't run vimless in the following functions if the first command exits with an error.
+# xxx Don't run vimless in the following functions if the first command exits with an error. (And the functions should return the return code of the first command when that command fails.)
 gd() { git diff "$@" 2>&1 | clean_up_vc_diff | vimless; }
 gsh() { git show "$@" 2>&1 | clean_up_vc_diff | vimless; }
 hgd() { hg diff "$@" 2>&1 | clean_up_vc_diff | vimless; }
