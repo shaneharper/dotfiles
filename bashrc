@@ -30,11 +30,11 @@ pipe_if_not_empty()  # Initially copied from https://superuser.com/a/210141.
     fi
 }
 
-# xxx Don't run vimless in the following functions if the first command exits with an error. (And the functions should return the return code of the first command when that command fails.)
-gd() { git diff "$@" 2>&1 | clean_up_vc_diff | pipe_if_not_empty vimless; }
-gsh() { git show "$@" 2>&1 | clean_up_vc_diff | pipe_if_not_empty vimless; }
-hgd() { hg diff "$@" 2>&1 | clean_up_vc_diff | pipe_if_not_empty vimless; }
-hge() { hg expo "$@" 2>&1 | clean_up_vc_diff | pipe_if_not_empty vimless; }
+# xxx The following functions should return the return code of the first command ("git diff", "hg diff", etc.) when that command fails. vimless shouldn't be run if the first command fails - It seems that that is what normally happens anyway; in the case of the first command failing usually nothing is output to stdout and consequently pipe_if_not_empty() won't run vimless.
+gd() { git diff "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
+gsh() { git show "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
+hgd() { hg diff "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
+hge() { hg expo "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
 
 stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction).
 
