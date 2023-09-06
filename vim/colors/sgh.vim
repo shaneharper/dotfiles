@@ -7,6 +7,7 @@ let colors_name = "sgh"
 " XXX Define a light theme and a dark theme; set colors according to &background.
 
 highlight CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
+highlight helpHyperTextJump term=underline cterm=bold ctermfg=14 guifg=#40ffff  | " Normally helpHyperTextJump links to Identifier. (We clear Identifier.)
 highlight LineNr ctermfg=DarkGrey
 highlight Special ctermfg=magenta
 
@@ -15,8 +16,6 @@ highlight Special ctermfg=magenta
 highlight diffAdded ctermfg=green guifg=green
 highlight diffRemoved ctermfg=red guifg=red
 " }}}
-
-highlight! def link vimCommentString vimComment  " (By default vimCommentString was linked to vimString.)
 
 function s:no_syntax_highlighting_for(highlight_group)
     execute "highlight clear" a:highlight_group  | " Clear color and style attributes. Links defined with ":highlight link" are also cleared but links defined with ":highlight default link" are not.
@@ -46,7 +45,7 @@ function s:clear_unwanted_syntax_highlighting()
     "       Remove all "syn match" lines that use an unwanted highlight group (include links).
     "       Place output in ~/.vim/syntax.
 
-    highlight helpHyperTextJump term=underline cterm=bold ctermfg=14 guifg=#40ffff  | " Normally helpHyperTextJump links to Identifier. (We clear Identifier.)
+    highlight! def link vimCommentString vimComment  " (By default vimCommentString was linked to vimString.)
 endfunction
 
 call s:clear_unwanted_syntax_highlighting()
