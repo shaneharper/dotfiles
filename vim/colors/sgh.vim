@@ -7,6 +7,7 @@ let colors_name = "sgh"
 " XXX Define a light theme and a dark theme; set colors according to &background.
 
 highlight CursorLine cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white  " One reason for doing this was the default cursorline (an underline) didn't appear on the last line of a buffer on Mac OS X 10.10 (vim 7.4), while this works.
+highlight helpExample ctermfg=4 guifg=Blue  | " By default helpExample is linked to Comment.
 highlight helpHyperTextJump term=underline cterm=bold ctermfg=14 guifg=#40ffff  | " Normally helpHyperTextJump links to Identifier. (We clear Identifier.)
 highlight LineNr ctermfg=DarkGrey
 highlight Special ctermfg=magenta
