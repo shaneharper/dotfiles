@@ -21,9 +21,9 @@ clean_up_vc_diff()
       tr -d '\r'
 }
 
-pipe_if_not_empty()  # Copied from https://superuser.com/a/210141.
+pipe_if_not_empty()  # Initially copied from https://superuser.com/a/210141.
 {
-    head=$(dd bs=1 count=1 2>/dev/null; echo a)
+    head=$(dd bs=1 count=1 status=none; echo a)
     head=${head%a}
     if [ "x$head" != x"" ]; then
         { printf %s "$head"; cat; } | "$@"
