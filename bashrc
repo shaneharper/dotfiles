@@ -21,11 +21,20 @@ clean_up_vc_diff()
       tr -d '\r'
 }
 
+pipe_if_not_empty()  # Copied from https://superuser.com/a/210141.
+{
+    head=$(dd bs=1 count=1 2>/dev/null; echo a)
+    head=${head%a}
+    if [ "x$head" != x"" ]; then
+        { printf %s "$head"; cat; } | "$@"
+    fi
+}
+
 # xxx Don't run vimless in the following functions if the first command exits with an error. (And the functions should return the return code of the first command when that command fails.)
-gd() { git diff "$@" 2>&1 | clean_up_vc_diff | vimless; }
-gsh() { git show "$@" 2>&1 | clean_up_vc_diff | vimless; }
-hgd() { hg diff "$@" 2>&1 | clean_up_vc_diff | vimless; }
-hge() { hg expo "$@" 2>&1 | clean_up_vc_diff | vimless; }
+gd() { git diff "$@" 2>&1 | clean_up_vc_diff | pipe_if_not_empty vimless; }
+gsh() { git show "$@" 2>&1 | clean_up_vc_diff | pipe_if_not_empty vimless; }
+hgd() { hg diff "$@" 2>&1 | clean_up_vc_diff | pipe_if_not_empty vimless; }
+hge() { hg expo "$@" 2>&1 | clean_up_vc_diff | pipe_if_not_empty vimless; }
 
 stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction).
 
