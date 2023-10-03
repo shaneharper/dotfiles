@@ -1,3 +1,5 @@
+@echo off
+
 @setlocal
 @set script_directory=%~dp0
 
