@@ -36,7 +36,8 @@ profile "export EDITOR='vim -X'"
 profile 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
 profile 'export XZ_DEFAULTS="-T0"'
 
-ln -sf ~/share/vim/vim90/macros/less.sh ~/bin/vimless  # xxx magic number ("vim90")
+VIMRUNTIME=`vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>"|echo $VIMRUNTIME|quit' | tr -d '\015' `  # (from Vim's help for VIMRUNTIME)
+ln -sf "$VIMRUNTIME"/macros/less.sh ~/bin/vimless
 
 zshrc "set_output_carriage_return_with_new_line() { stty onlcr }"
 zshrc "autoload -Uz add-zsh-hook"
