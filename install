@@ -36,6 +36,8 @@ profile "export EDITOR='vim -X'"
 profile 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
 profile 'export XZ_DEFAULTS="-T0"'
 
+mkdir -p ~/bin
+
 VIMRUNTIME=`vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>"|echo $VIMRUNTIME|quit' | tr -d '\015' `  # (from Vim's help for VIMRUNTIME)
 ln -sf "$VIMRUNTIME"/macros/less.sh ~/bin/vimless
 
@@ -47,7 +49,6 @@ zshrc "disable -r time && alias time='time -f \"%E real, %U user, %S system\" ' 
 
 
 # Install z command for use from bash command line. z changes directory - pass it part of the pathname of a previously visited directory.
-mkdir -p ~/bin
 if [ ! -f ~/bin/z/z.sh ]; then
     git clone https://github.com/rupa/z.git ~/bin/z
 fi
