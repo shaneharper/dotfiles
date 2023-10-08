@@ -38,8 +38,8 @@ profile 'export XZ_DEFAULTS="-T0"'
 
 mkdir -p ~/bin
 
-VIMRUNTIME=`vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>"|echo $VIMRUNTIME|quit' | tr -d '\015' `  # (from Vim's help for VIMRUNTIME)
-ln -sf "$VIMRUNTIME"/macros/less.sh ~/bin/vimless
+VIMRUNTIME=`vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>"|echo $VIMRUNTIME|quit' | tr -d '\015'`  # (from Vim's help for VIMRUNTIME)
+ln -sf "$VIMRUNTIME"/macros/less.sh ~/bin/vimless  # xxx Vim's runtime path could change in future, e.g. when running a different version of Vim (note that "$VIMRUNTIME" is part of the symlink target); Make ~/bin/vimless a script that runs "$VIMRUNTIME/macros/less.sh" after determining the current Vim runtime path.
 
 zshrc "set_output_carriage_return_with_new_line() { stty onlcr }"
 zshrc "autoload -Uz add-zsh-hook"
