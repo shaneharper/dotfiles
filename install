@@ -2,6 +2,9 @@
 
 cd "$(dirname "$0")"
 
+set -o errexit -o errtrace -o pipefail
+trap 'echo; echo Aborting.' ERR
+
 
 ln -s `pwd`/vimrc ~/.vimrc
 
