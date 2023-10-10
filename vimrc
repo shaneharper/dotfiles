@@ -8,7 +8,7 @@ let vim_plug_absolute_pathname=expand('~/.vim/autoload/plug.vim')
 if !filereadable(vim_plug_absolute_pathname)
     execute "silent !curl -fLo" vim_plug_absolute_pathname "--create-dirs"
             \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
+    autocmd VimEnter * PlugInstall
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -158,10 +158,10 @@ Plugin 'https://github.com/vim-scripts/argtextobj.vim'
 Plugin 'https://github.com/tpope/vim-commentary.git'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
-if s:run_PluginInstall == 1
+if s:run_PluginInstall
     echo "Installing Vundle plugins, please ignore key map error messages."
     echo ""
-    :PluginInstall
+    PluginInstall
 endif
 " }}}
 
