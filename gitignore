@@ -1,5 +1,5 @@
 # Vim swap file
-.*.sw?
+*.sw?
 
 tags
 *.pyc
