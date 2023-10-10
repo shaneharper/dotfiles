@@ -12,30 +12,31 @@ if !filereadable(vim_plug_absolute_pathname)
 endif
 
 call plug#begin('~/.vim/plugged')
+let g:plug_url_format='git@github.com:%s.git'
 
 " Syntax highlighting------------------------------------------------------ {{{
-Plug 'https://github.com/shaneharper/vim-mono_eink_color_scheme.git'
+Plug 'shaneharper/vim-mono_eink_color_scheme'
 
 Plug 'pboettch/vim-cmake-syntax'  " pboettch/vim-cmake-syntax seems to fix problems with the runtime/syntax/cmake.vim that currently (on 27 Jan 2022) comes with Vim (https://github.com/vim/vim/blob/37c64c78fd87e086b5a945ad7032787c274e2dcb/runtime/syntax/cmake.vim). pboettch/vim-cmake-syntax highlights inline bracket comments ('#[[ ... ]]') correctly; Without it text beyond the end of a bracket comment would be highlighted as a comment if on the same line as the bracket comment.
 
-Plug 'https://github.com/vim-scripts/SWIG-syntax.git'
+Plug 'vim-scripts/SWIG-syntax'
 
 Plug 'shaneharper/vim-dosbatch_syntax'
 
-Plug 'https://github.com/PProvost/vim-ps1'  " Syntax highlighting, auto indenting, etc. for Powershell scripts
+Plug 'PProvost/vim-ps1'  " Syntax highlighting, auto indenting, etc. for Powershell scripts
 
-Plug 'https://github.com/vim-python/python-syntax'
+Plug 'vim-python/python-syntax'
 let g:python_highlight_string_format=1  " (for syntax highlighting of f-strings, etc.)
 " }}}
 
 " Version control---------------------------------------------------------- {{{
-Plug 'https://github.com/juneedahamed/vc.vim'  " works with svn, git, hg and bzr. Many commands, e.g. :VCDiff, work regardless of the type of repository. It'd be nice to use just one plugin with all version control systems but presently there are some plugins that support some version control systems better than vc.vim, e.g. vim-fugitive's :Gdiff allows individual changes to be staged to be committed to a git repository. (Another plugin that supports more version control systems is vcscommand.vim.)
+Plug 'juneedahamed/vc.vim'  " works with svn, git, hg and bzr. Many commands, e.g. :VCDiff, work regardless of the type of repository. It'd be nice to use just one plugin with all version control systems but presently there are some plugins that support some version control systems better than vc.vim, e.g. vim-fugitive's :Gdiff allows individual changes to be staged to be committed to a git repository. (Another plugin that supports more version control systems is vcscommand.vim.)
 command -nargs=? VCd execute "VCDiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
 
-Plug 'https://github.com/ludovicchabant/vim-lawrencium'  " Use Mercurial from vim.
+Plug 'ludovicchabant/vim-lawrencium'  " Use Mercurial from vim.
 command -nargs=* Hdiff execute "Hgvdiff <args>" | call s:go_to_first_change_in_diff_mode()
 
-Plug 'https://github.com/tpope/vim-fugitive'  " Use git from vim.
+Plug 'tpope/vim-fugitive'  " Use git from vim.
 nnoremap <leader>g* :Ggrep <C-r><C-w><CR>:copen<CR>
 nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
 command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
@@ -43,7 +44,7 @@ command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_dif
 
 " Jedi-Vim: tools for Python dev
 "  <leader>n = show usages  <leader>g = go to an assignment  <leader>r = rename
-Plug 'https://github.com/davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 
 " Ctrl-P - press Ctrl-P to open a file
 Plug 'ctrlpvim/ctrlp.vim'
@@ -51,15 +52,15 @@ let g:ctrlp_custom_ignore = {'file': '\v\.(o|o\.d)$'}
 let g:ctrlp_match_window = 'max:20'
 let g:ctrlp_extensions = ['tag', 'line']
 
-Plug 'https://github.com/shaneharper/vim-name_object_after_its_type.git'
+Plug 'shaneharper/vim-name_object_after_its_type'
 
-Plug 'https://github.com/shaneharper/vim-code_block_markers.git'
+Plug 'shaneharper/vim-code_block_markers'
 
-Plug 'https://github.com/alfredodeza/pytest.vim'
+Plug 'alfredodeza/pytest.vim'
 autocmd VimEnter,BufNewFile,BufRead,BufWrite test*.py nnoremap <buffer> <LocalLeader>t :Pytest file<CR>
 autocmd VimEnter,BufNewFile,BufRead,BufWrite test*.py nnoremap <buffer> <LocalLeader>T :Pytest function<CR>
 
-Plug 'https://github.com/powerman/vim-plugin-AnsiEsc.git'
+Plug 'powerman/vim-plugin-AnsiEsc'
 
 " vital-power-assert (and dependencies).
 "  Power assert allows assertions to be written using a "natural" syntax (e.g. "Assert a==b" rather than "call assert_equal('a', 'b')"). (It provides just one command/function.) It generates assertion failure messages that show the name and value of variables used in the assertion as well as values computed by functions.
@@ -68,7 +69,7 @@ Plug 'haya14busa/vital-vimlcompiler'
 Plug 'haya14busa/vital-power-assert'
 Plug 'haya14busa/vital-safe-string'
 
-Plug 'https://github.com/embear/vim-localvimrc'
+Plug 'embear/vim-localvimrc'
 let g:localvimrc_persistent=2
 let g:localvimrc_whitelist=!has('win32') ? ['/home/shane/src/cpppa*', '/mnt/c/Users/shane/source/cpppa']
                                        \ : 'C:\Users\shane\source\cpppa'
@@ -76,10 +77,10 @@ let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
 
-Plug 'https://github.com/editorconfig/editorconfig-vim'  " .editorconfig files allow for consistent settings in various different editors. Plugins like this one exist for other editors.
+Plug 'editorconfig/editorconfig-vim'  " .editorconfig files allow for consistent settings in various different editors. Plugins like this one exist for other editors.
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim)
 
-Plug 'https://github.com/chrisbra/vim-diff-enhanced'  " :PatienceDiff selects the "patience" diff algorithm - this may make some diffs easier to follow.
+Plug 'chrisbra/vim-diff-enhanced'  " :PatienceDiff selects the "patience" diff algorithm - this may make some diffs easier to follow.
 
 call plug#end()
 " }}}
