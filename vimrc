@@ -42,6 +42,8 @@ nnoremap <leader>* :Ggrep -P "\b<C-R><C-W>\b"<CR>:copen<CR>
 command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_diff_mode() | wincmd x
 " }}}
 
+Plug 'ypcrts/securemodelines'
+
 " Jedi-Vim: tools for Python dev
 "  <leader>n = show usages  <leader>g = go to an assignment  <leader>r = rename
 Plug 'davidhalter/jedi-vim'
