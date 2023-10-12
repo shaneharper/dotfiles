@@ -341,6 +341,9 @@ set numberwidth=2
 " XXX only set relativenumber while in normal mode?
 autocmd BufWinEnter,WinEnter * setlocal relativenumber
 autocmd WinLeave * setlocal norelativenumber
+function LessInitFunc()  " called by $VIMRUNTIME/macros/less.vim
+    set norelativenumber
+endfunc
 set lazyredraw
 
 " Ctrl-L: fix last spelling mistake (http://stackoverflow.com/questions/5312235/how-to-correct-vim-spelling-mistakes-quicker)
