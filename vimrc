@@ -160,8 +160,7 @@ Plugin 'https://github.com/tpope/vim-commentary.git'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
 if s:run_PluginInstall
-    echo "Installing Vundle plugins, please ignore key map error messages."
-    echo ""
+    echo "Installing Vundle plugins."
     PluginInstall
 endif
 " }}}
