@@ -109,7 +109,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 " zoomwin-vim: <C-W>o toggles fullscreen/windowed.
-Plugin 'https://github.com/drn/zoomwin-vim.git'
+Plugin 'drn/zoomwin-vim'
 
 if !has("win32") || has("win64")  " Don't use YCM if running on Windows with 32-bit Python - see below re. problem building regex library.
     set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
@@ -129,36 +129,36 @@ endif
 
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
-Plugin 'https://github.com/vim-scripts/numsign.vim'
+Plugin 'vim-scripts/numsign.vim'
 autocmd BufWinEnter,WinEnter * let b:sign_work_mode=0
 
 " Unimpaired: ]q is :cnext, [q is :cprevious, ]l is :lnext, ]l is :lprevious, etc.
-Plugin 'https://github.com/tpope/vim-repeat'
-Plugin 'https://github.com/tpope/vim-unimpaired'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
 
 " vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
-Plugin 'https://github.com/milkypostman/vim-togglelist'
+Plugin 'milkypostman/vim-togglelist'
 
 "    Plugin 'Syntastic'	" awesome syntax and errors highlighter
 
-Plugin 'https://github.com/Vimjas/vim-python-pep8-indent.git'
+Plugin 'Vimjas/vim-python-pep8-indent'
 
-Plugin 'https://github.com/t9md/vim-choosewin'
+Plugin 't9md/vim-choosewin'
 nmap - <Plug>(choosewin)
 
 " dwm.vim - Tiled Window Management for Vim
-" XXX disabled 'cause it moves location list windows around.  Plugin 'https://github.com/spolu/dwm.vim.git'
+" XXX disabled 'cause it moves location list windows around.  Plugin 'spolu/dwm.vim'
 
-Plugin 'https://github.com/kien/rainbow_parentheses.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 "au VimEnter * RainbowParenthesesToggle " XXX Uncommenting this messes up highlighting of multi-line C++11 raw strings
 au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
 
 " Argtextobj.vim: daa = delete argument in C function signature, cia = change "inner" argument (exclude comma), ...
-Plugin 'https://github.com/vim-scripts/argtextobj.vim'
+Plugin 'vim-scripts/argtextobj.vim'
 
-Plugin 'https://github.com/tpope/vim-commentary.git'
+Plugin 'tpope/vim-commentary'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
 if s:run_PluginInstall
