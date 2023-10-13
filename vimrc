@@ -93,7 +93,6 @@ call plug#end()
 let s:run_PluginInstall=0
 if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
     echo "Installing Vundle."
-    echo ""
     if has("win32")
         execute "!mkdir" $HOME."\\.vim\\bundle"
         execute "!git clone https://github.com/gmarik/vundle" $HOME."\\.vim\\bundle\\vundle"
@@ -338,13 +337,14 @@ endfunction
 
 set cpoptions+=n " wrapped text can appear in the line number column
 set numberwidth=2
-" XXX only set relativenumber while in normal mode?
+set lazyredraw
+
+" xxx only set relativenumber while in normal mode?
 autocmd BufWinEnter,WinEnter * setlocal relativenumber
 autocmd WinLeave * setlocal norelativenumber
 function LessInitFunc()  " called by $VIMRUNTIME/macros/less.vim
     set norelativenumber
 endfunc
-set lazyredraw
 
 " Ctrl-L: fix last spelling mistake (http://stackoverflow.com/questions/5312235/how-to-correct-vim-spelling-mistakes-quicker)
 inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
