@@ -4,11 +4,12 @@ set runtimepath+=~/.vim  " Use ~/.vim on all platforms (~/.vim is not included i
 set runtimepath+=~/dotfiles/vim
 
 " vim-plug plugins -------------------------------------------------------- {{{
+let s:run_PlugInstall = 0
 let vim_plug_absolute_pathname=expand('~/.vim/autoload/plug.vim')
 if !filereadable(vim_plug_absolute_pathname)
     execute "silent !curl -fLo" vim_plug_absolute_pathname "--create-dirs"
             \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    autocmd VimEnter * PlugInstall
+    let s:run_PlugInstall = 1
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -85,6 +86,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by http
 Plug 'chrisbra/vim-diff-enhanced'  " :PatienceDiff selects the "patience" diff algorithm - this may make some diffs easier to follow.
 
 call plug#end()
+if s:run_PlugInstall | PlugInstall | endif
 " }}}
 
 " Vundle plugins ---------------------------------------------------------- {{{
