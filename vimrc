@@ -47,7 +47,7 @@ Plug 'ypcrts/securemodelines'
 
 " Jedi-Vim: tools for Python dev
 "  <leader>n = show usages  <leader>g = go to an assignment  <leader>r = rename
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim', {'for': 'python'}
 
 " Ctrl-P - press Ctrl-P to open a file
 Plug 'ctrlpvim/ctrlp.vim'
@@ -90,7 +90,7 @@ Plug 'drn/zoomwin-vim'
 
 if !has("win32") || has("win64")  " Don't use YCM if running on Windows with 32-bit Python - see below re. problem building regex library.
     set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
-    Plug 'ycm-core/YouCompleteMe'
+    Plug 'ycm-core/YouCompleteMe', {'on': 'YcmCompleter', 'for': ['c', 'cpp', 'cs', 'python']}
         " To build the YCM binary on Linux:
         "  sudo apt install python3-dev mono-complete
         "  python3 ~/.vim/plugged/YouCompleteMe/install.py --clangd-completer --cs-completer
