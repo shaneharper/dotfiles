@@ -149,11 +149,14 @@ nmap - <Plug>(choosewin)
 " dwm.vim - Tiled Window Management for Vim
 " XXX disabled 'cause it moves location list windows around.  Plugin 'spolu/dwm.vim'
 
-Plugin 'kien/rainbow_parentheses.vim'
-"au VimEnter * RainbowParenthesesToggle " XXX Uncommenting this messes up highlighting of multi-line C++11 raw strings
-au Syntax * RainbowParenthesesLoadRound
+if 0
+Plugin 'kien/rainbow_parentheses.vim'  | " This messes up highlighting of multi-line C++11 raw strings.  {{{
+au VimEnter * RainbowParenthesesToggle " Turn on "rainbow parentheses".
+au Syntax * RainbowParenthesesLoadRound  " xxx PluginInstall will trigger this autocmd to fire before the plugin is installed resulting in "E492: Not an editor command: RainbowParenthesesLoadRound". Don't add this autocmd until after the plugin is installed.
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
+" }}}
+endif
 
 " Argtextobj.vim: daa = delete argument in C function signature, cia = change "inner" argument (exclude comma), ...
 Plugin 'vim-scripts/argtextobj.vim'
