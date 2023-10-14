@@ -85,41 +85,18 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by http
 
 Plug 'chrisbra/vim-diff-enhanced'  " :PatienceDiff selects the "patience" diff algorithm - this may make some diffs easier to follow.
 
-call plug#end()
-if s:run_PlugInstall | PlugInstall | endif
-" }}}
-
-" Vundle plugins ---------------------------------------------------------- {{{
-" :PluginUpdate updates plugins
-
-let s:run_PluginInstall=0
-if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
-    echo "Installing Vundle."
-    if has("win32")
-        execute "!mkdir" $HOME."\\.vim\\bundle"
-        execute "!git clone https://github.com/gmarik/vundle" $HOME."\\.vim\\bundle\\vundle"
-    else
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    endif
-    let s:run_PluginInstall=1
-endif
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-Plugin 'gmarik/vundle'
-
 " zoomwin-vim: <C-W>o toggles fullscreen/windowed.
-Plugin 'drn/zoomwin-vim'
+Plug 'drn/zoomwin-vim'
 
 if !has("win32") || has("win64")  " Don't use YCM if running on Windows with 32-bit Python - see below re. problem building regex library.
     set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
-    Plugin 'ycm-core/YouCompleteMe'
+    Plug 'ycm-core/YouCompleteMe'
         " To build the YCM binary on Linux:
         "  sudo apt install python3-dev mono-complete
-        "  python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer
+        "  python3 ~/.vim/plugged/YouCompleteMe/install.py --clangd-completer --cs-completer
         " To build the YCM binary on Windows with Visual Studio 2022 installed:
         "  REM Note the following may not work with 32-bit Python installed. It didn't work for me with YCM d4343e8384... from 29/8/'22. Building the regex library failed, e.g. "unresolved external symbol __imp_PyTupleNew". I suspect the regex library was being built as 64-bit.
-        "  python %userprofile%/.vim/bundle/YouCompleteMe/install.py --clangd-completer --cs-completer --msvc 17
+        "  python %userprofile%/.vim/plugged/YouCompleteMe/install.py --clangd-completer --cs-completer --msvc 17
         " xxx Automate building/rebuilding of the YCM binary. Use a vim-plug post-install/update hook? (Note: It seems that if the binaries need to be rebuilt that that is reported sometime after execution of this .vimrc file completes.)
     autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
     let g:ycm_auto_hover=''  " Disable automatically showing documentation in a popup at the cursor location after a delay. Popups usually get in the way of reading what is near the cursor location. YCM 9309f777 unnecessarily shows a popup when the cursor is on the name of an entity where it's defined. <plug>(YCMHover) shows the popup.
@@ -129,45 +106,43 @@ endif
 
 " numsign provides commands for jumping to lines marked with a 'sign' - YouCompleteMe uses 'signs' on lines causing compilation warnings/errors.
 "  \sn or <F2> jumps to next line with a 'sign'.
-Plugin 'vim-scripts/numsign.vim'
+Plug 'vim-scripts/numsign.vim'
 autocmd BufWinEnter,WinEnter * let b:sign_work_mode=0
 
 " Unimpaired: ]q is :cnext, [q is :cprevious, ]l is :lnext, ]l is :lprevious, etc.
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
 
 " vim-togglelist: <leader>q toggles quickfix window, <leader>l toggles location list
-Plugin 'milkypostman/vim-togglelist'
+Plug 'milkypostman/vim-togglelist'
 
-"    Plugin 'Syntastic'	" awesome syntax and errors highlighter
+"    Plug 'Syntastic'	" awesome syntax and errors highlighter
 
-Plugin 'Vimjas/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent'
 
-Plugin 't9md/vim-choosewin'
+Plug 't9md/vim-choosewin'
 nmap - <Plug>(choosewin)
 
 " dwm.vim - Tiled Window Management for Vim
-" XXX disabled 'cause it moves location list windows around.  Plugin 'spolu/dwm.vim'
+" XXX disabled 'cause it moves location list windows around.  Plug 'spolu/dwm.vim'
 
 if 0
 Plugin 'kien/rainbow_parentheses.vim'  | " This messes up highlighting of multi-line C++11 raw strings.  {{{
 au VimEnter * RainbowParenthesesToggle " Turn on "rainbow parentheses".
-au Syntax * RainbowParenthesesLoadRound  " xxx PluginInstall will trigger this autocmd to fire before the plugin is installed resulting in "E492: Not an editor command: RainbowParenthesesLoadRound". Don't add this autocmd until after the plugin is installed.
+au Syntax * RainbowParenthesesLoadRound  " xxx PlugInstall will trigger this autocmd to fire before the plugin is installed resulting in "E492: Not an editor command: RainbowParenthesesLoadRound". Don't add this autocmd until after the plugin is installed.
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
 " }}}
 endif
 
 " Argtextobj.vim: daa = delete argument in C function signature, cia = change "inner" argument (exclude comma), ...
-Plugin 'vim-scripts/argtextobj.vim'
+Plug 'vim-scripts/argtextobj.vim'
 
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
-if s:run_PluginInstall
-    echo "Installing Vundle plugins."
-    PluginInstall
-endif
+call plug#end()
+if s:run_PlugInstall | PlugInstall | endif
 " }}}
 
 " Basic key mappings ------------------------------------------------------ {{{
