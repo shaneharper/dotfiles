@@ -256,6 +256,14 @@ endfunction
 " }}}
 
 " Misc. ------------------------------------------------------------------- {{{
+" Ensure t_Co is set correctly for the Windows version of Vim. {{{
+let s:is_Windows_Terminal = {-> $WT_SESSION =~ ".*-.*-4.*-.*-.*"}
+
+if &term == "win32" && s:is_Windows_Terminal()
+    set t_Co=256  " By default &t_Co is 16. (Windows Terminal v1.17.11461.0, Vim 9.0 run from Windows Command Prompt and also vim.exe run from WSL/Ubuntu). xxx Shouldn't Vim set &t_Co to be 256 when it's run in Windows Terminal? (And then there'd be no need to set t_Co here.) See "set_color_count(tgetnum("Co"));" in Vim's src/term.c? Note: t_Co is also set to 16 when using the cmder terminal (https://cmder.app/); cmder seems to support 256 colors as well.
+endif
+" }}}
+
 let &background=($VIM_BACKGROUND != "" ? $VIM_BACKGROUND : 'dark')  " XXX I wish Vim would automatically set the background option based on the color of the background of the terminal. With Vim 8.1-561 and gnome-terminal on Ubuntu 18.04 I've only seen :set background& set the background option to 'light' (even when the terminal window background color was black and v:termrbgresp was ^[]11;rgb:0000/0000/0000^G ...I'd be nice to patch Vim to fix this).  https://github.com/vim/vim/issues/869  (Set default background color (:set bg&) after detecting terminal background color)  XXX I can't set Vim's background option myself here based on v:termrbgresp because Vim doesn't set v:termrbgresp until some time after Vim has finished sourcing .vimrc. It is set sometime after when a VimEnter autocmd would fire. (Could Vim set v:termrbgresp earlier?)
 syntax on
 colorscheme mono_eink
