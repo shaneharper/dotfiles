@@ -8,6 +8,7 @@ trap 'echo; echo Aborting.' ERR
 
 ln -s `pwd`/vimrc ~/.vimrc
 
+ln -s `pwd`/dircolors ~/.dircolors
 
 git config --global core.excludesfile `pwd`/gitignore
 git config --global push.default simple
