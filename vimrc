@@ -92,14 +92,12 @@ if !has("win32") || has("win64")  " Don't use YCM if running on Windows with 32-
     set encoding=utf-8  " As per https://github.com/ycm-core/YouCompleteMe#installation (see "Windows" section).
     Plug 'ycm-core/YouCompleteMe',
                 \ {'on': 'YcmCompleter',
-                \ 'for': ['c', 'cpp', 'cs', 'python']}
-        " To build the YCM binary on Linux:
-        "  sudo apt install python3-dev mono-complete
-        "  python3 ~/.vim/plugged/YouCompleteMe/install.py --clangd-completer --cs-completer
+                \  'for': ['c', 'cpp', 'cs', 'python'],
+                \  'do': !has('win32') ? 'python3 ./install.py --clangd-completer --cs-completer'
+                \                     : ' '}  " XXX Add command to install on Windows. Can I just prefix the Linux command with 'vcvars64.bat && '? (https://github.com/ycm-core/YouCompleteMe/issues/1751#issuecomment-407343466 shows one way to do it, but I suspect it can be done more simply.)
         " To build the YCM binary on Windows with Visual Studio 2022 installed:
         "  REM Note the following may not work with 32-bit Python installed. It didn't work for me with YCM d4343e8384... from 29/8/'22. Building the regex library failed, e.g. "unresolved external symbol __imp_PyTupleNew". I suspect the regex library was being built as 64-bit.
         "  python %userprofile%/.vim/plugged/YouCompleteMe/install.py --clangd-completer --cs-completer --msvc 17
-        " xxx Automate building/rebuilding of the YCM binary. Use a vim-plug post-install/update hook?
     autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
     let g:ycm_auto_hover=''  " Disable automatically showing documentation in a popup at the cursor location after a delay. Popups usually get in the way of reading what is near the cursor location. YCM 9309f777 unnecessarily shows a popup when the cursor is on the name of an entity where it's defined. <plug>(YCMHover) shows the popup.
     nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>

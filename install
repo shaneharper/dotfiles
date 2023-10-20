@@ -55,3 +55,6 @@ zshrc "disable -r time && alias time='time -f \"%E real, %U user, %S system\" ' 
 if [ ! -f ~/bin/z/z.sh ]; then
     git clone https://github.com/rupa/z.git ~/bin/z
 fi
+
+echo About to install python3-dev and mono-complete.
+sudo apt install --assume-yes python3-dev mono-complete  # Install packages needed by YouCompleteMe Vim plugin.  xxx It'd be nice to only ask for a password (run sudo) if a required packages isn't installed - See https://stackoverflow.com/a/10439058. xxx Move this to vimrc to be near the code that installs YouCompleteMe.
