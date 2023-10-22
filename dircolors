@@ -48,18 +48,18 @@ DIR 01;34 # directory
 LINK 01;36 # symbolic link. (If you set this to 'target' instead of a
  # numerical value, the color is as for the file pointed to.)
 MULTIHARDLINK 00 # regular file with more than one link
-FIFO 40;33 # pipe
+FIFO 37;41;01 # pipe
 SOCK 01;35 # socket
 DOOR 01;35 # door
 BLK 40;33;01 # block device driver
 CHR 40;33;01 # character device driver
-ORPHAN 40;31;01 # symlink to nonexistent file, or non-stat'able file ...
+ORPHAN 37;41;01 # symlink to nonexistent file, or non-stat'able file ...
 MISSING 00 # ... and the files they point to
 SETUID 37;41 # file that is setuid (u+s)
-SETGID 30;43 # file that is setgid (g+s)
-CAPABILITY 30;41 # file with capability
-STICKY_OTHER_WRITABLE 30;42 # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 34;42 # dir that is other-writable (o+w) and not sticky
+SETGID 37;41;01 # file that is setgid (g+s)
+CAPABILITY 37;41;01 # file with capability
+STICKY_OTHER_WRITABLE 37;41;01 # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 37;41;01 # dir that is other-writable (o+w) and not sticky
 STICKY 37;44 # dir with the sticky bit set (+t) and not other-writable
 # This is for files with execute permission:
 EXEC 01;32
