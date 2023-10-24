@@ -34,7 +34,7 @@ pipe_if_not_empty()  # Initially copied from https://superuser.com/a/210141.
 gd() { git diff "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
 gsh() { git show "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
 hgd() { hg diff "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
-hge() { hg expo "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
+hge() { hg export "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
 
 stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction).
 
