@@ -255,10 +255,8 @@ endfunction
 
 " Misc. ------------------------------------------------------------------- {{{
 " Ensure t_Co is set correctly for the Windows version of Vim. {{{
-let s:is_Windows_Terminal = {-> $WT_SESSION =~ ".*-.*-4.*-.*-.*"}
-
-if &term == "win32" && s:is_Windows_Terminal()
-    set t_Co=256  " By default &t_Co is 16. (Windows Terminal v1.17.11461.0, Vim 9.0 run from Windows Command Prompt and also vim.exe run from WSL/Ubuntu). xxx Shouldn't Vim set &t_Co to be 256 when it's run in Windows Terminal? (And then there'd be no need to set t_Co here.) See "set_color_count(tgetnum("Co"));" in Vim's src/term.c? Note: t_Co is also set to 16 when using the cmder terminal (https://cmder.app/); cmder seems to support 256 colors as well.
+if &term == "win32"
+    let &t_Co=max([256, &t_Co])  " By default &t_Co is 16. (Windows Terminal v1.17.11461.0, Vim 9.0 run from Windows Command Prompt and also vim.exe run from WSL/Ubuntu). xxx Shouldn't Vim set &t_Co to be at least 256 when it's run in Windows Terminal? (And then there'd be no need to set t_Co here.) See "set_color_count(tgetnum("Co"));" in Vim's src/term.c? Note: t_Co is also set to 16 when using the cmder terminal (https://cmder.app/); cmder seems to support 256 colors as well.
 endif
 " }}}
 
