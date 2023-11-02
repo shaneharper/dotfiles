@@ -59,3 +59,7 @@ fi
 
 echo About to install python3-dev and mono-complete.
 sudo apt install --assume-yes python3-dev mono-complete  # Install packages needed by YouCompleteMe Vim plugin.  xxx It'd be nice to only ask for a password (run sudo) if a required packages isn't installed - See https://stackoverflow.com/a/10439058. xxx Move this to vimrc to be near the code that installs YouCompleteMe.
+
+if [[ $(uname -r | grep WSL) ]]; then
+    sudo update-binfmts --disable cli  # Without this (and with mono-runtime - part of mono-complete - installed and with systemd enabled) trying to run a Windows exe from WSL/Ubuntu doesn't work, e.g. "run-detectors: unable to find an interpreter for /mnt/c/Windows/system32/cmd.exe" is output when trying to run cmd.exe (Ubuntu 22.04.3, mono-runtime 6.8.0.105+dfsg-3.2).
+fi
