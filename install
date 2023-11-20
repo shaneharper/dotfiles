@@ -12,6 +12,7 @@ ln -s `pwd`/dircolors ~/.dircolors
 
 git config --global core.excludesfile `pwd`/gitignore
 git config --global diff.tool vimdiff
+git config --global init.defaultBranch master  # Silence "git init" message: "Using 'master' as the name for the initial branch. This default branch name is subject to change. ..."
 git config --global merge.tool vimdiff
 git config --global push.default simple
 
