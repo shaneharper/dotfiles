@@ -322,6 +322,8 @@ endfunction
 set cpoptions+=n " wrapped text can appear in the line number column
 set numberwidth=2
 set lazyredraw
+set title
+set titleold=  | " Default: "Thanks for flying Vim".  We clear titleold to avoid "Thanks for flying Vim" being briefly displayed when Vim exits before a new title is set, e.g. as specified by the PS1 environment variable used by bash.
 
 " xxx only set relativenumber while in normal mode?
 autocmd BufWinEnter,WinEnter * setlocal relativenumber
