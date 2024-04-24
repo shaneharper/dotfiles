@@ -305,6 +305,7 @@ augroup vimrc_miscellaneous
     autocmd BufNewFile,BufRead,BufWrite *.xaml setfiletype xml
     autocmd FileType diff,git,gitcommit,hgcommit,markdown,text set linebreak wrap
     autocmd BufNewFile,BufRead,BufWrite *.swg setfiletype swig
+    autocmd BufNewFile,BufRead,BufWrite *.csproj set tabstop=2 shiftwidth=2
     autocmd BufWinEnter * call <SID>set_formatoptions_for_buffer()  " This autocmd is executed after ftplugin scripts have run. (This way we can override unwanted formatoptions settings that may have been made by an ftplugin script.)
     autocmd BufNewFile,BufRead,BufWrite .clang-tidy set filetype=yaml
     autocmd BufNewFile *.bat,*.cmd set fileformat=dos
