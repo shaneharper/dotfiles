@@ -1,6 +1,9 @@
 syntax: glob
 
-*.sw?
+# Vim swap files
+.sw[pon]
+.*.sw[pon]
+
 tags
 *.pyc
 *.pch
