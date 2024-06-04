@@ -1,7 +1,8 @@
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;38;5;29m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 PS1+='\[\e]2;\w\a\]'  # Set window title.
 
-alias vim='vim -X'  # -X stops Vim connecting to the X server at startup. This can avoid a noticeable delay when starting Vim, e.g. when starting Vim from the WSL preview from the Microsoft Store and it's necessary to wait for WSLg to start if it wasn't running already.
+
+# Version Control Aliases and Functions ---------------------------------- {{{
 
 alias gst='git status'
 alias hga='hg add'
@@ -41,6 +42,14 @@ hge() { hg export --template "commit {node}{ifeq(branch, 'default', '', '  {bran
 
 {diff}" "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
 
+# ------------------------------------------------------------------------ }}}
+
+
+alias vim='vim -X'  # -X stops Vim connecting to the X server at startup. This can avoid a noticeable delay when starting Vim, e.g. when starting Vim from the WSL preview from the Microsoft Store and it's necessary to wait for WSLg to start if it wasn't running already.
+
 stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction).
 
 . ~/bin/z/z.sh
+
+
+# vim:foldmethod=marker
