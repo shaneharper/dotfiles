@@ -44,6 +44,18 @@ command -nargs=? Fdiff execute "Gdiff <args>" | call s:go_to_first_change_in_dif
 " }}}
 
 Plug 'ypcrts/securemodelines'
+autocmd FileType diff,git let b:disable_secure_modelines=1  " Prevent processing of modelines in a diff. {{{
+" We want to ensure that none of the diff is initially hidden by a fold. And by preventing processing of modelines in a diff there'll be consistency in how diffs are displayed, etc.
+" Notes:
+"   - Text could be "hidden" if foldmethod were to be set to something other than manual.
+"   - Regarding "consistency":
+"       - Diffs for a file with a modeline will not always contain the modeline - it depends on what was changed.
+"       - A modeline might not apply to all files in a diff. (And a modeline in the diff might now be removed.)
+" xxx The securemodelines plugin could ignore modelines appearing in a diff (then there'd be no need for this autocmd).
+"    Replace: au BufRead,StdinReadPost * :call <SID>DoModelines()
+"    with:    au BufRead,StdinReadPost * if &filetype !=# 'diff' && &filetype !=# 'git' | call <SID>DoModelines() | endif
+" }}}
+
 
 " Jedi-Vim: tools for Python dev
 "  <leader>n = show usages  <leader>g = go to an assignment  <leader>r = rename
