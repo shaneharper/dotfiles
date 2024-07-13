@@ -49,6 +49,8 @@ alias ag="ag --color-line-number '37;3'"   # 37 = "light grey" ("not intense" wh
 
 alias vim='vim -X'  # -X stops Vim connecting to the X server at startup. This can avoid a noticeable delay when starting Vim, e.g. when starting Vim from the WSL preview from the Microsoft Store and it's necessary to wait for WSLg to start if it wasn't running already.
 
+vimless() { $(vim -es '+put=$VIMRUNTIME|print|quit!')/macros/less.sh $@; }
+
 stty -ixon  # disable Xon/Xoff flow control (so Ctrl-S functions as Ctrl-R but searches in the opposite direction).
 
 . ~/bin/z/z.sh
