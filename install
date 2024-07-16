@@ -6,9 +6,9 @@ set -o errexit -o errtrace -o pipefail
 trap 'echo; echo Aborting.' ERR
 
 
-ln -s `pwd`/vimrc ~/.vimrc
+ln -si `pwd`/vimrc ~/.vimrc
 
-ln -s `pwd`/dircolors ~/.dircolors
+ln -si `pwd`/dircolors ~/.dircolors
 
 git config --global core.excludesfile `pwd`/gitignore
 git config --global diff.tool vimdiff
