@@ -113,6 +113,7 @@ if !has("win32") || has("win64")  " Don't use YCM if running on Windows with 32-
     autocmd InsertLeave * if bufname("%") != "[Command Line]" | pclose | endif | " (Command Line check is to silence Vim error message.)
     let g:ycm_auto_hover=''  " Disable automatically showing documentation in a popup at the cursor location after a delay. Popups usually get in the way of reading what is near the cursor location. YCM 9309f777 unnecessarily shows a popup when the cursor is on the name of an entity where it's defined. <plug>(YCMHover) shows the popup.
     let g:ycm_extra_conf_globlist=['~/src/add_vim_script_end_statements/*']
+    let g:ycm_always_populate_location_list = 1  " populate location list with diagnostics, such as those output by clang-tidy.
     nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
     nnoremap <leader>dt :YcmCompleter GetType<CR>
 endif
