@@ -40,7 +40,7 @@ append_if_not_already_in_file ~/.bashrc ". `pwd`/bashrc"
 
 profile "export EDITOR='vim -X'"
 profile 'export MAKEFLAGS="$MAKEFLAGS -j`getconf _NPROCESSORS_ONLN`"'
-profile 'export XZ_DEFAULTS="-T0"'
+profile 'export XZ_DEFAULTS="-T0 --memlimit=50%"'
 
 mkdir -p ~/bin
 
