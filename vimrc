@@ -92,7 +92,7 @@ let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
 
-Plug 'editorconfig/editorconfig-vim'  " .editorconfig files allow for consistent settings in various different editors. Plugins like this one exist for other editors.
+packadd! editorconfig  " (.editorconfig files allow for consistent settings in various different editors.)
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim)
 
 Plug 'chrisbra/vim-diff-enhanced'  " :PatienceDiff selects the "patience" diff algorithm - this may make some diffs easier to follow.
