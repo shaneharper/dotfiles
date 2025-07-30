@@ -336,6 +336,7 @@ function s:set_formatoptions_for_buffer()
 endfunction
 
 set cpoptions+=n " wrapped text can appear in the line number column
+if has("patch-9.1.1557") | set diffopt+=anchor | endif
 set numberwidth=2
 set lazyredraw
 set title
