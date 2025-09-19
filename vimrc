@@ -79,10 +79,11 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 
 " vital-power-assert (and dependencies).
 "  Power assert allows assertions to be written using a "natural" syntax (e.g. "Assert a==b" rather than "call assert_equal('a', 'b')"). (It provides just one command/function.) It generates assertion failure messages that show the name and value of variables used in the assertion as well as values computed by functions.
-Plug 'vim-jp/vital.vim'
-Plug 'haya14busa/vital-vimlcompiler'
-Plug 'haya14busa/vital-power-assert'
-Plug 'haya14busa/vital-safe-string'
+" 19 Sep '25: Note one problem is that the output of vital-power-assert is wrong (and likely very confusing) where an assertion contains an expression that evaluates to different values when it is evaluated two/three times in sequence (the assertion message won't show the original value of that expression if the assertion fails).
+"Plug 'vim-jp/vital.vim'
+"Plug 'haya14busa/vital-vimlcompiler'
+"Plug 'haya14busa/vital-power-assert'
+"Plug 'haya14busa/vital-safe-string'
 
 Plug 'embear/vim-localvimrc'
 let g:localvimrc_persistent=2
