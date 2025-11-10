@@ -208,7 +208,7 @@ iabbrev ME shane@shaneharper.net
 
 augroup c_cpp_cs_filetype_abbreviations
     autocmd!
-    autocmd FileType c,cpp,swig
+    autocmd FileType c,cpp,arduino,swig
         \ iabbrev <buffer> #i #include |
         \ iabbrev <buffer> #d #define|
         \ inoremap <buffer> #i0 #if 0|
@@ -217,21 +217,21 @@ augroup c_cpp_cs_filetype_abbreviations
         \ iabbrev <buffer> ch char|      iabbrev <buffer> char    NO! NO! NO!|
         \ iabbrev <buffer> co const|     iabbrev <buffer> const   NO! NO! NO!|
         \ iabbrev <buffer> un unsigned|  iabbrev <buffer> unsigned NO! NO! NO!|
-    autocmd FileType c,cpp,cs,swig
+    autocmd FileType c,cpp,arduino,cs,swig
         \ inoremap <buffer> #iF #if false|
         \ inoremap <buffer> #E #endif|
         \ iabbrev <buffer> re return|
         \ iabbrev <buffer> vo void
-    autocmd FileType cpp,cs,swig
+    autocmd FileType cpp,arduino,cs,swig
         \ iabbrev <buffer> cl class|     iabbrev <buffer> class   NO! NO! NO!|
     " Typing "fo(" expands to "for (", "wh(" expands to "while ("
-    autocmd FileType c,cpp,swig
+    autocmd FileType c,cpp,arduino,swig
         \ iabbrev <buffer> eif else if |
         \ iabbrev <buffer> fo for |
         \ iabbrev <buffer> wh while |     iabbrev <buffer> while   NO! NO! NO!|
     " 'b' for brackets. Add <CR>? Another mapping with <CR>?
-    autocmd FileType c,cpp inoremap <buffer> <c-b> ();
-    autocmd FileType cpp,swig
+    autocmd FileType c,cpp,arduino inoremap <buffer> <c-b> ();
+    autocmd FileType cpp,arduino,swig
         \ iabbrev <buffer> au auto|
         \ iabbrev <buffer> ca const auto|
         \ iabbrev <buffer> na namespace| iabbrev <buffer> namespace NO! NO! NO!|
@@ -241,7 +241,7 @@ augroup c_cpp_cs_filetype_abbreviations
         \ iabbrev <buffer> pro: protected:|
         \ iabbrev <buffer> pri: private:|
     " Mappings for things in std namespace. The last two letters are the first and last letters of the abbreviated word.
-    autocmd FileType cpp,swig
+    autocmd FileType cpp,arduino,swig
         \ iabbrev <buffer> sct std::cout <<|
         \ iabbrev <buffer> scr std::cerr <<|
         \ iabbrev <buffer> sel std::endl|
