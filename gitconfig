@@ -1,0 +1,15 @@
+[diff]
+    tool = vimdiff
+
+[init]
+    defaultBranch = master
+        # ^ Silence "Using 'master' as the name for the initial branch. This default branch name is subject to change. ..." message from "git init".
+
+[merge]
+    tool = vimdiff
+
+[push]
+    default = simple
+
+[color "decorate"]
+    tag = green italic
