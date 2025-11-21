@@ -5,6 +5,7 @@ cd "$(dirname "$0")"
 set -o errexit -o errtrace -o pipefail
 trap 'echo; echo Aborting.' ERR
 
+[[ "$(pwd)" == "$HOME/dotfiles" ]] || { echo "Must be in ~/dotfiles. (Some scripts may hardcode the path.)"; exit 1; }
 
 ln -si `pwd`/vimrc ~/.vimrc
 
