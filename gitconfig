@@ -13,3 +13,6 @@
 
 [color "decorate"]
     tag = green italic
+
+[diff "JSON_pretty"]
+    textconv = python -m json.tool
