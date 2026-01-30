@@ -1,7 +1,12 @@
-" vim-plug and vundle require git.
+" vim-plug requires git.
 
 set runtimepath+=~/.vim  " Use ~/.vim on all platforms (~/.vim is not included in the default runtimepath for Windows). This is required on Windows for "call plug#begin(...)" below.
 set runtimepath+=~/dotfiles/vim
+
+" built-in plugins -------------------------------------------------------- {{{
+packadd! editorconfig  " (.editorconfig files allow for consistent settings in various different editors.)
+let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim.)
+" }}}
 
 " vim-plug plugins -------------------------------------------------------- {{{
 let s:run_PlugInstall = 0
@@ -92,9 +97,6 @@ let g:localvimrc_whitelist=!has('win32') ? ['/home/shane/src/cpppa*', '/mnt/c/Us
 let g:localvimrc_sandbox=0
 "  A useful .lvimrc, set makeprg to pass project root directory to ninja:
 "    set makeprg=ninja\ -C\ \"\$(git\ rev-parse\ --show-toplevel)\"
-
-packadd! editorconfig  " (.editorconfig files allow for consistent settings in various different editors.)
-let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim)
 
 Plug 'chrisbra/vim-diff-enhanced'  " :PatienceDiff selects the "patience" diff algorithm - this may make some diffs easier to follow.
 
@@ -259,6 +261,7 @@ augroup vim_filetype_abbreviations
         \ iabbrev <buffer> fu function|
         \ iabbrev <buffer> re return|
         \ iabbrev <buffer> wh while|
+        \ iabbrev <buffer> co const|
 augroup END
 
 function Setup_command_alias(from, to)
