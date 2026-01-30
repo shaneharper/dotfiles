@@ -325,6 +325,7 @@ augroup vimrc_miscellaneous
     autocmd BufNewFile,BufRead,BufWrite .clang-tidy set filetype=yaml
     autocmd BufNewFile,BufRead,BufWrite .hgignore set filetype=gitignore
     autocmd BufNewFile *.bat,*.cmd set fileformat=dos
+    autocmd Syntax editorconfig syn clear dosiniComment | syn match dosiniComment "^\s*\zs[#;].*$" contains=@Spell  " Highlight comments including those that are indented by overriding dosiniComment. (Note: syntax/editorconfig.vim runs syntax/dosini.vim and dosiniComment defined in syntax/dosini.vim won't match an indented comment.) The new rule is named dosiniComment (and not, e.g. editorconfigComment) as for this rule to be used after a section header it must be listed as contained by dosiniSection (dosiniComment is but editorconfigComment wouldn't be).  XXX Fix: An indented comment containing a '=' should be highlighted as a comment not as a dosiniLabel (Vim v9.1.2112).
 augroup END
 
 function s:set_formatoptions_for_buffer()
