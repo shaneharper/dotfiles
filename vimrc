@@ -279,11 +279,9 @@ endif
 " }}}
 
 let &background=($VIM_BACKGROUND != "" ? $VIM_BACKGROUND : 'dark')  " XXX I wish Vim would automatically set the background option based on the color of the background of the terminal. With Vim 8.1-561 and gnome-terminal on Ubuntu 18.04 I've only seen :set background& set the background option to 'light' (even when the terminal window background color was black and v:termrbgresp was ^[]11;rgb:0000/0000/0000^G ...I'd be nice to patch Vim to fix this).  https://github.com/vim/vim/issues/869  (Set default background color (:set bg&) after detecting terminal background color)  XXX I can't set Vim's background option myself here based on v:termrbgresp because Vim doesn't set v:termrbgresp until some time after Vim has finished sourcing .vimrc. It is set sometime after when a VimEnter autocmd would fire. (Could Vim set v:termrbgresp earlier?)
-syntax on
 colorscheme mono_eink
 
 filetype plugin indent on
-set ruler
 set tags=./tags;                " ';' causes search to occur in current directory, then the parent, then its parent, etc.
 if !has('gui_running') | set mouse= | endif  " Disable Vim's mouse handling when not running gvim; Note by default Vim sets the mouse option for the Win32 terminal (see "default" at top of :help mouse). I like for the terminal window to be left to provide copy and paste functionality using the OS/window manager clipboard. (With mouse=a as set by Vim by default when the GUI is started a selection made while holding down the left mouse button will cause Vim to enter 'visual mode'.)
 set mousemodel=popup_setpos
