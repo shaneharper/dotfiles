@@ -156,7 +156,6 @@ endif
 Plug 'vim-scripts/argtextobj.vim'
 
 Plug 'tpope/vim-commentary'
-autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
 call plug#end()
 if s:run_PlugInstall | PlugInstall | endif
