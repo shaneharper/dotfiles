@@ -32,15 +32,18 @@ pipe_if_not_empty()  # Initially copied from https://superuser.com/a/210141.
     fi
 }
 
-# xxx The following functions should return the return code of the first command ("git diff", "hg diff", etc.) when that command fails. vimless shouldn't be run if the first command fails - It seems that that is what normally happens anyway; in the case of the first command failing usually nothing is output to stdout and consequently pipe_if_not_empty() won't run vimless.
-gd() { git diff "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
-gsh() { git show "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
-hgd() { hg diff "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
+__pager() { pipe_if_not_empty vimless --not-a-term -; }  # (--not-a-term stops Vim displaying "Vim: Reading from stdin...".)
+
+
+# xxx The following functions should return immediately with the return code of the first command ("git diff", "hg diff", etc.) if that command fails. (Presently if the first command fails without outputting anything to stdout then __pager will return immediately and anything written to stderr will immediately be visible.)
+gd() { git diff "$@" | clean_up_vc_diff | __pager; }
+gsh() { git show "$@" | clean_up_vc_diff | __pager; }
+hgd() { hg diff "$@" | clean_up_vc_diff | __pager; }
 hge() { hg export --template "commit {node}{ifeq(branch, 'default', '', '  {branch}')}
 {date|rfc822date}{ifeq(author|email, 'shane@shaneharper.net', '', '  {author|email}')}
 {indent(desc, '    ')}
 
-{diff}" "$@" | clean_up_vc_diff | pipe_if_not_empty vimless; }
+{diff}" "$@" | clean_up_vc_diff | __pager; } 
 
 # ------------------------------------------------------------------------ }}}
 
