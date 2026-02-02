@@ -12,10 +12,10 @@ alias hgl='hg log -v --follow'
 alias hgr='hg revert'
 alias hgs='hg status --copies'
 
-clean_up_vc_diff()
+clean_up_git_diff()
 {
-    # Delete unified diff headers.
-    #   A unified diff header is not normally required as the names of the files that were compared are already output in a line like "diff --git a/PATH_A b/PATH_B".  xxx Don't remove lines that start with "---a /" or "+++ b/" that are not part of a unified diff header.
+    # Delete redundant file header lines.
+    #   The "diff --git ..." line is kept and a "deleted file..." or an "added file..." line if present is also kept.
       grep -v "^--- a/" --text |
       grep -v "^+++ b/" --text |
     # Delete carriage return characters.
@@ -36,14 +36,14 @@ __pager() { pipe_if_not_empty vimless --not-a-term -; }  # (--not-a-term stops V
 
 
 # xxx The following functions should return immediately with the return code of the first command ("git diff", "hg diff", etc.) if that command fails. (Presently if the first command fails without outputting anything to stdout then __pager will return immediately and anything written to stderr will immediately be visible.)
-gd() { git diff "$@" | clean_up_vc_diff | __pager; }
-gsh() { git show "$@" | clean_up_vc_diff | __pager; }
-hgd() { hg diff "$@" | clean_up_vc_diff | __pager; }
+gd() { git diff "$@" | clean_up_git_diff | __pager; }
+gsh() { git show "$@" | clean_up_git_diff | __pager; }
+hgd() { hg diff "$@" | clean_up_git_diff | __pager; }
 hge() { hg export --template "commit {node}{ifeq(branch, 'default', '', '  {branch}')}
 {date|rfc822date}{ifeq(author|email, 'shane@shaneharper.net', '', '  {author|email}')}
 {indent(desc, '    ')}
 
-{diff}" "$@" | clean_up_vc_diff | __pager; } 
+{diff}" "$@" | clean_up_git_diff | __pager; } 
 
 # ------------------------------------------------------------------------ }}}
 
