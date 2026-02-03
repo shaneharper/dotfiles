@@ -12,12 +12,25 @@ alias hgl='hg log -v --follow'
 alias hgr='hg revert'
 alias hgs='hg status --copies'
 
+simplify_diff_file_titles()  # Replace "a/file b/file" with "file", and "a/old b/new" with "old -> new" (for a rename) in "diff --git" lines.
+{
+    awk '/^diff --git / {
+        if (match($0, /a\/(.*) b\/(.*)/, m)) {
+            a = m[1]; b = m[2]
+            print "diff --git " a (a == b ? "" : " -> " b)
+            next
+        }
+    } { print }'
+}
+
 clean_up_git_diff()
 {
+      simplify_diff_file_titles |
     # Delete redundant file header lines.
     #   The "diff --git ..." line is kept and a "deleted file..." or an "added file..." line if present is also kept.
       grep -v "^--- a/" --text |
       grep -v "^+++ b/" --text |
+      grep -v "^rename \(from\|to\) " --text |
     # Delete carriage return characters.
     #   vimless displays a carriage return as "^M" colored using the SpecialKey highlighting group. When viewing changes to a file with DOS format line endings I prefer not to see ^M at the end of every line.  XXX Don't filter out a carriage return that appears in a line for file 'a' but not in the corresponding line for file 'b' (or vice versa).
       tr -d '\r'
