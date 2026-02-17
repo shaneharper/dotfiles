@@ -288,7 +288,6 @@ set wildmode=list:longest
 set gdefault                    " search/replace "globally" (on a line) by default
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
-set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set scrolloff=4                 " minimal number of screen lines to keep above and below the cursor.
 set nowrap
 set breakindent
@@ -342,6 +341,11 @@ set numberwidth=2
 set lazyredraw
 set title
 set titleold=  | " Default: "Thanks for flying Vim".  We clear titleold to avoid "Thanks for flying Vim" being briefly displayed when Vim exits before a new title is set, e.g. as specified by the PS1 environment variable used by bash.
+
+" Settings for "old" versions of Vim. (The default values for these settings are fine in recent versions of Vim.) {{{
+if !has("patch-9.1.0899") | set backspace=indent,eol,start | endif  " allow backspacing over everything in insert mode
+if !has("patch-9.1.1762") | set ruler | endif
+" }}}
 
 " xxx only set relativenumber while in normal mode?
 autocmd BufWinEnter,WinEnter * setlocal relativenumber
