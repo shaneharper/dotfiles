@@ -6,6 +6,10 @@ set runtimepath+=~/dotfiles/vim
 " built-in plugins -------------------------------------------------------- {{{
 packadd! editorconfig  " (.editorconfig files allow for consistent settings in various different editors.)
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*']  " (Recommended by https://github.com/editorconfig/editorconfig-vim.)
+
+if has("patch-9.1.375")
+    packadd comment
+endif
 " }}}
 
 " vim-plug plugins -------------------------------------------------------- {{{
@@ -154,8 +158,6 @@ endif
 
 " Argtextobj.vim: daa = delete argument in C function signature, cia = change "inner" argument (exclude comma), ...
 Plug 'vim-scripts/argtextobj.vim'
-
-Plug 'tpope/vim-commentary'
 
 call plug#end()
 if s:run_PlugInstall | PlugInstall | endif
