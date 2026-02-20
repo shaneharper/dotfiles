@@ -45,7 +45,7 @@ pipe_if_not_empty()  # Initially copied from https://superuser.com/a/210141.
     fi
 }
 
-__pager() { pipe_if_not_empty vimless --not-a-term -; }  # (--not-a-term stops Vim displaying "Vim: Reading from stdin...".)
+__pager() { pipe_if_not_empty vimless; }
 
 
 # xxx The following functions should return immediately with the return code of the first command ("git diff", "hg diff", etc.) if that command fails. (Presently if the first command fails without outputting anything to stdout then __pager will return immediately and anything written to stderr will immediately be visible.)
