@@ -366,6 +366,23 @@ if executable('ag')
     set grepformat=%f:%l:%c%m
 endif
 
+" <F5>: copy to Windows clipboard when using WSL.
+"   Ideally the + register would use the Windows clipboard when vim is running in Windows Terminal on Ubuntu(WSL) - I get "W23: Clipboard register not available, using register 0" when I try to use it, e.g. with "+y. There'd be no need for the following mappings for <F5> if the + register used the Windows clipboard.
+if exists('$WSL_DISTRO_NAME')
+    function! s:system(cmd, input)
+        let r = system(a:cmd.' 2>&1', a:input)
+        if v:shell_error != 0
+            echohl ErrorMsg
+            echom a:cmd 'failed. Exit code:' v:shell_error
+            echom 'Output:' r
+            echohl None
+        endif
+    endfunction
+
+    xnoremap <silent> <F5> y<Cmd>call <SID>system("clip.exe", getreg('"'))<CR>
+    nnoremap <silent> <F5>  <Cmd>call <SID>system("clip.exe", getreg('"'))<CR>
+endif
+
 function s:go_to_first_change_in_diff_mode()  " XXX Could Vim automatically do s:go_to_first_change_in_diff_mode() when opening a diff view?
     silent! normal gg]c[c
     " gg]c will go to the second change if the first line was changed. (Otherwise it goes to the first change.) '[c' from the first or second change will go to the first change.
