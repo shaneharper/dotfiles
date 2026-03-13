@@ -15,11 +15,12 @@ alias hgs='hg status --copies'
 simplify_diff_file_headers()
 {
     awk '
-    # Replace "a/file b/file" with "file", and "a/old b/new" with "old -> new" (for a rename) in "diff --git" lines.
+    # Replace "git --diff a/file b/file" with "==== file ====",
+    #     and "git --diff a/old b/new" with "==== old -> new ====" (for a rename).
     /^diff --git / {
         if (match($0, /a\/(.*) b\/(.*)/, m)) {
             a = m[1]; b = m[2]
-            print "diff --git " a (a == b ? "" : " -> " b)
+            print "==== " a (a == b ? "" : " -> " b) " ===="
             next
         }
     }
