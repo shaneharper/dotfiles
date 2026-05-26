@@ -4,8 +4,12 @@
     "actions": 
     [
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[13;2u"
+            },
+            "id": "User.sendInput.8882FD6D"
         },
         {
             "command": 
@@ -14,7 +18,11 @@
                 "split": "auto",
                 "splitMode": "duplicate"
             },
-            "keys": "alt+shift+d"
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
         }
     ],
     "copyFormatting": "none",
@@ -22,6 +30,21 @@
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "largePasteWarning": false,
     "multiLinePasteWarning": true,
+    "keybindings": 
+    [
+        {
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": "User.sendInput.8882FD6D",
+            "keys": "shift+enter"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        }
+    ],
     "newTabMenu": 
     [
         {
