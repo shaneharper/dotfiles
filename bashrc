@@ -51,8 +51,8 @@ __pager() { pipe_if_not_empty vimless; }
 
 gd() { git diff "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
 gsh() { git show "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
-hgd() { hg diff "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
-hge() { hg export --template "commit {node}{ifeq(branch, 'default', '', '  {branch}')}
+hgd() { hg diff --git "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
+hge() { hg export --git --template "commit {node}{ifeq(branch, 'default', '', '  {branch}')}
 {date|rfc822date}{ifeq(author|email, 'shane@shaneharper.net', '', '  {author|email}')}
 {indent(desc, '    ')}
 
