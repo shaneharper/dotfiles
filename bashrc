@@ -37,26 +37,21 @@ clean_up_git_diff()
       tr -d '\r'
 }
 
-pipe_if_not_empty()  # Initially copied from https://superuser.com/a/210141.
+view_git_format_diff()  # $@ = command that produces a git-format diff.
 {
-    head=$(dd bs=1 count=1 status=none; echo a)
-    head=${head%a}
-    if [ "x$head" != x"" ]; then
-        { printf %s "$head"; cat; } | "$@"
-    fi
+    local out; out=$("$@") || return
+    [ -z "$out" ] && return 0
+    clean_up_git_diff <<<"$out" | vimless
 }
 
-__pager() { pipe_if_not_empty vimless; }
-
-
-gd() { git diff "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
-gsh() { git show "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
-hgd() { hg diff --git "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
-hge() { hg export --git --template "commit {node}{ifeq(branch, 'default', '', '  {branch}')}
+gd()  { view_git_format_diff git diff "$@"; }
+gsh() { view_git_format_diff git show "$@"; }
+hgd() { view_git_format_diff hg diff --git "$@"; }
+hge() { view_git_format_diff hg export --git --template "commit {node}{ifeq(branch, 'default', '', '  {branch}')}
 {date|rfc822date}{ifeq(author|email, 'shane@shaneharper.net', '', '  {author|email}')}
 {indent(desc, '    ')}
 
-{diff}" "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; } 
+{diff}" "$@"; }
 
 # ------------------------------------------------------------------------ }}}
 
