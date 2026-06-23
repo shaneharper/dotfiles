@@ -49,15 +49,14 @@ pipe_if_not_empty()  # Initially copied from https://superuser.com/a/210141.
 __pager() { pipe_if_not_empty vimless; }
 
 
-# xxx The following functions should return immediately with the return code of the first command ("git diff", "hg diff", etc.) if that command fails. (Presently if the first command fails without outputting anything to stdout then __pager will return immediately and anything written to stderr will immediately be visible.)
-gd() { git diff "$@" | clean_up_git_diff | __pager; }
-gsh() { git show "$@" | clean_up_git_diff | __pager; }
-hgd() { hg diff "$@" | clean_up_git_diff | __pager; }
+gd() { git diff "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
+gsh() { git show "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
+hgd() { hg diff "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; }
 hge() { hg export --template "commit {node}{ifeq(branch, 'default', '', '  {branch}')}
 {date|rfc822date}{ifeq(author|email, 'shane@shaneharper.net', '', '  {author|email}')}
 {indent(desc, '    ')}
 
-{diff}" "$@" | clean_up_git_diff | __pager; } 
+{diff}" "$@" | clean_up_git_diff | __pager; return ${PIPESTATUS[0]}; } 
 
 # ------------------------------------------------------------------------ }}}
 
