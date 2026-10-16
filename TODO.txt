@@ -1,1 +1,2 @@
-Support bracketed paste with Vim when &TERM = win32 by using Vim's paste mode.
+[IGNORE] Pasting from the OS clipboard when &term = win32 should use "bracketed paste" - currently when pasting from the clipboard autoindent isn't temporarily disabled often resulting in lines getting extra indent when pasting code.
+    Apart from temporarily using Vim's paste mode (:set paste), "+p can be used from normal mode to avoid extra indentation being added.
